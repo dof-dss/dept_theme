@@ -1,0 +1,1 @@
+.footer{width:100%;background-color:#e8e7e7;padding:0 0 4.5em;margin-top:0}.footer-main.container{width:100%}@media (min-width: 768px){.footer-main.container{display:grid;grid-template-columns:2fr 1fr;grid-template-areas:'menu social';-webkit-box-align:center;-ms-flex-align:center;align-items:center}}.footer .nav-menu{grid-area:menu}.footer .nav-social{grid-area:social}

@@ -4,3 +4,24 @@ description: 'Base theme for Drupal 9 Departmental sites'
 package: NICS
 core_version_requirement: ^8.8 || ^9
 base theme: nicsdru_origins_theme
+
+libraries:
+  - nicsdru_nidirect_theme/nidirect-global-styles
+  - nicsdru_nidirect_theme/nidirect-specific-styles
+  - nicsdru_nidirect_theme/nidirect-accordions
+
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  breadcrumb: 'Breadcrumb'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  top_banner: 'Banner top'
+  content: 'Content'
+  sidebar_first: 'First sidebar'
+  sidebar_second: 'Sidebar second'
+  bottom_banner: 'Page bottom'
+  feedback: 'Feedback'
+  footer: 'Footer'
