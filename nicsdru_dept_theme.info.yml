@@ -6,9 +6,9 @@ core_version_requirement: ^8.8 || ^9
 base theme: nicsdru_origins_theme
 
 libraries:
-  - nicsdru_nidirect_theme/nidirect-global-styles
-  - nicsdru_nidirect_theme/nidirect-specific-styles
-  - nicsdru_nidirect_theme/nidirect-accordions
+  - nicsdru_dept_theme/nidirect-global-styles
+  - nicsdru_dept_theme/nidirect-specific-styles
+  - nicsdru_dept_theme/nidirect-accordions
 
 regions:
   header: 'Header'
