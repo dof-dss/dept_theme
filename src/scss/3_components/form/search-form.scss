@@ -14,7 +14,7 @@
 // Style guide: components.search-form
 
 .view-search-container form,
-.search-form {
+#search-api-form {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -132,7 +132,7 @@
 //
 // Style guide: components.search-form.site-search
 
-header .search-form {
+header #search-api-form {
   background-color: $brand-primary-medium;
   padding: 1rem 1.5rem 1rem 6rem;
   margin-bottom: 0;
@@ -147,7 +147,8 @@ header .search-form {
     margin-top: .3rem; // slight adjustment to align with the logo
   }
 
-  .form-type-search-api-autocomplete {
+  .form-type-search-api-autocomplete,
+  .form-type-search {
     max-width: 100%;
     flex: auto 1 1;
   }
