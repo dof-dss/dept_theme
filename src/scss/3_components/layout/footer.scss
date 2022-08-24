@@ -9,21 +9,24 @@
   background-color: color(grey-light);
   padding: 0 0 4.5em;
   margin-top: 0;
+  //border-top: 5px solid $brand-primary; not sure if this is needed?
 
-  &-main.container {
-    width: 100%;
-
-    @include breakpoint($tab) {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-template-areas: 'menu social';
-      align-items: center;
+  .container {
+    @include breakpoint($lap) {
+      display: flex;
+      justify-content: space-between;
     }
+  }
+
+  &-main {
+    align-self: flex-end;
   }
 
   .nav {
     &-menu {
-      grid-area: menu;
+      @include breakpoint($lap) {
+        margin-bottom: 0;
+      }
     }
 
     &-social {
