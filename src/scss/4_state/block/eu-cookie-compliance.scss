@@ -1,0 +1,130 @@
+@import '../../init';
+
+.sliding-popup-bottom,
+.sliding-popup-top {
+  width: 100%;
+  z-index: 99999;
+  //text-align: center;
+}
+
+.sliding-popup-bottom {
+  position: fixed;
+}
+
+.sliding-popup-top {
+  position: relative;
+}
+
+.eu-cookie-compliance {
+  &-banner {
+    width: 100%;
+    background: $tangaroa;
+    padding-bottom: 1.6rem;
+
+    @include breakpoint($tab) {
+      padding-bottom: 2.1rem;
+    }
+
+    .popup-content {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      grid-row-gap: 1.5em;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: right;
+    align-self: end;
+
+    .btn {
+      margin-left: 1em;
+
+      &:not(.decline-button) {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+      }
+
+      &:focus {
+        outline-color: #fff;
+      }
+    }
+  }
+
+  &-message {
+
+    h2 {
+      @include responsive-typo-map($h3-text);
+      color: white;
+    }
+
+    a {
+      @include link-state-style($link-cookie-notice);
+    }
+
+    p {
+      @include adjust-font-size-to(16px, 4);
+      color: white;
+
+      @include breakpoint($tab) {
+        @include adjust-font-size-to(18px, 4.5);
+      }
+
+      &:first-child {
+        @include adjust-font-size-to(24px, 5.3);
+        margin: 1.6rem 0;
+
+        @include breakpoint($phab) {
+          @include adjust-font-size-to(28px, 6);
+        }
+
+        @include breakpoint($tab) {
+          margin: 2.4rem 0 1.2rem;
+          font-weight: bold;
+        }
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    .find-more-button {
+      color: #1593f4;
+      border-bottom: 1px solid;
+
+      &:focus {
+        color: #fff;
+      }
+
+      &:hover {
+        border-color: #fff;
+      }
+    }
+  }
+}
+
+.eu-cookie-compliance-default-button,
+.eu-cookie-compliance-secondary-button,
+.eu-cookie-compliance-more-button,
+.eu-cookie-compliance-hide-button,
+.eu-cookie-withdraw-tab {
+  cursor: pointer;
+}
+
+.eu-cookie-withdraw-wrapper.sliding-popup-top,
+.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-banner {
+  transform: scaleY(-1);
+}
+
+.eu-cookie-withdraw-tab {
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -100%);
+  left: 50%;
+}
+
+.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-tab {
+  transform: translate(-50%, -100%) scaleY(-1);
+}

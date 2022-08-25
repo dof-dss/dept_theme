@@ -1,0 +1,18 @@
+{
+    "name": "dof-dss/nicsdru_dept_theme",
+    "type": "drupal-custom-theme",
+    "description": "Drupal 9 base theme",
+    "keywords": ["Drupal", "theme"],
+    "license": "MIT",
+    "homepage": "https://github.com/dof-dss/nicsdru_dept_theme",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0"
+    },
+    "authors": [
+        {
+            "name": "David Corbett",
+            "role": "Maintainer"
+        }
+    ]
+}
