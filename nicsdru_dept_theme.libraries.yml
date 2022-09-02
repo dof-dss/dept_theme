@@ -35,6 +35,7 @@ nidirect-global-styles:
       css/3_components/navigation/sub-menus.css: { minified: true }
       css/3_components/navigation/toggle-list.css: { minified: true }
       css/3_components/navigation/toc-menu.css: { minified: true }
+      css/3_components/navigation/topics-list.css: { minified: true }
       css/3_components/navigation/book.css: { minified: true }
       css/3_components/navigation/pager.css: { minified: true }
       css/3_components/form/buttons.css: { minified: true }

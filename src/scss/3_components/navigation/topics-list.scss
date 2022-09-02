@@ -1,0 +1,48 @@
+/*
+ * @file
+ * Provides the styling for the topics/subtopics list on a node page.
+ */
+@import '../../init';
+
+// Site topics list near the page title.
+//
+// A list of links showing topics/subtopics the current page is related to.
+//
+// Markup: topics-subtopics-list.twig
+//
+// Style guide: components.navigation.site-topics
+
+.site-topics,
+%site-topics {
+  margin: 0;
+  padding: 0;
+  @include adjust-font-size-to(16px, 4);
+
+  @include breakpoint($phab) {
+    margin: 0;
+    padding: 0;
+  }
+
+  @media print {
+    display: none;
+  }
+
+  &--list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+
+  &--item {
+    @include adjust-font-size-to(16px, 4);
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    @include link-state-style($link-body-no-visited);
+  }
+}
