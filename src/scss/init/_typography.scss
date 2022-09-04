@@ -9,7 +9,7 @@
 //
 // Style guide: init.variables.typography
 // The default font family.
-$base-font-family: 'Lato', 'Open Sans', sans-serif;
+$base-font-family: 'Roboto', 'Open Sans', sans-serif;
 $font-monospace:   'Courier New', 'DejaVu Sans Mono', monospace, sans-serif;;
 
 //// The font sizes for h1-h6.
@@ -50,7 +50,7 @@ $normal-text: (
 $large-text: (
   null: (18px, 1.5),
   md: (20px, 1.5),
-  //lg: (21px, 1.4286),
+  lg: (21px, 1.3),
   //xl: (24px, 1.3334)
 );
 
