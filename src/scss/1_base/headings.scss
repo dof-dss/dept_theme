@@ -21,6 +21,7 @@
 
 #{headings()} {
   font-weight: normal;
+  color: $text;
 
   strong,
   b {
@@ -33,9 +34,9 @@ h1,
   @include responsive-typo-map($h1-text);
   color: color(headings);
 
-  @include breakpoint($tab, $no-query: true) {
-    font-weight: 700;
-  }
+  //@include breakpoint($tab, $no-query: true) {
+  //  font-weight: 700;
+  //}
 
   .subtitle {
     @include responsive-typo-map($xl-text);
@@ -51,7 +52,7 @@ h1,
 h2,
 %h2 {
   @include responsive-typo-map($h2-text);
-  color: color(brand-secondary);
+  //color: color(brand-secondary);
 }
 
 h3,
@@ -62,13 +63,13 @@ h3,
 h4,
 %h4 {
   @include responsive-typo-map($h4-text);
-  color: color(grey-dark);
+  //color: color(grey-dark);
 }
 
 h5,
 %h5 {
   @include responsive-typo-map($h5-text);
-  font-weight: 700;
+  //font-weight: 700;
 }
 
 h6,

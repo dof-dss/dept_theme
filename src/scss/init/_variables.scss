@@ -31,15 +31,15 @@ $image-url-path-to-source: '../' !default;
 $image-url-subdirectory: 'images' !default;
 
 /* Layout ============================================================ */
-$max-grid-width: 980px;
-$max-content-width: 720px; // Apply to content in a single column.
-$grid-gap: 24px;
-$grid-gap-lg: 28px;
+$max-grid-width: 960px;
+$max-content-width: 620px; // Apply to content in a single column.
+$grid-gap: 35px;
+$grid-gap-lg: 35px;
 $total-columns: 12;
 $article-max-width: 620px;
 $aside-max-width: 326px;
-$article-grid-max-width: 9fr;
-$aside-grid-max-width: 3fr;
+$article-grid-max-width: 8fr;
+$aside-grid-max-width: 4fr;
 $article-float-max-width: 65.958%;
 $aside-float-max-width: 31.064%;
 
