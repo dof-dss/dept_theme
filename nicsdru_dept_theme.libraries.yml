@@ -88,6 +88,7 @@ nidirect-specific-styles:
       css/5_theme/searches.css: { minified: true }
       css/5_theme/views.css: { minified: true }
       css/5_theme/landing.css: { minified: true }
+      css/5_theme/horizontal-rule.css: { minified: true }
       '//fonts.googleapis.com/css2?family=Roboto': { type: external }
 
 nidirect-table-of-contents:
