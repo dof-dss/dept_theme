@@ -174,8 +174,8 @@ header #search-api-form {
     }
 
     &[type='submit'] {
-      border-color: darken($brand-tertiary, 5%);
-      background-color: $brand-tertiary;
+      border-color: darken($brand-primary-medium, 5%);
+      background-color: $brand-primary-medium;
       color: #fff;
     }
   }
@@ -183,8 +183,8 @@ header #search-api-form {
 
 .search-form--site {
   &[type='submit'] {
-    border-color: darken($brand-tertiary, 5%);
-    background-color: $brand-tertiary;
+    border-color: darken($brand-primary-medium, 5%);
+    background-color: $brand-primary-medium;
   }
 }
 
