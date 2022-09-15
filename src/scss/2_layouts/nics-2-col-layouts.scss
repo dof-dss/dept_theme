@@ -86,11 +86,11 @@
       grid-template-areas: 'main side';
     }
 
-    //@include breakpoint($lap) {
-    //  grid-template-columns: $article-grid-max-width $aside-grid-max-width;
-    //  grid-template-rows: auto;
-    //  grid-template-areas: 'main side';
-    //}
+    @include breakpoint($lap) {
+      grid-template-columns: $article-grid-max-width $aside-grid-max-width;
+      grid-template-rows: auto;
+      grid-template-areas: 'main side';
+    }
   }
 
   &--side-n-main {
