@@ -22,7 +22,7 @@
 
   .menu-title { // TODO: should be .sub-menu__title?
     @include adjust-font-size-to(24px, 5);
-    margin: 0 0 2.1rem;
+    margin: 0 0 1.2rem;
 
     &--large {
       @include adjust-font-size-to(28px, 6);
@@ -40,7 +40,7 @@
     &-item {
       position: relative;
       list-style: none;
-      padding: 0 1rem .5em 1.5rem;
+      padding: 0 1rem .5rem 1.5rem;
 
       &::before {
         content: '-';
@@ -60,9 +60,9 @@
   }
 
   &--related {
-    border-top: 5px solid color(brand-primary-medium);
+    //border-top: 5px solid color(brand-primary-medium);
     padding: 1.5em 10px .5em;
-    background-color: color(brand-primary-lightest);
+    //background-color: color(brand-primary-lightest);
   }
 
   &--widget {
