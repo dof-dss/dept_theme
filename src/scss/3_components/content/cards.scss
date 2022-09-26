@@ -77,9 +77,12 @@
     color: $meta;
   }
 
-  &__meta + p,
-  &__content {
+  &__meta + p {
     margin-top: 0;
+  }
+
+  &__content {
+    margin: 0;
   }
 
   // Card modifiers.
@@ -409,6 +412,14 @@ a.card {
     .card {
       box-shadow: none;
       border: 0;
+    }
+  }
+
+  &--border-top {
+    .card {
+      box-shadow: none;
+      border-top: 1px solid $headings;
+      padding: 1.2rem;
     }
   }
 
