@@ -392,7 +392,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
   // and optional subtopics ordered by title.
   if ($variables['show_topics'] && $variables['node'] instanceof NodeInterface) {
     $topics = \Drupal::service('dept_node.topics')
-      ->getTopics($variables['node']->id(), TRUE, TRUE);
+      ->getTopics($variables['node'], TRUE, TRUE);
 
     if (!empty($topics)) {
       $variables['topics_subtopics_list'] = [
