@@ -40,7 +40,6 @@
 ]
 %}
 {% set media_attributes = media_attributes.addClass(file_classes) %}
-{#{{ dump() }}#}
 {% if file_url %}
   <a{{ media_attributes }} href="{{ file_url }}">
     {{ media.label }}
