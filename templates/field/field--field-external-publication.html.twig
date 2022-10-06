@@ -51,16 +51,13 @@
   </ul>
 {% else %}
   <div{{ attributes.addClass('content-field--label-inline').setAttribute('role', 'presentation') }}>
-    <h2{{ title_attributes.addClass(title_classes) }}>{{ 'Documents'|t }}</h2>
+    <h2{{ title_attributes.addClass(title_classes) }}>{{ 'Details'|t }}</h2>
     <div class="content-field__value">
       <ul class="list--no-bullet">
         {% for item in items %}
           <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
         {% endfor %}
       </ul>
-      <p class="help-viewing-documents">
-        <a href="{{ path('entity.node.canonical', {'node': '5643'}) }}">{{ 'Help viewing documents'|t }}</a>
-      </p>
     </div>
   </div>
 {% endif %}
