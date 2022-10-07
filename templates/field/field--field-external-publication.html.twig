@@ -36,24 +36,28 @@
  * @see template_preprocess_field()
  */
 #}
-{% set attributes = attributes.addClass('published-date') %}
 {%
   set title_classes = [
     label_display == 'visually_hidden' ? 'visually-hidden',
+    'content-field__label',
   ]
 %}
 
 {% if label_hidden %}
-  <p{{ attributes }}>
+  <ul class="list--no-bullet">
     {% for item in items %}
-      <span{{ item.attributes }}>{{ item.content }}</span>
+      <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
     {% endfor %}
-  </p>
+  </ul>
 {% else %}
-  <p{{ attributes }}>
-    <span{{ title_attributes.addClass(title_classes) }}>{{ "Date published"|t }}: </span>
-    {% for item in items %}
-      <span{{ item.attributes }}>{{ item.content }}</span>
-    {% endfor %}
-  </p>
+  <div{{ attributes.addClass('content-field--label-inline').setAttribute('role', 'presentation') }}>
+    <h2{{ title_attributes.addClass(title_classes) }}>{{ 'Details'|t }}</h2>
+    <div class="content-field__value">
+      <ul class="list--no-bullet">
+        {% for item in items %}
+          <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% endif %}
