@@ -52,3 +52,8 @@
     @include link-state-style($link-body-no-visited);
   }
 }
+
+.diffmod.site-topics--list {
+  margin: .6rem 0 1.2rem;
+  padding: 0 0 .7rem 1rem;
+}
