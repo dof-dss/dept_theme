@@ -5,11 +5,14 @@
 
 @import '../init';
 
-// GP practices
-.launch-service {
-  ins,
-  del {
-    background: none;
-    text-decoration: none;
+.layout--main-n-side {
+  .diff-responsive-table-wrapper {
+    ~ .ga-aside {
+      grid-area: unset;
+
+      @include breakpoint($tab) {
+        grid-row: 2;
+      }
+    }
   }
 }

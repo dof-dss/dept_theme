@@ -35,13 +35,14 @@ $max-grid-width: 980px;
 $max-content-width: 720px; // Apply to content in a single column.
 $grid-gap: 24px;
 $grid-gap-lg: 28px;
-$total-columns: 12;
+$total-columns: 940; // yep - 940
 $article-max-width: 620px;
-$aside-max-width: 326px;
-$article-grid-max-width: 9fr;
-$aside-grid-max-width: 3fr;
-$article-float-max-width: 65.958%;
-$aside-float-max-width: 31.064%;
+$aside-max-width: 292px;
+$article-grid-max-width: 620fr;
+$aside-grid-max-width: 292fr;
+$article-float-max-width: 65.958%; // of 940 = 620
+$aside-float-max-width: 31.064%; // of 940 = 292
+
 
 /* Breakpoints ======================================================== */
 $mob: 480px;

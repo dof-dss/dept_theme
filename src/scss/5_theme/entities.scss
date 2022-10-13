@@ -83,11 +83,21 @@
 
 .page-node-type-publication,
 .page-node-type-embargoed-publication {
+  .narrow-title {
+    @include breakpoint($phab) {
+      width: 83.33%;
+    }
+
+    @include breakpoint($lap) {
+      width: 75%;
+    }
+  }
+
   .published-date {
     @include responsive-typo-map($small-text);
-    margin: -.8rem 0 2rem; // Tightens up to the h1.
+    margin: 1.8rem 0 .7rem; // Tightens up to the h1.
     @include breakpoint($tab) {
-      margin: -.9rem 0 2rem;
+      margin: 2.1rem 0 1rem;
     };
   }
 
@@ -100,4 +110,8 @@
   .social-sharing {
     margin: 3em 0;
   }
+}
+
+.article-content h2 {
+  margin-top: 0;
 }

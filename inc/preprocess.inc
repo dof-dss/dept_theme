@@ -330,6 +330,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
   $variables['display_social_links'] = in_array($variables['node']->bundle(), $social_bundles);
 
   $variables['show_title'] = TRUE;
+  $variables['show_topics'] = TRUE;
 
   switch ($variables['node']->getType()) {
     case "article":
@@ -384,6 +385,24 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
       // node templates for these types.
       $variables['show_title'] = FALSE;
       break;
+  }
+
+  // Gather a list of topics for the node, if needed, which can be
+  // used in the node template to give a controllable list of topics
+  // and optional subtopics ordered by title.
+  if ($variables['show_topics'] && $variables['node'] instanceof NodeInterface) {
+    $topics = \Drupal::service('dept_node.topics')
+      ->getTopics($variables['node'], TRUE, TRUE);
+
+    if (!empty($topics)) {
+      $variables['topics_subtopics_list'] = [
+        '#theme' => 'topics_subtopics_list',
+        '#title' => t('Topics'),
+        '#items' => $topics,
+        '#render_links' => TRUE,
+        '#include_subtopics' => TRUE,
+      ];
+    }
   }
 
 }

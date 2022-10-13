@@ -77,7 +77,7 @@
 
     .ga-aside {
       grid-area: side;
-      padding-top: 4.2rem;
+      padding-top: 8rem;
     }
 
     @include breakpoint($tab) {
@@ -123,7 +123,7 @@
         float: left;
       }
     }
-    
+
     @include breakpoint($lap) {
       grid-template-columns: $aside-grid-max-width $article-grid-max-width;
       grid-template-rows: auto;

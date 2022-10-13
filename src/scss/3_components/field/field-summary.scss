@@ -9,7 +9,7 @@
 .page-summary p,
 .contact--body p:first-child {
   @include responsive-typo-map($large-text);
-  font-weight: 700;
+  font-weight: 500;
 
   &:first-child {
     margin-top: 0;

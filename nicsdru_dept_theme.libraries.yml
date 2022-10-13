@@ -35,6 +35,7 @@ nidirect-global-styles:
       css/3_components/navigation/sub-menus.css: { minified: true }
       css/3_components/navigation/toggle-list.css: { minified: true }
       css/3_components/navigation/toc-menu.css: { minified: true }
+      css/3_components/navigation/topics-list.css: { minified: true }
       css/3_components/navigation/book.css: { minified: true }
       css/3_components/navigation/pager.css: { minified: true }
       css/3_components/form/buttons.css: { minified: true }
@@ -87,7 +88,8 @@ nidirect-specific-styles:
       css/5_theme/searches.css: { minified: true }
       css/5_theme/views.css: { minified: true }
       css/5_theme/landing.css: { minified: true }
-      '//fonts.googleapis.com/css?family=Lato': { type: external }
+      css/5_theme/horizontal-rule.css: { minified: true }
+      '//fonts.googleapis.com/css2?family=Roboto': { type: external }
 
 nidirect-table-of-contents:
   version: VERSION
