@@ -10,6 +10,12 @@ libraries:
   - nicsdru_dept_theme/nidirect-specific-styles
   - nicsdru_dept_theme/nidirect-accordions
 
+libraries-override:
+  nicsdru_origins_theme/global-styling:
+    css:
+      theme:
+        css/3_components/navigation/pager.css: false
+
 regions:
   header: 'Header'
   primary_menu: 'Primary menu'

@@ -115,3 +115,15 @@
 .article-content h2 {
   margin-top: 0;
 }
+
+.path-publications {
+  h1 {
+    @include breakpoint($phab) {
+      width: 83.33%;
+    }
+
+    @include breakpoint($lap) {
+      width: 75%;
+    }
+  }
+}

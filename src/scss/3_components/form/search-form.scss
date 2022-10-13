@@ -14,7 +14,8 @@
 // Style guide: components.search-form
 
 .view-search-container form,
-#search-api-form {
+#search-api-form,
+.search-form {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
