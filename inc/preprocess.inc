@@ -97,7 +97,7 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
           ->setAttribute('aria-roledescription', t('search health conditions'));
         break;
 
-      case "publications":
+      case "publications_search":
         $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
         $variables['sidebar_first_attr']
           ->addClass('ga-aside')
@@ -653,12 +653,13 @@ function nicsdru_dept_theme_preprocess_views_view(&$variables) {
  * Implements hook_preprocess_form().
  */
 function nicsdru_dept_theme_preprocess_form(array &$variables) {
+  $view = $variables['element']['#id'];
   switch ($variables['element']['#id']) {
     case "views-exposed-form-contacts-a-z-contacts-by-letter":
     case "views-exposed-form-contacts-contact-search":
     case "views-exposed-form-gp-practices-find-a-gp":
     case "views-exposed-form-health-conditions-search-page":
-    case "views-exposed-form-publications-search-page":
+    case "views-exposed-form-publications-search-publications-search":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
       break;

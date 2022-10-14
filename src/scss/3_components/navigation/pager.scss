@@ -39,6 +39,18 @@
       margin-right: 0;
     }
 
+    &.pager-hide-small {
+      @media screen and (max-width: $mob) {
+        display: none;
+      }
+    }
+
+    &.pager-hide-phab {
+      @media screen and (max-width: $phab) {
+        display: none;
+      }
+    }
+
     a,
     .pager__item-current,
     &--ellipsis {
