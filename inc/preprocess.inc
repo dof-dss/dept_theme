@@ -433,7 +433,8 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
       $variables['consultation_in_progress'] = TRUE;
       // Text to display if the consultation is open or closed. Used in the search result view mode only.
       $output = t('Open');
-    } else {
+    }
+    else {
       $output = t('Closed');
     }
   }
