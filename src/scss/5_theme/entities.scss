@@ -83,16 +83,6 @@
 
 .page-node-type-publication,
 .page-node-type-embargoed-publication {
-  .narrow-title {
-    @include breakpoint($phab) {
-      width: 83.33%;
-    }
-
-    @include breakpoint($lap) {
-      width: 75%;
-    }
-  }
-
   .published-date {
     @include responsive-typo-map($small-text);
     margin: 1.8rem 0 .7rem; // Tightens up to the h1.
@@ -116,8 +106,11 @@
   margin-top: 0;
 }
 
-.path-publications {
-  h1 {
+.page-node-type-publication,
+.page-node-type-embargoed-publication,
+.page-node-type-consultation,
+.path-publications h1 {
+  .narrow-title {
     @include breakpoint($phab) {
       width: 83.33%;
     }
