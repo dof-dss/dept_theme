@@ -6,6 +6,7 @@
  */
 
 use Drupal\block\Entity\Block;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
@@ -317,6 +318,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     'application',
     'article',
     'contact',
+    'consultation',
     'embargoed_publication',
     'health_condition',
     'news',
@@ -404,7 +406,38 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
       ];
     }
   }
+  // Only use this code for consultations content type.
+  if ($variables['node']->getType() === 'consultation') {
 
+    // Get the current time to gauge consultation start and end dates off.
+    $current_time = \Drupal::time()->getCurrentTime();
+
+    // Convert consultation start date to a timestamp.
+    $consultation_start_date = $variables['node']->get('field_consultation_dates')->value;
+    $consultation_start_date_date_time = new DrupalDateTime($consultation_start_date, 'UTC');
+    $consultation_start_date_timestamp = $consultation_start_date_date_time->getTimestamp();
+
+    // Convert consultation end date to a timestamp.
+    $consultation_end_date = $variables['node']->get('field_consultation_dates')->end_value;
+    $consultation_end_date_date_time = new DrupalDateTime($consultation_end_date, 'UTC');
+    $consultation_end_date_timestamp = $consultation_end_date_date_time->getTimestamp();
+
+    // Set a variable to be used in the twig template for the consultation end date time.
+    $variables['consultation_end_time'] = date('H:i', $consultation_end_date_timestamp);
+
+    // Set a variable to be used in the twig template for the ways to respond fieldgroup, initially set to 0.
+    $variables['consultation_in_progress'] = FALSE;
+
+    // If the consultation started before and is ending after today's date then show the contact information.
+    if ($current_time > $consultation_start_date_timestamp && $current_time <= $consultation_end_date_timestamp) {
+      $variables['consultation_in_progress'] = TRUE;
+      // Text to display if the consultation is open or closed. Used in the search result view mode only.
+      $output = t('Open');
+    }
+    else {
+      $output = t('Closed');
+    }
+  }
 }
 
 /**
