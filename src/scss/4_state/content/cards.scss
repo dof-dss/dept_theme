@@ -104,3 +104,13 @@
     }
   }
 }
+
+.card-deck {
+  &--search-results {
+    .card__meta {
+      &-type {
+        margin-left: 2rem;
+      }
+    }
+  }
+}

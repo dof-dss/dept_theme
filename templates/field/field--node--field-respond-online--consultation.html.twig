@@ -33,34 +33,52 @@
  * - field_type: The type of the field.
  * - label_display: The display settings for the label.
  *
+ *
  * @see template_preprocess_field()
  */
 #}
 {%
+  set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+  'field--type-' ~ field_type|clean_class,
+  'field--label-' ~ label_display,
+]
+%}
+{%
   set title_classes = [
-    label_display == 'visually_hidden' ? 'visually-hidden',
-    'content-field__label',
-  ]
+  'field__label',
+  label_display == 'visually_hidden' ? 'visually-hidden',
+]
 %}
 
 {% if label_hidden %}
-  <ul class="list--no-bullet">
-    {% for item in items %}
-      <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <div{{ attributes.addClass('content-field--label-inline').setAttribute('role', 'presentation') }}>
-    <h2{{ title_attributes.addClass(title_classes) }}>{{ 'Documents'|t }}</h2>
-    <div class="content-field__value">
-      <ul class="list--no-bullet">
-        {% for item in items %}
-          <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
-        {% endfor %}
-      </ul>
-      <p class="help-viewing-documents">
-        <a href="{{ path('entity.node.canonical', {'node': '5643'}) }}">{{ 'Help viewing documents'|t }}</a>
-      </p>
+  {% if multiple %}
+    <div{{ attributes.addClass(classes, 'field__items') }}>
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+      {% endfor %}
     </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes.addClass(classes, 'field__item') }}>
+        <a href="{{ item.content['#url'] }}" target="_blank" rel="noopener noreferrer" class="call-to-action">{{ 'Respond online'|t }}
+          <svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>
+        </a>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ 'Email:'|t }}</div>
+    {% if multiple %}
+    <div class="field__items">
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+      {% endfor %}
+      {% if multiple %}
+    </div>
+    {% endif %}
   </div>
 {% endif %}
