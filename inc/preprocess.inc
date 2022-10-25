@@ -65,6 +65,7 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "publication":
         case "embargoed_publication":
         case "landing_page":
+        case "consultation":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
           break;
 
@@ -270,6 +271,7 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "publication":
         case "embargoed_publication":
         case "landing_page":
+        case "consultation":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
           break;
 

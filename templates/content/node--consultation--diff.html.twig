@@ -72,9 +72,9 @@
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
   <div class="narrow-title">
-  {% if show_title %}
-  {{ drupal_block('page_title_block', wrapper=false) }}
-  {% endif %}
+    {% if show_title %}
+      <h1 class="page-title">{{ label }}</h1>
+    {% endif %}
   {% if show_topics and topics_subtopics_list is not empty %}
     {{ topics_subtopics_list }}
   {% endif %}
@@ -105,6 +105,9 @@
     {% if consultation_in_progress == 1 %}
       {{ content.group_ways_to_respond }}
     {% endif %}
+
+    {{ content.group_additional_content_details }}
+
   </div>
   {% if display_social_links %}
     {{ drupal_entity('block', 'originssocialsharing', check_access=false) }}
