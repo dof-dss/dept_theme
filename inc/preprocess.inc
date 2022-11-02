@@ -107,6 +107,14 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
           ->setAttribute('aria-roledescription', t('search publications'));
         break;
 
+      case "consultations_search":
+        $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
+        $variables['sidebar_first_attr']
+          ->addClass('ga-aside')
+          ->setAttribute('role', 'search')
+          ->setAttribute('aria-roledescription', t('search consultations'));
+        break;
+
       case "search":
         $variables['main_content_attr']->addClass(LayoutClasses::MAIN_LIMITED);
         if ($variables['content_wrapper_attr'] instanceof Attribute) {
@@ -695,6 +703,7 @@ function nicsdru_dept_theme_preprocess_form(array &$variables) {
     case "views-exposed-form-gp-practices-find-a-gp":
     case "views-exposed-form-health-conditions-search-page":
     case "views-exposed-form-publications-search-publications-search":
+    case "views-exposed-form-consultations-search-consultations-search":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
       break;

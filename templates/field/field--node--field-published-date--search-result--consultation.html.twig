@@ -36,7 +36,7 @@
  * @see template_preprocess_field()
  */
 #}
-{% set attributes = attributes.addClass('published-date') %}
+{% set attributes = attributes.addClass('published-date card__meta') %}
 {%
   set title_classes = [
     label_display == 'visually_hidden' ? 'visually-hidden',
@@ -44,16 +44,16 @@
 %}
 
 {% if label_hidden %}
-  <p{{ attributes }}>
+  <span{{ attributes }}>
     {% for item in items %}
       <span{{ item.attributes }}>{{ item.content }}</span>
     {% endfor %}
-  </p>
+  </span>
 {% else %}
-  <p{{ attributes }}>
+  <span{{ attributes }}>
     <span{{ title_attributes.addClass(title_classes) }}>{{ label }} </span>
     {% for item in items %}
       <span{{ item.attributes }}>{{ item.content }}</span>
     {% endfor %}
-  </p>
+  </span>
 {% endif %}
