@@ -103,3 +103,20 @@ body {
   columns: 2;
   column-gap: 3.6rem;
 }
+
+address {
+  @include responsive-typo-map($normal-text);
+  margin: 1em 0 1.5em;
+  font-weight: normal;
+  font-style: normal;
+  color: $charcoal;
+
+  &:not(.vcard) {
+    padding: .5em 1em;
+    border-left: .3334em solid $grey-light;
+  }
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+}
