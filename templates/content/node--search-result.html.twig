@@ -70,43 +70,22 @@
  *   in different view modes.
  */
 #}
-<article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
-  <div class="narrow-title">
-  {% if show_title %}
-  {{ drupal_block('page_title_block', wrapper=false) }}
-  {% endif %}
-  {% if show_topics and topics_subtopics_list is not empty %}
-    {{ topics_subtopics_list }}
-  {% endif %}
-  </div>
-  <div{{ content_attributes.addClass('content') }}>
-    <div class="summary content-field--label-inline">
-      <div class="consultation-dates content-field__label">
-        {{ 'Consultation opened on'|t }}
-        {% apply spaceless %}
-          <strong>{{ content.field_consultation_dates[0].start_date }}</strong>{{ '.'|t }}
-        {% endapply %}
-        {{ 'Closing date '|t }}
-        <strong>{{ content.field_consultation_dates[0].end_date }}</strong>
-        {{ 'at '|t }}
-        <strong>{{ consultation_end_time }}</strong>{{ '.'|t }}
-      </div>
-      <div class="field-summary content-field__value">
-        <h2>{{ content.field_summary['#title'] }}</h2>
-        <p>{{ content.field_summary }}</p>
-      </div>
-    </div>
-    {{ content.field_attachment }}
-    <div class="description content-field--label-inline">
-      <h2 class="content-field__label">{{ 'Consultation description'|t }}</h2>
-      <div class="content-field__value">{{ content.body }}</div>
-    </div>
+{{ title_prefix }}
+{% if not page %}
+  <h3{{ title_attributes.addClass('card__title') }}>
+    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+  </h3>
+{% endif %}
+{{ title_suffix }}
 
-    {% if consultation_in_progress == 1 %}
-      {{ content.group_ways_to_respond }}
-    {% endif %}
-  </div>
-  {% if display_social_links %}
-    {{ drupal_entity('block', 'originssocialsharing', check_access=false) }}
-  {% endif %}
-</article>
+{% if display_submitted %}
+  <footer>
+    {{ author_picture }}
+    <div{{ author_attributes }}>
+      {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+      {{ metadata }}
+    </div>
+  </footer>
+{% endif %}
+
+{{ content }}
