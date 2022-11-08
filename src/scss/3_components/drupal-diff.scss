@@ -22,3 +22,11 @@
     color: $text;
   }
 }
+
+.diff-responsive-table-wrapper {
+  .field--name-field-notes-to-editors {
+    margin: 0;
+    padding: 0;
+    background-color: unset;
+  }
+}
