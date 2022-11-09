@@ -77,11 +77,11 @@
   {% if show_topics and topics_subtopics_list is not empty %}
     {{ topics_subtopics_list }}
   {% endif %}
-  {% if  content_attributes is not empty %}
+  {% if content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
   {{- content -}}
-  {% if  content_attributes is not empty %}
+  {% if content_attributes is not empty %}
   </div>
   {% endif %}
   {% if display_social_links %}
