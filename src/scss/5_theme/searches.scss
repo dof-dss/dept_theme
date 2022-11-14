@@ -34,7 +34,7 @@
     margin: 0 0 1.2rem;
 
     @include breakpoint($tab) {
-      margin: 3.6rem 0 1.8rem;
+      margin-top: 3.6rem;
     }
 
     .subtitle {
@@ -42,19 +42,30 @@
       color: $ash-grey;
       display: block;
     }
+
+    + .view-sort-options {
+      margin: -.5em 0 1.2rem;
+    }
   }
 
   .view-sort-options {
-    @include responsive-typo-map($small-text);
-    color: $ash-grey;
     display: block;
 
-    .label-inline {
+    * {
+      @include responsive-typo-map($small-text);
+    }
 
-      &::after {
+    .label-inline {
+      color: $ash-grey;
+
+      &:not(:last-child)::after {
         content: ' | ';
       }
     }
+  }
+
+  .facet-summary-item--facet {
+    line-height: 2.5em;
   }
 
   &-list {
