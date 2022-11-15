@@ -64,35 +64,12 @@
 }
 
 /*
- * News content type
- */
-
-.page-node-type-news {
-  .published-date {
-    @include responsive-typo-map($small-text);
-    margin: -.8rem 0 2rem; // Tightens up to the h1.
-    @include breakpoint($tab) {
-      margin: -.9rem 0 2rem;
-    };
-  }
-}
-
-/*
  * Publication content type
  */
 
 .page-node-type-publication,
-.page-node-type-embargoed-publication {
-  .narrow-title {
-    @include breakpoint($phab) {
-      width: 83.33%;
-    }
-
-    @include breakpoint($lap) {
-      width: 75%;
-    }
-  }
-
+.page-node-type-news,
+.page-node-type-consultation {
   .published-date {
     @include responsive-typo-map($small-text);
     margin: 1.8rem 0 .7rem; // Tightens up to the h1.
@@ -131,12 +108,21 @@
 }
 
 .path-publications h1,
-.path-consultations h1 {
+.path-consultations h1,
+.path-news h1 {
   @include breakpoint($phab) {
     width: 83.33%;
   }
 
   @include breakpoint($lap) {
     width: 75%;
+  }
+}
+
+.path-news {
+  .proni-archive {
+    p {
+      @include responsive-typo-map($small-text);
+    }
   }
 }

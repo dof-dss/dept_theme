@@ -10,6 +10,10 @@ libraries:
   - nicsdru_dept_theme/nidirect-specific-styles
   - nicsdru_dept_theme/nidirect-accordions
 
+ckeditor_stylesheets:
+  - css/3_components/ckeditor.css
+  - css/3_components/contents/lists.css
+
 libraries-override:
   nicsdru_origins_theme/global-styling:
     css:
