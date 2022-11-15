@@ -34,13 +34,13 @@
   set classes = [
     dom_id ? 'js-view-dom-id-' ~ dom_id,
     'search-results',
-    'search-results--publications',
+    'search-results--news',
   ]
 %}
 {% set attributes = attributes.addClass(classes) %}
 {% set attributes = attributes.setAttribute('role', 'region') %}
 {% set attributes = attributes.setAttribute('aria-roledescription', 'search results'|t) %}
-{% set attributes = attributes.setAttribute('id', 'publications-results'|t) %}
+{% set attributes = attributes.setAttribute('id', 'news-results'|t) %}
 <section{{ attributes }}>
   {{ title_prefix }}
   {{ title }}
@@ -48,8 +48,10 @@
 
   {% if header %}
     <header>
-      {{ header }}
-      {{ drupal_block('facets_summary_block:publications_summary') }}
+      <h2 class="view--count">
+        {{ header }}
+      </h2>
+      {{ drupal_block('facets_summary_block:news_summary') }}
     </header>
   {% endif %}
 
