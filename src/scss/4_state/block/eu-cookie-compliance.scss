@@ -4,7 +4,6 @@
 .sliding-popup-top {
   width: 100%;
   z-index: 99999;
-  //text-align: center;
 }
 
 .sliding-popup-bottom {
@@ -16,7 +15,7 @@
 }
 
 .eu-cookie-compliance,
-.eu-cookie-withdraw, {
+.eu-cookie-withdraw {
   &-banner {
     width: 100%;
     background: $tangaroa;
@@ -120,6 +119,7 @@ button.eu-cookie-withdraw-tab {
   color: #bebebe;
   border: 0;
   width: 11em;
+  white-space: nowrap;
   height: 50px;
   padding: 0 50px 0 1em;
   background-color: #041e34;
