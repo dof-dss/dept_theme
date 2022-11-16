@@ -19,6 +19,10 @@ libraries-override:
     css:
       theme:
         css/3_components/navigation/pager.css: false
+  eu_cookie_compliance/eu_cookie_compliance_bare:
+    css:
+      state:
+        css/eu_cookie_compliance.bare.css: css/4_state/block/eu-cookie-compliance.css
 
 regions:
   header: 'Header'
