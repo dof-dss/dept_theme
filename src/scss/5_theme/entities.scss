@@ -95,7 +95,8 @@
 
 .page-node-type-publication,
 .page-node-type-embargoed-publication,
-.page-node-type-consultation {
+.page-node-type-consultation,
+.page-node-type-subtopic {
   .narrow-title {
     @include breakpoint($phab) {
       width: 83.33%;

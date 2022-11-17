@@ -12,6 +12,17 @@
  * @see template_preprocess_region()
  */
 #}
+{% if is_subtopic and field_banner_image %}
+  <div{{ attributes.addClass('container').setAttribute('role', 'presentation') }}>
+    {% if field_banner_link %}
+      <a href="{{ field_banner_link[0]['#url'] }}">
+    {% endif %}
+        {{ field_banner_image }}
+    {% if field_banner_link %}
+      </a>
+    {% endif %}
+  </div>
+{% endif %}
 {% if content %}
   <div{{ attributes.addClass('container').setAttribute('role', 'presentation') }}>
     {{ content }}

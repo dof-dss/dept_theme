@@ -49,6 +49,7 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "health_condition":
         case "news":
         case "page":
+        case "subtopic":
           // If page is not in a book, it has a main and aside.
           if (empty($node->book)) {
             $variables['main_content_attr']->addClass(LayoutClasses::MAIN_SIDE);
@@ -789,5 +790,27 @@ function nicsdru_dept_theme_preprocess_views_view_rss(&$variables) {
 
     $style->namespaces['xmlns:atom'] = 'http://www.w3.org/2005/Atom';
     $variables['namespaces'] = new Attribute($style->namespaces);
+  }
+}
+
+/**
+ * Implements hook_preprocess_region().
+ */
+function nicsdru_dept_theme_preprocess_region(&$variables) {
+  // Make the banner image and banner link fields in subtopic available in the top_banner region
+  if ($variables['region'] == 'top_banner') {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      if ($node->getType() == 'subtopic') {
+        $variables['is_subtopic'] = TRUE;
+
+        if ($node->hasField('field_banner_image') && !$node->get('field_banner_image')->isEmpty()) {
+          $variables['field_banner_image'] = $node->get('field_banner_image')->view('default');
+        }
+
+        if ($node->hasField('field_banner_link') && !$node->get('field_banner_link')->isEmpty()) {
+          $variables['field_banner_link'] = $node->get('field_banner_link')->view('default');
+        }
+      }
+    }
   }
 }
