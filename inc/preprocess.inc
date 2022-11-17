@@ -797,7 +797,7 @@ function nicsdru_dept_theme_preprocess_views_view_rss(&$variables) {
  * Implements hook_preprocess_region().
  */
 function nicsdru_dept_theme_preprocess_region(&$variables) {
-  // Make the banner image and banner link fields in subtopic available in the top_banner region
+  // Make the banner image and banner link fields in subtopic available in the top_banner region.
   if ($variables['region'] == 'top_banner') {
     if ($node = \Drupal::routeMatch()->getParameter('node')) {
       if ($node->getType() == 'subtopic') {
