@@ -23,8 +23,7 @@ $font-monospace:   'Courier New', 'DejaVu Sans Mono', monospace, sans-serif;;
 // line-height.
 //
 // Where responsive typo maps do not specify margins, these are normally
-// used in elements that are displayed inline or inline-block (and so
-// margins would be ignored/irrelevant).
+// used for elements with custom margins or for inline elements.
 
 $body-text: (
   null: (16px, 1.5),
