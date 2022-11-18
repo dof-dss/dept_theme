@@ -4,10 +4,11 @@
  * Theme override to display a publication node in search result view mode.
 #}
 <h3 class="card__title"><a href="{{ url }}">{{ label }}</a></h3>
+<p class="field-content card__content">{{ content.field_summary | field_value }}</p>
 <p class="card__meta">
-  <span class="label-inline">{{ content.field_published_date | field_label }}</span>
+  <span class="label-inline">{{ "Published" | t}} </span>
   <span class="date-display-single">{{ content.field_published_date | field_value }}</span>
-  <span class="meta-list-item">{{ content.field_publication_type | field_value }}</span>
+  <span class="card__meta-type">{{ content.field_publication_type | field_value }}</span>
 </p>
 
-{{ content | without('field_published_date', 'field_publication_type') }}
+{{ content | without('field_published_date', 'field_publication_type', 'field_summary') }}
