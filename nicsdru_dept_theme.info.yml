@@ -35,6 +35,7 @@ regions:
   content: 'Content'
   sidebar_first: 'Search'
   sidebar_second: 'Aside'
+  related: 'Related page footer'
   bottom_banner: 'Page bottom'
   feedback: 'Feedback'
   footer: 'Footer'
