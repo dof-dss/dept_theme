@@ -91,5 +91,12 @@
 {#{{ content }}#}
 <div class="card__meta">
   {{ content.field_published_date }}
+  {% if content.departments %}
+  <span class="department-name">
+    {% for department in content.departments %}
+      {{ department }}{% if not loop.last %} ,{% endif %}
+    {% endfor %}
+  </span>
+  {% endif %}
 </div>
 
