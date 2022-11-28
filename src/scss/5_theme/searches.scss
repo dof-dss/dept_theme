@@ -70,10 +70,18 @@
     > .subtitle {
       margin: .6rem 0 0;
     }
+
+    + .view-sort-options {
+      margin: -.5em 0 1.2rem;
+    }
   }
 
   .view-sort-options {
     display: block;
+
+    * {
+      @include responsive-typo-map($small-text);
+    }
 
     .label-inline {
       color: $ash-grey;
