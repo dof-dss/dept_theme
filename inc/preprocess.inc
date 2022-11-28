@@ -49,6 +49,7 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "health_condition":
         case "news":
         case "page":
+        case "subtopic":
           // If page is not in a book, it has a main and aside.
           if (empty($node->book)) {
             $variables['main_content_attr']->addClass(LayoutClasses::MAIN_SIDE);
@@ -86,18 +87,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
 
   if (isset($viewpage)) {
     switch ($viewpage) {
-      case "health_conditions":
-        $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
-        if ($variables['content_wrapper_attr'] instanceof Attribute) {
-          $variables['content_wrapper_attr']
-            ->addClass('ga-main')
-            ->setAttribute('role', 'presentation');
-        }
-        $variables['sidebar_first_attr']
-          ->addClass('ga-aside')
-          ->setAttribute('role', 'search')
-          ->setAttribute('aria-roledescription', t('search health conditions'));
-        break;
 
       case "publications_search":
         $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
@@ -123,6 +112,22 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
           ->setAttribute('aria-roledescription', t('search news'));
         break;
 
+      case "press_release_search":
+        $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
+        $variables['sidebar_first_attr']
+          ->addClass('ga-aside')
+          ->setAttribute('role', 'search')
+          ->setAttribute('aria-roledescription', t('search press releases'));
+        break;
+
+      case "news_search":
+        $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
+        $variables['sidebar_first_attr']
+          ->addClass('ga-aside')
+          ->setAttribute('role', 'search')
+          ->setAttribute('aria-roledescription', t('search news'));
+        break;
+
       case "search":
         $variables['main_content_attr']->addClass(LayoutClasses::MAIN_LIMITED);
         if ($variables['content_wrapper_attr'] instanceof Attribute) {
@@ -130,22 +135,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
             ->addClass(['ga-main', 'search-content'])
             ->setAttribute('role', 'presentation');
         }
-        break;
-
-      case "driving_instructors":
-        if (!empty($request->get('search_api_fulltext'))) {
-          $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
-          if ($variables['content_wrapper_attr'] instanceof Attribute) {
-            $variables['content_wrapper_attr']
-              ->addClass('ga-main')
-              ->setAttribute('role', 'presentation');
-          }
-          $variables['sidebar_first_attr']
-            ->addClass('ga-aside');
-        }
-        $variables['sidebar_first_attr']
-          ->setAttribute('role', 'search')
-          ->setAttribute('aria-roledescription', t('search driving instructors'));
         break;
     }
   }
@@ -705,23 +694,15 @@ function nicsdru_dept_theme_preprocess_views_view(&$variables) {
  */
 function nicsdru_dept_theme_preprocess_form(array &$variables) {
   $view = $variables['element']['#id'];
-  switch ($variables['element']['#id']) {
+  switch ($view) {
     case "views-exposed-form-contacts-a-z-contacts-by-letter":
     case "views-exposed-form-contacts-contact-search":
-    case "views-exposed-form-gp-practices-find-a-gp":
-    case "views-exposed-form-health-conditions-search-page":
     case "views-exposed-form-publications-search-publications-search":
     case "views-exposed-form-consultations-search-consultations-search":
     case "views-exposed-form-news-search-news-search":
+    case "views-exposed-form-press-release-search-pr-search-page":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
-      break;
-
-    case "views-exposed-form-driving-instructors-driving-instructor-results":
-      // Add additional form classes.
-      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
-      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
-      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--driving-instructors');
       break;
   }
 }
@@ -789,5 +770,27 @@ function nicsdru_dept_theme_preprocess_views_view_rss(&$variables) {
 
     $style->namespaces['xmlns:atom'] = 'http://www.w3.org/2005/Atom';
     $variables['namespaces'] = new Attribute($style->namespaces);
+  }
+}
+
+/**
+ * Implements hook_preprocess_region().
+ */
+function nicsdru_dept_theme_preprocess_region(&$variables) {
+  // Make the banner image and banner link fields in subtopic available in the top_banner region.
+  if ($variables['region'] == 'top_banner') {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      if ($node->getType() == 'subtopic') {
+        $variables['is_subtopic'] = TRUE;
+
+        if ($node->hasField('field_banner_image') && !$node->get('field_banner_image')->isEmpty()) {
+          $variables['field_banner_image'] = $node->get('field_banner_image')->view('default');
+        }
+
+        if ($node->hasField('field_banner_link') && !$node->get('field_banner_link')->isEmpty()) {
+          $variables['field_banner_link'] = $node->get('field_banner_link')->view('default');
+        }
+      }
+    }
   }
 }

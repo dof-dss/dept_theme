@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Twig template for driving instructor teaser display mode.
+ * Theme override to display a node.
  *
  * Available variables:
  * - node: The node entity with limited access to object properties and methods.
@@ -64,20 +64,29 @@
  *   is an administrator.
  *
  * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
  */
 #}
-{% if  content_attributes is not empty %}
-<div{{ content_attributes }}>
-{% endif %}
-  <h3 class="card__title">
-    {{ content.group_teaser_title.field_di_lastname | field_value }}, {{ content.group_teaser_title.field_di_firstname | field_value }}
-    <span class="subtitle">
-      ADI / AMI number: {{ content.field_di_adi_no | field_value }}
-    </span>
-  </h3>
-  <div class="card__content">
-    {{ content | without('group_teaser_title', 'field_di_adi_no') }}
+<article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
+  <div class="narrow-title">
+    {% if show_title %}
+      {{ drupal_block('page_title_block', wrapper=false) }}
+    {% endif %}
+    {% if show_topics and topics_subtopics_list is not empty %}
+      {{ topics_subtopics_list }}
+    {% endif %}
   </div>
-{% if  content_attributes is not empty %}
-</div>
-{% endif %}
+  {% if content_attributes is not empty %}
+  <div{{ content_attributes }}>
+  {% endif %}
+  {{- content -}}
+  {% if content_attributes is not empty %}
+  </div>
+  {% endif %}
+  {% if display_social_links %}
+    {{ drupal_entity('block', 'originssocialsharing', check_access=false) }}
+  {% endif %}
+</article>

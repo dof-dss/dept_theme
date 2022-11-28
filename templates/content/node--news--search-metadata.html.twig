@@ -70,55 +70,33 @@
  *   in different view modes.
  */
 #}
-<article{{ attributes.addClass('ga-main').setAttribute('id', 'main-article').removeAttribute('role') }}>
-  {% if label %}
-    {{- title_prefix -}}
-    <h1{{ title_attributes.addClass('page-title') }}>{{- label -}}</h1>
-    {{- title_suffix -}}
-  {% endif %}
-  {% if content.field_gp_practice_lead[0] or content.field_gp_practice_member %}
-    <ul class="list--no-bullet list--inline list--gp-practice-members">
-      {% if content.field_gp_practice_lead[0] %}
-        <li class="list-item">{{ content.field_gp_practice_lead[0]['#plain_text'] }}</li>
-      {% endif %}
-      {% for key, item in content.field_gp_practice_member if key|first != '#' %}
-        <li class="list-item">{{ item }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-  {% if  content_attributes is not empty %}
-  <div{{ content_attributes }}>
-  {% endif %}
-  {{- content|without('field_gp_practice_lead', 'field_gp_practice_member', 'field_gp_appointments', 'field_gp_prescriptions', 'field_location') -}}
-  {% set appointments_url = content.field_gp_appointments[0]['#url'] %}
-  {% set prescriptions_url = content.field_gp_prescriptions[0]['#url'] %}
-  {% if appointments_url and prescriptions_url and appointments_url == prescriptions_url %}
-    <div class="launch-service" role="presentation">
-      <a class="call-to-action" href="{{ appointments_url }}">
-        Online appointments and repeat prescriptions
-        <svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>
-      </a>
+{{ title_prefix }}
+{% if not page %}
+  <h3{{ title_attributes.addClass('card__title') }}>
+    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+  </h3>
+{% endif %}
+{{ title_suffix }}
+
+{% if display_submitted %}
+  <footer>
+    {{ author_picture }}
+    <div{{ author_attributes }}>
+      {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+      {{ metadata }}
     </div>
-  {% else %}
-    {% if appointments_url %}
-      <div class="launch-service" role="presentation">
-        <a class="call-to-action" href="{{ appointments_url }}">
-          Online appointments
-          <svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>
-        </a>
-      </div>
-    {% endif %}
-    {% if prescriptions_url %}
-      <div class="launch-service" role="presentation">
-        <a class="call-to-action" href="{{ prescriptions_url }}">
-          Repeat prescriptions
-          <svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>
-        </a>
-      </div>
-    {% endif %}
+  </footer>
+{% endif %}
+
+{#{{ content }}#}
+<div class="card__meta">
+  {{ content.field_published_date }}
+  {% if content.departments %}
+  <span class="department-name">
+    {% for department in content.departments %}
+      {{ department }}{% if not loop.last %} ,{% endif %}
+    {% endfor %}
+  </span>
   {% endif %}
-  {{ content.field_location }}
-  {% if  content_attributes is not empty %}
-  </div>
-  {% endif %}
-</article>
+</div>
+

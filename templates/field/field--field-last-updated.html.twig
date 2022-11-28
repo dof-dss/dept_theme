@@ -36,66 +36,24 @@
  * @see template_preprocess_field()
  */
 #}
+{% set attributes = attributes.addClass('last-updated') %}
 {%
   set title_classes = [
     label_display == 'visually_hidden' ? 'visually-hidden',
-    label_display == 'inline' ? 'label-inline',
-    label_display == 'above' ? 'label-above',
-    field_type == 'telephone' ? 'type',
-    field_type == 'email' ? 'type',
   ]
 %}
-{%
-  set attribute_classes = [
-  'vcard__item',
-  field_type == 'telephone' ? 'tel',
-  field_type == 'telephone_plus_field' ? 'tel',
-  field_type == 'email' ? 'email',
-]
-%}
-{%
-  set item_classes = [
-  field_type == 'telephone' ? 'value',
-  field_type == 'telephone_plus_field' ? 'value',
-  field_type == 'email' ? 'value',
-  field_type == 'link' ? 'url fn',
-]
-%}
-{%
-  set btn_classes = [
-  'call-to-action',
-]
-%}
+
 {% if label_hidden %}
-  {% if multiple %}
-    <div{{ attributes.addClass(attribute_classes) }}>
-      {% for item in items %}
-        {{ item.content }}
-      {% endfor %}
-    </div>
-  {% else %}
+  <p{{ attributes }}>
     {% for item in items %}
-      {{ item.content }}
+      <span{{ item.attributes }}>{{ item.content }}</span>
     {% endfor %}
-  {% endif %}
+  </p>
 {% else %}
-  {% if label_display == 'inline' %}
-    <div{{ attributes.addClass(attribute_classes) }}>
-      <span{{ title_attributes.addClass(title_classes) }}>{{ label }}</span>
-      {% for item in items %}
-        <span{{ item.attributes.addClass(item_classes) }}>{{ item.content }}</span>
-      {% endfor %}
-    </div>
-  {% elseif label_display == 'visually_hidden' and field_type == 'link' %}
+  <p{{ attributes }}>
+    <span{{ title_attributes.addClass(title_classes) }}>{{ "Last updated"|t }}: </span>
     {% for item in items %}
-      <div class="launch-service" role="presentation">
-        <a{{ item.attributes.addClass(btn_classes) }} href="{{ item.content['#url'] }}">{{ label }}<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg></a>
-      </div>
+      <span{{ item.attributes }}>{{ item.content }}</span>
     {% endfor %}
-  {% else %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-    {% for item in items %}
-      {{ item.content }}
-    {% endfor %}
-  {% endif %}
+  </p>
 {% endif %}
