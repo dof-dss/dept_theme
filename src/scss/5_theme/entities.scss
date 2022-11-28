@@ -74,13 +74,18 @@
     @include responsive-typo-map($small-text);
     margin: 1.8rem 0 .7rem; // Tightens up to the h1.
     @include breakpoint($tab) {
-      margin: 2.1rem 0 1rem;
+      margin: 2.1rem 0 .7rem;
     };
   }
 
   .file-link {
     margin-bottom: 1.5em;
   }
+}
+
+.page-node-type-publication .last-updated {
+  @include responsive-typo-map($small-text);
+  margin: .7rem 0;
 }
 
 .path-taxonomy {
