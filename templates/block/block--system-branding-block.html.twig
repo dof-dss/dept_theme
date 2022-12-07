@@ -21,7 +21,7 @@
       {%- if not is_front -%}
         <a href="{{ path('<front>') }}" rel="home">
       {%- endif -%}
-      {% include active_theme_path() ~ '/images/dof.svg' %}
+      <img class="site-logo" src="{{ site_logo }}" alt="{{ 'N I Direct government services'|t }}" />
       {%- if not is_front -%}
         </a>
       {%- endif -%}
