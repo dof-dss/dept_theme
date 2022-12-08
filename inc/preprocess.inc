@@ -793,4 +793,13 @@ function nicsdru_dept_theme_preprocess_region(&$variables) {
       }
     }
   }
+
+  // Make the title field text available in the related region.
+  if ($variables['region'] == 'related') {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      if ($node->getType() == 'subtopic') {
+        $variables['subtopic_field_title'] = $node->get('title')->view();
+      }
+    }
+  }
 }
