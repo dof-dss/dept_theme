@@ -8,8 +8,7 @@
   @include breakpoint($tab) {
     background-color: transparent;
     padding: 0;
-    grid-column-start: 1;
-    grid-column-end: span 2;
+    left: -1rem; // Aligns "Home" with logo above.
   }
 
   .nav {
@@ -21,7 +20,7 @@
 
       @include breakpoint($tab) {
         flex-flow: row wrap;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: center;
         max-width: $max-grid-width;
         margin: 0 auto;
@@ -244,7 +243,6 @@
       @include breakpoint($tab) {
         display: flex;
         max-height: 6rem;
-        padding: 0 10px;
       }
     }
 
