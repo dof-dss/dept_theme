@@ -39,15 +39,20 @@
   }
 
   @include breakpoint($tab) {
-    grid-template-columns: 45% 42.56%;
-    grid-template-rows: 15.3rem;
+    grid-template-columns: 1.25fr .75fr;
+    grid-template-rows: 10em;
     margin: 0 auto;
     max-width: $max-grid-width;
-    padding: 0 20px 10px;
-    //border-bottom: 5px solid $brand-primary;
-
-    // IE fix.
-    // IE does not support justify-content: space-between. So we need a grid gap.
-    //grid-gap: 12.44%;
+    padding: 0 20px 1em;
+    border-bottom: 1px solid $brand-secondary-dark;
   }
+
+  &__logo {
+    grid-column: 1 / span 2;
+  }
+
+  &__menu {
+    grid-column: 1;
+  }
+
 }
