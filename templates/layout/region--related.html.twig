@@ -15,7 +15,9 @@
 {% if content %}
   <section id="related" class="container section-related">
     <hr class="section-hr" role="presentation">
-    <h2>Related to {{ drupal_token('current-page:title') }}</h2>
+    {% if subtopic_field_title %}
+      <h2>Related to {{ subtopic_field_title }}</h2>
+    {% endif %}
     {{ content }}
   </section>
 {% endif %}
