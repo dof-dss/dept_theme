@@ -1,9 +1,8 @@
 @import '../../init';
 
-.layout-header--logo {
+.site-logo {
   margin: 2.4rem auto;
   max-width: 375px;
-  max-height: 5.5rem;
   padding: 0 15px;
 
   @include breakpoint($mob) {
@@ -11,9 +10,8 @@
   }
 
   @include breakpoint($tab) {
-    width: auto;
-    max-width: none;
-    margin: 0;
+    max-width: 425px;
+    margin: 3.6rem 0;
   }
 
   a {
