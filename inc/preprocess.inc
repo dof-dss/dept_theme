@@ -49,7 +49,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "health_condition":
         case "news":
         case "page":
-        case "subtopic":
           // If page is not in a book, it has a main and aside.
           if (empty($node->book)) {
             $variables['main_content_attr']->addClass(LayoutClasses::MAIN_SIDE);
@@ -350,6 +349,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     case "news":
     case "publication":
     case "embargoed_publication":
+    case "subtopic":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('article-content');
       break;

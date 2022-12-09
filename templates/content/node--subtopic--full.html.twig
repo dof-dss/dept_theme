@@ -71,14 +71,12 @@
  */
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
-  <div class="narrow-title">
-    {% if show_title %}
-      {{ drupal_block('page_title_block', wrapper=false) }}
-    {% endif %}
-    {% if show_topics and topics_subtopics_list is not empty %}
-      {{ topics_subtopics_list }}
-    {% endif %}
-  </div>
+  {% if show_title %}
+    {{ drupal_block('page_title_block', wrapper=false) }}
+  {% endif %}
+  {% if show_topics and topics_subtopics_list is not empty %}
+    {{ topics_subtopics_list }}
+  {% endif %}
   {% if content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
