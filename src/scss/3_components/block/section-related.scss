@@ -1,9 +1,12 @@
 @import '../../init';
 
 .section-related {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  @include breakpoint($tab) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    justify-content: space-between;
+  }
 
   .section-hr {
     margin: 0;
@@ -15,7 +18,9 @@
   }
 
   > div {
-    flex-basis: 49%;
+    @include breakpoint($tab) {
+      flex-basis: 48%;
+    }
   }
 
   h3 {
