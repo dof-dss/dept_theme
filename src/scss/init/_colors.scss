@@ -148,3 +148,30 @@ $error: color(error);
 $error-bg: color(error-bg);
 
 $table-border-color: color(ash-grey);
+
+// NICS Corporate Identity colours
+$corp-primary-default: rgb(0, 134, 117);  // Northern Ireland Executive
+$corp-primary-dof: rgb(144, 152, 89);     // 3:1
+$corp-primary-daera: rgb(0, 154, 68);    // 3.4:1
+$corp-primary-dfc: rgb(125, 85, 199);     // 5.25:1
+$corp-primary-dfe: rgb(0, 114, 206);      // 4.88:1
+$corp-primary-de: rgb(202, 44, 146);      // 4.89:1
+$corp-primary-teo: rgb(59, 128, 174);     // 4.29:1
+$corp-primary-doh: rgb(1, 147, 166);      // 3.66:1
+$corp-primary-doi: rgb(255, 184, 28);     // 1.73:1
+$corp-primary-doj: rgb(137, 59, 103);     // 7.27:1
+
+$corp-primary-dof-hc: rgb(115, 122, 72);  // 4.55:1
+$corp-primary-daera-hc: rgb(0, 153, 57);  // 4.54:1
+$corp-primary-dfc-hc: rgb(125, 85, 199);  // 5.25:1
+$corp-primary-dfe-hc: rgb(0, 114, 206);   // 4.88:1
+$corp-primary-de-hc: rgb(202, 44, 146);   // 4.89:1
+$corp-primary-teo-hc: rgb(57, 123, 167);  // 4.6:1
+$corp-primary-doh-hc: rgb(1, 130, 147);   // 4.54:1
+$corp-primary-doi-hc: rgb(91, 108, 220);  // 4.54:1 (complementary)
+$corp-primary-doj-hc: rgb(137, 59, 103);  // 7.27:1
+
+$corp-secondary: rgb(20, 32, 98); // Same for all departments.
+
+
+

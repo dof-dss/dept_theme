@@ -8,8 +8,6 @@
   @include breakpoint($tab) {
     background-color: transparent;
     padding: 0;
-    grid-column-start: 1;
-    grid-column-end: span 2;
   }
 
   .nav {
@@ -21,7 +19,7 @@
 
       @include breakpoint($tab) {
         flex-flow: row wrap;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: center;
         max-width: $max-grid-width;
         margin: 0 auto;
@@ -30,6 +28,8 @@
     }
 
     &-menu {
+      position: relative;
+      left: -1rem; // Align Home link text with logo hexagon.
       width: 100%;
       margin: 0;
       padding: 0;
@@ -41,13 +41,12 @@
 
     &-link {
       @include link-state-style($link-main-menu);
-      @include adjust-font-size-to(16px, 4);
       display: block;
-      padding: 1rem 1.6rem;
+      padding: .75em 1.6rem;
 
       @include breakpoint($tab) {
         @include link-state-style($link-main-menu-horizontal);
-        padding: 1rem;
+        padding: .667em 1.2rem;
 
         // IE fix.
         // IE does not support outline-offset. So just remove the outline.
@@ -132,7 +131,6 @@
   }
 
   .hamburger {
-
     // The hamburger should use a button element for semantics.
     // Set appearance to none and remove some default styling browsers add for buttons.
     appearance: none;
@@ -244,7 +242,7 @@
       @include breakpoint($tab) {
         display: flex;
         max-height: 6rem;
-        padding: 0 10px;
+        padding: 0;
       }
     }
 

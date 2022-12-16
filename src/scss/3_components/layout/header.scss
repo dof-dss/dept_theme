@@ -43,6 +43,12 @@
     grid-template-rows: 15.3rem;
     margin: 0 auto;
     max-width: $max-grid-width;
-    padding: 0 20px 10px;
+    padding: 0 20px 1em;
+    border-bottom: 3px solid var(--primary-color);
+  }
+
+  &__logo {
+    grid-column-start: 1;
+    grid-column-end: span 2;
   }
 }

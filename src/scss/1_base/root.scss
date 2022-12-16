@@ -44,3 +44,57 @@ body {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --secondary-color: rgb(20, 32, 98);
+}
+
+.dept-default {
+  --primary-color: rgb(0, 134, 117); // 4:49:1
+  --primary-color-hc: rgb(0, 133, 115); // 4.56:1
+}
+
+.dept-dof {
+  --primary-color: rgb(144, 152, 89);    // 3:1
+  --primary-color-hc: rgb(115, 122, 72); // 4.55:1
+}
+
+.dept-daera  {
+  --primary-color: rgb(0, 154, 68);    // 3.4:1
+  --primary-color-hc: rgb(0, 153, 57); // 4.54:1
+}
+
+.dept-dfc  {
+  --primary-color: rgb(125, 85, 199);     // 5.25:1
+  --primary-color-hc: rgb(125, 85, 199); // 5.25:1
+}
+
+.dept-dfe  {
+  --primary-color: rgb(0, 114, 206);      // 4.88:1
+  --primary-color-hc: rgb(0, 114, 206); // 4.88:1
+}
+
+.dept-de  {
+  --primary-color: rgb(202, 44, 146);      // 4.89:1
+  --primary-color-hc: rgb(202, 44, 146); // 4.89:1
+}
+
+.dept-teo  {
+  --primary-color: rgb(59, 128, 174);     // 4.29:1
+  --primary-color-hc: rgb(57, 123, 167); // 4.6:1
+}
+
+.dept-doh  {
+  --primary-color: rgb(1, 147, 166);      // 3.66:1
+  --primary-color-hc: rgb(1, 130, 147); // 4.54:1
+}
+
+.dept-doi  {
+  --primary-color: rgb(255, 184, 28);     // 1.73:1
+  --primary-color-hc: rgb(91, 108, 220); // 4.54:1 (complementary)
+}
+
+.dept-doj  {
+  --primary-color: rgb(137, 59, 103);
+  --primary-color-hc: rgb(137, 59, 103); // 7.27:1
+}
