@@ -451,6 +451,34 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
+
+  // Set department logo for system branding block.
+  if ($variables['plugin_id'] === 'system_branding_block') {
+    $dept_manager = \Drupal::service('department.manager');
+    $variables['department'] = $dept_manager->getCurrentDepartment();
+    ksm($variables['department']->id());
+    switch ($variables['department']->id()) {
+      case 'group_2':
+        $variables["department_logo"] = 'dof.svg';
+        break;
+      case 'group_3':
+        $variables["department_logo"] = 'daera.svg';
+        break;
+      case 'group_4':
+        $variables["department_logo"] = 'dfc.svg';
+        break;
+      case 'group_7':
+        $variables["department_logo"] = 'teo.svg';
+        break;
+      case 'group_8':
+        $variables["department_logo"] = 'doh.svg';
+        break;
+      default:
+        $variables["department_logo"] = 'niexec.svg';
+        break;
+    }
+  }
+
   // Set the title for 'Most popular by term' block.
   $route = \Drupal::routeMatch();
   if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {
