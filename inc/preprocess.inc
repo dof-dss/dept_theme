@@ -46,13 +46,13 @@ function nicsdru_dept_theme_preprocess_html(array &$variables) {
       $variables['attributes']['class'][] = 'dept-doh';
       break;
     case 'group_9':
-      $variables['attributes']['class'][] = 'dept-doi';
+      $variables['attributes']['class'][] = 'dept-dfi';
       break;
     case 'group_10':
       $variables['attributes']['class'][] = 'dept-doj';
       break;
     default:
-      $variables['attributes']['class'][] = 'dept-exec';
+      $variables['attributes']['class'][] = 'dept-nigov';
       break;
   }
 
