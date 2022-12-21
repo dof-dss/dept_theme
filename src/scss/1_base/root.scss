@@ -46,55 +46,56 @@ body {
 }
 
 :root {
-  --secondary-color: rgb(20, 32, 98);
+  --default-brand-primary-color: #{$corp-primary};
+  --default-brand-secondary-color: #{$corp-secondary-dark};
 }
 
-.dept-default {
-  --primary-color: rgb(0, 134, 117); // 4:49:1
-  --primary-color-hc: rgb(0, 133, 115); // 4.56:1
+.dept-nigov {
+  --brand-primary-color: #{$corp-nigov}; // 4:49:1
+  --brand-primary-color-high-contrast-white: #{$corp-nigov-ui-on-white}; // 4.56:1
 }
 
 .dept-dof {
-  --primary-color: rgb(144, 152, 89);    // 3:1
-  --primary-color-hc: rgb(115, 122, 72); // 4.55:1
+  --brand-primary-color: #{$corp-dof};    // 3:1
+  --brand-primary-color-high-contrast-white: #{$corp-dof-ui-on-white}; // 4.55:1
 }
 
 .dept-daera  {
-  --primary-color: rgb(0, 154, 68);    // 3.4:1
-  --primary-color-hc: rgb(0, 153, 57); // 4.54:1
+  --brand-primary-color: #{$corp-daera};    // 3.4:1
+  --brand-primary-color-high-contrast-white: #{$corp-daera-ui-on-white}; // 4.54:1
 }
 
 .dept-dfc  {
-  --primary-color: rgb(125, 85, 199);     // 5.25:1
-  --primary-color-hc: rgb(125, 85, 199); // 5.25:1
+  --brand-primary-color: #{$corp-dfc};     // 5.25:1
+  --brand-primary-color-high-contrast-white: #{$corp-dfc-ui-on-white}; // 5.25:1
 }
 
 .dept-dfe  {
-  --primary-color: rgb(0, 114, 206);      // 4.88:1
-  --primary-color-hc: rgb(0, 114, 206); // 4.88:1
+  --brand-primary-color: #{$corp-dfe};      // 4.88:1
+  --brand-primary-color-high-contrast-white: #{$corp-dfe-ui-on-white}; // 4.88:1
 }
 
 .dept-de  {
-  --primary-color: rgb(202, 44, 146);      // 4.89:1
-  --primary-color-hc: rgb(202, 44, 146); // 4.89:1
+  --brand-primary-color: #{$corp-de};      // 4.89:1
+  --brand-primary-color-high-contrast-white: #{$corp-de-ui-on-white}; // 4.89:1
 }
 
 .dept-teo  {
-  --primary-color: rgb(59, 128, 174);     // 4.29:1
-  --primary-color-hc: rgb(57, 123, 167); // 4.6:1
+  --brand-primary-color: #{$corp-teo};     // 4.29:1
+  --brand-primary-color-high-contrast-white: #{$corp-teo-ui-on-white}; // 4.6:1
 }
 
 .dept-doh  {
-  --primary-color: rgb(1, 147, 166);      // 3.66:1
-  --primary-color-hc: rgb(1, 130, 147); // 4.54:1
+  --brand-primary-color: #{$corp-doh};      // 3.66:1
+  --brand-primary-color-high-contrast-white: #{$corp-doh-ui-on-white}; // 4.54:1
 }
 
-.dept-doi  {
-  --primary-color: rgb(255, 184, 28);     // 1.73:1
-  --primary-color-hc: rgb(91, 108, 220); // 4.54:1 (complementary)
+.dept-dfi  {
+  --brand-primary-color: #{$corp-dfi};     // 1.73:1
+  --brand-primary-color-high-contrast-white: #{$corp-dfi-ui-on-white}; // 5.43:1 (complementary)
 }
 
 .dept-doj  {
-  --primary-color: rgb(137, 59, 103);
-  --primary-color-hc: rgb(137, 59, 103); // 7.27:1
+  --brand-primary-color: #{$corp-doj};
+  --brand-primary-color-high-contrast-white: #{$corp-doj-ui-on-white}; // 7.27:1
 }
