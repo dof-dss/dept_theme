@@ -21,6 +21,51 @@ use Drupal\node\NodeInterface;
  */
 function nicsdru_dept_theme_preprocess_html(array &$variables) {
 
+  // Set body classes for specific departments.
+  $dept_manager = \Drupal::service('department.manager');
+  switch ($dept_manager->getCurrentDepartment()->id()) {
+    case 'group_2':
+      $variables['attributes']['class'][] = 'dept-dof';
+      break;
+
+    case 'group_3':
+      $variables['attributes']['class'][] = 'dept-daera';
+      break;
+
+    case 'group_4':
+      $variables['attributes']['class'][] = 'dept-dfc';
+      break;
+
+    case 'group_5':
+      $variables['attributes']['class'][] = 'dept-dfe';
+      break;
+
+    case 'group_6':
+      $variables['attributes']['class'][] = 'dept-de';
+      break;
+
+    case 'group_7':
+      $variables['attributes']['class'][] = 'dept-teo';
+      break;
+
+    case 'group_8':
+      $variables['attributes']['class'][] = 'dept-doh';
+      break;
+
+    case 'group_9':
+      $variables['attributes']['class'][] = 'dept-dfi';
+      break;
+
+    case 'group_10':
+      $variables['attributes']['class'][] = 'dept-doj';
+      break;
+
+    default:
+      $variables['attributes']['class'][] = 'dept-nigov';
+      break;
+  }
+
+  // Set body classes for specific routes.
   $route = \Drupal::routeMatch()->getRouteName();
 
   switch ($route) {
@@ -451,6 +496,53 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
+
+  // Set department logo for system branding block.
+  if ($variables['plugin_id'] === 'system_branding_block') {
+    $dept_manager = \Drupal::service('department.manager');
+    switch ($dept_manager->getCurrentDepartment()->id()) {
+      case 'group_2':
+        $variables["department_logo"] = 'dof.svg';
+        break;
+
+      case 'group_3':
+        $variables["department_logo"] = 'daera.svg';
+        break;
+
+      case 'group_4':
+        $variables["department_logo"] = 'dfc.svg';
+        break;
+
+      case 'group_5':
+        $variables["department_logo"] = 'dfe.svg';
+        break;
+
+      case 'group_6':
+        $variables["department_logo"] = 'de.svg';
+        break;
+
+      case 'group_7':
+        $variables["department_logo"] = 'teo.svg';
+        break;
+
+      case 'group_8':
+        $variables["department_logo"] = 'doh.svg';
+        break;
+
+      case 'group_9':
+        $variables["department_logo"] = 'dfi.svg';
+        break;
+
+      case 'group_10':
+        $variables["department_logo"] = 'doj.svg';
+        break;
+
+      default:
+        $variables["department_logo"] = 'niexec.svg';
+        break;
+    }
+  }
+
   // Set the title for 'Most popular by term' block.
   $route = \Drupal::routeMatch();
   if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {

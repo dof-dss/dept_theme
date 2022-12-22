@@ -15,13 +15,13 @@
  * @ingroup themeable
  */
 #}
-<div class="layout-header--logo" role="presentation">
+<div class="header__logo layout-header--logo" role="presentation">
   {% block content -%}
     {%- if site_logo -%}
       {%- if not is_front -%}
         <a href="{{ path('<front>') }}" rel="home">
       {%- endif -%}
-      {% include active_theme_path() ~ '/images/dof.svg' %}
+      {% include active_theme_path() ~ '/images/' ~ department_logo %}
       {%- if not is_front -%}
         </a>
       {%- endif -%}
