@@ -45,10 +45,6 @@
   .view--count {
     margin: 0 0 1.2rem;
 
-    @include breakpoint($tab) {
-      margin-top: 2.7rem;
-    }
-
     .subtitle,
     + .subtitle {
       @include responsive-typo-map($small-text);
