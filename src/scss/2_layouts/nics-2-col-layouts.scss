@@ -33,7 +33,7 @@
   &--side-n-main {
 
     @include breakpoint($tab) {
-      grid-gap: $grid-gap;
+      grid-gap: $tab-grid-gap;
 
       .ga-main {
         /* no grid support? */
@@ -50,7 +50,7 @@
 
     @include breakpoint($lap) {
 
-      grid-gap: $grid-gap-lg;
+      grid-gap: $lap-grid-gap;
 
       .ga-main {
         /* no grid support? */
@@ -61,6 +61,10 @@
         /* no grid support? */
         width: $aside-float-max-width;
       }
+    }
+
+    @include breakpoint($desk) {
+      grid-gap: $desk-grid-gap;
     }
   }
 
@@ -81,7 +85,7 @@
     }
 
     @include breakpoint($tab) {
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 62fr 38fr;
       grid-template-rows: auto;
       grid-template-areas: 'main side';
     }
