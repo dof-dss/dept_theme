@@ -895,3 +895,43 @@ function nicsdru_dept_theme_preprocess_region(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_media().
+ */
+function nicsdru_dept_theme_preprocess_media(&$variables) {
+  if (empty($variables['media'])
+    || ($variables['media']->bundle() !== 'document' && $variables['media']->bundle() !== 'secure_file')) {
+    return;
+  }
+
+  if (!empty($variables['content']['field_media_file']) || !empty($variables['content']['field_media_file_1'])) {
+    // Map file mimetypes to user friendly document types.
+    $pretty_mimes = \Drupal::service('origins_media.pretty_mime_types')->getMimeTypes();
+
+    $media_fields = [
+      'field_media_file',
+      'field_media_file_1',
+    ];
+
+    foreach ($media_fields as $media_field) {
+      if (!empty($variables['content'][$media_field])) {
+        $file = &$variables['content'][$media_field][0]['#file'];
+      }
+    }
+
+    if (!empty($file)) {
+      $variables['file_size'] = format_size($file->getSize(), \Drupal::languageManager()->getCurrentLanguage()->getId(),
+        0);
+      $variables['file_url'] = $file->createFileUrl();
+      $variables['file_extension'] = pathinfo($variables['file_url'], PATHINFO_EXTENSION);
+      $file_mimetype = $file->getMimeType();
+      if (array_key_exists($file->getMimeType(), $pretty_mimes)) {
+        $variables['file_type'] = $pretty_mimes[$file_mimetype];
+      }
+      else {
+        $variables['file_type'] = strtoupper(preg_replace('/^application\/(\w+)$/', '\1', $file_mimetype));
+      }
+    }
+  }
+}
