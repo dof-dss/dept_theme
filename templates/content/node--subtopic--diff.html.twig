@@ -71,16 +71,14 @@
  */
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
-  <div class="narrow-title">
-    {% if show_title %}
-      <h1 class="page-title">{{ label }}</h1>
-    {% endif %}
-    {% if show_topics and topics_subtopics_list is not empty %}
-      <div class="container site-topics">
-        {{ topics_subtopics_list }}
-      </div>
-    {% endif %}
-  </div>
+  {% if show_title %}
+    <h1 class="page-title">{{ label }}</h1>
+  {% endif %}
+  {% if show_topics and topics_subtopics_list is not empty %}
+    <div class="container site-topics">
+      {{ topics_subtopics_list }}
+    </div>
+  {% endif %}
   {% if content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
