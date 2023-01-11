@@ -1,9 +1,6 @@
 @import '../../init';
 
 .layout-header--logo {
-  width: 100%;
-  max-width: 100%;
-  max-height: 81px;
   margin: 1.5em auto;
   padding: 0 15px;
 
@@ -27,16 +24,13 @@
 
   svg {
     display: block;
+    width: auto;
     max-height: 5em;
     margin: 0 auto;
 
     @include breakpoint($tab) {
-      max-height: 4em;
       margin: 0;
-    }
-
-    @include breakpoint($tab) {
-      max-height: 4.3334em;
+      max-height: 4.5em;
     }
   }
 }
