@@ -9,7 +9,7 @@
   background-color: color(grey-light);
   padding: 0 0 4.5em;
   margin-top: 0;
-  border-top: 5px solid $brand-primary-dark;
+  border-top: 5px solid var(--brand-primary-color);
 
   .container {
     @include breakpoint($lap) {

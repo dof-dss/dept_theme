@@ -106,8 +106,7 @@
 
     .ga-aside {
       grid-area: side;
-      margin-top: 1.5em;
-  }
+    }
 
     @include breakpoint($tab) {
       grid-template-columns: 1fr 2fr;

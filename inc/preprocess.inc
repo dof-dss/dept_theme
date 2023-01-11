@@ -21,6 +21,51 @@ use Drupal\node\NodeInterface;
  */
 function nicsdru_dept_theme_preprocess_html(array &$variables) {
 
+  // Set body classes for specific departments.
+  $dept_manager = \Drupal::service('department.manager');
+  switch ($dept_manager->getCurrentDepartment()->id()) {
+    case 'group_2':
+      $variables['attributes']['class'][] = 'dept-dof';
+      break;
+
+    case 'group_3':
+      $variables['attributes']['class'][] = 'dept-daera';
+      break;
+
+    case 'group_4':
+      $variables['attributes']['class'][] = 'dept-dfc';
+      break;
+
+    case 'group_5':
+      $variables['attributes']['class'][] = 'dept-dfe';
+      break;
+
+    case 'group_6':
+      $variables['attributes']['class'][] = 'dept-de';
+      break;
+
+    case 'group_7':
+      $variables['attributes']['class'][] = 'dept-teo';
+      break;
+
+    case 'group_8':
+      $variables['attributes']['class'][] = 'dept-doh';
+      break;
+
+    case 'group_9':
+      $variables['attributes']['class'][] = 'dept-dfi';
+      break;
+
+    case 'group_10':
+      $variables['attributes']['class'][] = 'dept-doj';
+      break;
+
+    default:
+      $variables['attributes']['class'][] = 'dept-nigov';
+      break;
+  }
+
+  // Set body classes for specific routes.
   $route = \Drupal::routeMatch()->getRouteName();
 
   switch ($route) {
@@ -49,7 +94,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "health_condition":
         case "news":
         case "page":
-        case "subtopic":
           // If page is not in a book, it has a main and aside.
           if (empty($node->book)) {
             $variables['main_content_attr']->addClass(LayoutClasses::MAIN_SIDE);
@@ -350,6 +394,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     case "news":
     case "publication":
     case "embargoed_publication":
+    case "subtopic":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('article-content');
       break;
@@ -451,6 +496,53 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
+
+  // Set department logo for system branding block.
+  if ($variables['plugin_id'] === 'system_branding_block') {
+    $dept_manager = \Drupal::service('department.manager');
+    switch ($dept_manager->getCurrentDepartment()->id()) {
+      case 'group_2':
+        $variables["department_logo"] = 'dof.svg';
+        break;
+
+      case 'group_3':
+        $variables["department_logo"] = 'daera.svg';
+        break;
+
+      case 'group_4':
+        $variables["department_logo"] = 'dfc.svg';
+        break;
+
+      case 'group_5':
+        $variables["department_logo"] = 'dfe.svg';
+        break;
+
+      case 'group_6':
+        $variables["department_logo"] = 'de.svg';
+        break;
+
+      case 'group_7':
+        $variables["department_logo"] = 'teo.svg';
+        break;
+
+      case 'group_8':
+        $variables["department_logo"] = 'doh.svg';
+        break;
+
+      case 'group_9':
+        $variables["department_logo"] = 'dfi.svg';
+        break;
+
+      case 'group_10':
+        $variables["department_logo"] = 'doj.svg';
+        break;
+
+      default:
+        $variables["department_logo"] = 'niexec.svg';
+        break;
+    }
+  }
+
   // Set the title for 'Most popular by term' block.
   $route = \Drupal::routeMatch();
   if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {
@@ -790,6 +882,15 @@ function nicsdru_dept_theme_preprocess_region(&$variables) {
         if ($node->hasField('field_banner_link') && !$node->get('field_banner_link')->isEmpty()) {
           $variables['field_banner_link'] = $node->get('field_banner_link')->view('default');
         }
+      }
+    }
+  }
+
+  // Make the title field text available in the related region.
+  if ($variables['region'] == 'related') {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      if ($node->getType() == 'subtopic') {
+        $variables['subtopic_field_title'] = $node->get('title')->view();
       }
     }
   }

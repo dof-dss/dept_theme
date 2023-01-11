@@ -5,14 +5,23 @@
 
 @import '../init';
 
-.layout--main-n-side {
-  .diff-responsive-table-wrapper {
-    ~ .ga-aside {
-      grid-area: unset;
+.layout {
+  &--main-n-side {
+    .diff-responsive-table-wrapper {
+      ~ .ga-aside {
+        grid-area: unset;
 
-      @include breakpoint($tab) {
-        grid-row: 2;
+        @include breakpoint($tab) {
+          grid-row: 2;
+        }
       }
+    }
+  }
+
+  &--main-limited {
+    .diff-responsive-table-wrapper {
+      grid-column: 1/3;
+      max-width: $max-content-width;
     }
   }
 }

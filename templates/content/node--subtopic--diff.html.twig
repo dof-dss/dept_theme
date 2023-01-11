@@ -72,10 +72,12 @@
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
   {% if show_title %}
-    {{ drupal_block('page_title_block', wrapper=false) }}
+    <h1 class="page-title">{{ label }}</h1>
   {% endif %}
   {% if show_topics and topics_subtopics_list is not empty %}
-    {{ topics_subtopics_list }}
+    <div class="container site-topics">
+      {{ topics_subtopics_list }}
+    </div>
   {% endif %}
   {% if content_attributes is not empty %}
   <div{{ content_attributes }}>
