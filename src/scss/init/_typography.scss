@@ -55,44 +55,44 @@ $large-text: (
   null: (18px, 2.4rem),
   md: (20px, 2.8rem),
   lg: (21px, 3rem),
-  xxl: (22px, 3rem)
+  xxl: (22px, 3.5rem)
 );
 
 $xl-text: (
-  null: (20px, 1.4),
-  md: (22px, 1.4546),
-  lg: (24px, 1.5),
-  xxl: (27px, 1.4815)
+  null: (20px, 28px),
+  md: (22px, 32px),
+  lg: (24px, 36px),
+  xxl: (27px, 40px)
 );
 
 $xxl-text: (
-  null: (24px, 1.5),
-  lg: (27px, 1.4444),
-  xxl: (30px, 1.5)
+  null: (24px, 36px),
+  lg: (27px, 39px),
+  xxl: (30px, 45px)
 );
 
 $h1-text: (
   null: (28px, 3.6rem, 2.4rem 0 1.6rem),
   lg: (30px, 3.9rem, 3.6rem 0 1.8rem),
-  xxl: (36px, 4.5rem, 4rem 0 3rem)
+  xxl: (32px, 4.5rem, 5rem 0 2rem)
 );
 
 $h2-text: (
   null: (24px, 3.2rem, 3.2rem 0 1.6rem),
   lg: (26px, 3.6rem, 3.6rem 0 1.8rem),
-  xxl: (30px, 4rem, 4rem 0 2rem)
+  xxl: (28px, 4rem, 4rem 0 2rem)
 );
 
 $h3-text: (
   null: (21px, 2.4rem, 3.2rem 0 1.2rem),
   lg: (22px, 3rem, 3.6rem 0 1.8rem),
-  xxl: (25px, 3rem, 4rem 0 2rem)
+  xxl: (24px, 3rem, 4rem 0 2rem)
 );
 
 $h4-text: (
   null: (18px, 2.4rem, 3.2rem 0 1.2rem),
   lg: (20px, 2.7rem, 3.6rem 0 1.8rem),
-  xxl: (24px, 3rem, 4rem 0 2rem)
+  xxl: (22px, 3rem, 4rem 0 2rem)
 );
 
 $h5-text: (
@@ -113,28 +113,32 @@ $card-title: (
 
 $btn-small: (
   null: (1.4rem, 2.2rem),
-  lg: (1.6rem, 2.4rem)
+  lg: (1.6rem, 2.4rem),
+  xxl: (1.7rem, 2.5rem)
 );
 
 $btn-default: (
   null: (1.6rem, 2.4rem),
-  lg: (1.8rem, 2.7rem)
+  lg: (1.8rem, 2.7rem),
+  xxl: (2rem, 3rem)
 );
 
 $btn-medium: (
   null: (1.8rem, 2.4rem),
-  lg: (2.1rem, 3rem)
+  lg: (2.1rem, 3rem),
+  xxl: (2.2rem, 3.5rem)
 );
 
 $btn-large: (
-  null: (2.1rem, 2.8rem),
-  lg: (2.4rem, 3.6rem)
+  null: (2.1rem, 3.2rem),
+  lg: (2.4rem, 3.6rem),
+  xxl: (2.5rem, 4rem)
 );
 
 $form-legend: (
-  null: (21px, 2.4rem, 0 0 .2rem),
-  lg: (24px, 3rem, 0 0 .3rem),
-  xxl: (28px, 3rem, 0 0 2rem)
+  null: (21px, 2.8rem, 0),
+  lg: (24px, 3.3rem, 0),
+  xxl: (26px, 3.5rem, 0)
 );
 
 $form-legend-plain: (

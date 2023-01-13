@@ -9,7 +9,7 @@
 .page-summary > p,
 .contact--body p:first-child {
   @include responsive-typo-map($large-text);
-  font-weight: 500;
+  color: #000;
 
   &:first-child {
     margin-top: 0;
@@ -21,6 +21,10 @@
 
   @include breakpoint($tab) {
     margin: 0 0 2.7rem;
+  }
+
+  @include breakpoint($desk) {
+    margin: 0 0 3rem;
   }
 
   br {

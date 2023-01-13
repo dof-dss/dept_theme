@@ -12,18 +12,18 @@
   img {
     width: 100%;
     height: auto;
-    margin: 1.6rem 0;
+    margin: 1em 0;
 
     @include breakpoint($mob) {
       clear: right;
       float: right;
       width: 48.3871%;
       max-width: 300px;
-      margin-left: 2.4rem;
+      margin-left: 1.5em;
     }
 
     @include breakpoint($tab) {
-      margin: 1.8rem 0 1.8rem 2.7rem;
+      margin: 1em 0 1em 1.5em;
     }
   }
 }

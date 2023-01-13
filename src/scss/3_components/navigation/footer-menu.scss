@@ -41,6 +41,9 @@
         @include breakpoint($tab) {
           font-size: 1.6rem;
         }
+        @include breakpoint($desk) {
+          font-size: 1.7rem;
+        }
         font-size: 1.4rem;
         margin: .5em .5em .5em 0;
         padding: 0 .5em 0 0;
@@ -93,8 +96,8 @@
         text-decoration: none;
 
         @include breakpoint($tab) {
-          width: 4rem;
-          height: 4rem;
+          width: 4.5rem;
+          height: 4.5rem;
         }
 
         &:hover {
