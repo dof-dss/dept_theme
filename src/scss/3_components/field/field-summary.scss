@@ -17,6 +17,7 @@
 }
 
 .page-summary {
+  max-width: $max-content-width;
   margin: 0 0 2.4rem;
 
   @include breakpoint($tab) {
@@ -29,6 +30,11 @@
 
   br {
     display: none;
+  }
+
+  + p {
+    box-shadow: 0 -2px 0 -1px #999;
+    padding-top: 1.5em;
   }
 }
 
