@@ -16,18 +16,18 @@
 %site-topics {
   margin: .8rem 0 1.2rem;
   padding: 0 0 .8rem;
-  @include adjust-font-size-to(16px, 4);
+  @include adjust-font-size-to(14px, 3.3334);
   display: flex;
   column-gap: 10px;
 
   @include breakpoint($tab) {
-    @include adjust-font-size-to(17px, 4.5);
+    @include adjust-font-size-to(15px, 3.5);
     margin: .9rem 0 1.2rem;
     padding: 0 0 .9rem;
   }
 
   @include breakpoint($desk) {
-    @include adjust-font-size-to(18px, 5);
+    @include adjust-font-size-to(16px, 3.3334);
     margin: 1rem 0 1.5rem;
     padding: 0 0 1rem;
   }
@@ -36,11 +36,11 @@
     margin-top: -.8rem;
 
     @include breakpoint($tab) {
-      margin-top: -1.2rem;
+      margin-top: -.9rem;
     }
 
     @include breakpoint($desk) {
-      margin-top: -1.5rem;
+      margin-top: -1rem;
     }
   }
 
