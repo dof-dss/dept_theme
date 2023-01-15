@@ -31,12 +31,12 @@
     grid-template-rows: auto;
     margin: 0 auto;
     padding: 0 20px 1em;
+    max-width: 980px;
     box-shadow: 0 15px 0 -9px var(--brand-primary-color);
   }
 
-  @include breakpoint($lap) {
-    margin: 0 auto;
-    max-width: $max-grid-width;
+  @include breakpoint($desk) {
+    max-width: 1140px;
   }
 
   &__logo {

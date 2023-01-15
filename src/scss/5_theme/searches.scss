@@ -135,7 +135,17 @@
   margin-bottom: 0; // On contact search results page, no bottom margin under search box.
 }
 
+// Overrides for Origins Search facet styling.
 a.facet--btn {
+
+  line-height: 4.4rem;
+  min-height: 4.4rem;
+  border: 0 !important;
+
+  @include breakpoint($tab, $no-query: true) {
+    line-height: 4.5rem;
+    min-height: 4.5rem;
+  }
 
   &:focus {
     outline: 0;
@@ -144,4 +154,9 @@ a.facet--btn {
   &:focus-visible {
     @include high-vis-focus();
   }
+
+  .ico-arrow-down {
+    margin: 1.2rem;
+  }
 }
+

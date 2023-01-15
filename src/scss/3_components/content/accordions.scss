@@ -31,6 +31,10 @@
       @include adjust-font-size-to(24px, 4.5);
     }
 
+    @include breakpoint($desk, $no-query: true) {
+      @include adjust-font-size-to(26px, 5);
+    }
+
     .js & {
       padding: 0;
     }
@@ -49,10 +53,10 @@
       text-align: left;
 
       .js & {
-        padding: 1.6rem 6rem 1.6rem .8rem;
+        padding: 1em 6rem 1em .8rem;
 
         @include breakpoint($tab, $no-query: true) {
-          padding: 1.8rem 6rem 1.8rem 1.8rem;
+          padding: 1em 6rem 1em 1em;
         }
       }
 

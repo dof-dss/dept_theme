@@ -25,6 +25,10 @@
       padding-bottom: 2.1rem;
     }
 
+    @include breakpoint($desk) {
+      padding-bottom: 2.5rem;
+    }
+
     .popup-content {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
@@ -66,12 +70,9 @@
     }
 
     p {
-      @include adjust-font-size-to(16px, 4);
+      font-size: 1em;
+      line-height: 1.5;
       color: white;
-
-      @include breakpoint($tab) {
-        @include adjust-font-size-to(18px, 4.5);
-      }
 
       &:first-child {
         @include adjust-font-size-to(24px, 5.3);
@@ -84,6 +85,11 @@
         @include breakpoint($tab) {
           margin: 2.4rem 0 1.2rem;
           font-weight: bold;
+        }
+
+        @include breakpoint($desk) {
+          margin: 2.5rem 0 1.5rem;
+          @include adjust-font-size-to(30px, 6.6667);
         }
       }
 
