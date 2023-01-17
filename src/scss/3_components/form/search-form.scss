@@ -52,8 +52,18 @@
   }
 
   label {
-    @include responsive-typo-map($body-text);
-    margin: 0 0 .5em;
+    @include adjust-font-size-to(16px, 4);
+    margin: 0 0 .8rem;
+
+    @include breakpoint($tab) {
+      @include adjust-font-size-to(17px, 4);
+      margin: 0 0 .9rem;
+    }
+
+    @include breakpoint($desk) {
+      @include adjust-font-size-to(18px, 4.1667);
+      margin: 0 0 .9rem;
+    }
   }
 
   input {
@@ -90,6 +100,7 @@
       width: 6rem;
       min-width: auto;
       height: 4.5rem;
+      min-height: 4.5rem;
       padding: 0;
       margin: 0;
       border-color: var(--default-brand-primary-color);

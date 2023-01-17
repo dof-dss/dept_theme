@@ -76,6 +76,9 @@
     @include breakpoint($tab) {
       margin: 2.1rem 0 .7rem;
     };
+    @include breakpoint($desk) {
+      margin: 2.5rem 0 1rem;
+    };
   }
 
   .file-link {
@@ -92,10 +95,6 @@
   .social-sharing {
     margin: 3em 0;
   }
-}
-
-.article-content h2 {
-  margin-top: 0;
 }
 
 .page-node-type-publication,

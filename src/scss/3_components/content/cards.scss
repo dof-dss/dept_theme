@@ -68,13 +68,17 @@
   }
 
   &__meta {
-    @include adjust-font-size-to(15px, 3.6667);
+    @include responsive-typo-map($small-text);
+    color: $meta;
+    margin: .8rem 0;
+
     @include breakpoint($tab) {
-      @include adjust-font-size-to(16px, 4);
+      margin: .9rem 0;
     }
 
-    margin: .9rem 0;
-    color: $meta;
+    @include breakpoint($desk) {
+      margin: 1rem 0;
+    }
   }
 
   &__meta + p {

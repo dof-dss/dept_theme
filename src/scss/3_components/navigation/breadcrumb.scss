@@ -20,6 +20,10 @@
     margin: 2.1rem auto 0;
   }
 
+  @include breakpoint($desk) {
+    margin: 2.5rem auto 0;
+  }
+
   @at-root .path-taxonomy &--list {
     @include breakpoint($tab) {
       max-width: $article-max-width;
@@ -38,6 +42,9 @@
 
   &--item {
     @include adjust-font-size-to(14px, 4);
+    @include breakpoint($desk) {
+      @include adjust-font-size-to(15px, 4.1667);
+    }
     display: inline;
     list-style-type: none;
     margin: 0 5px 0 0;
