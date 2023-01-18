@@ -60,7 +60,7 @@
       margin: 0 0 .9rem;
     }
 
-    @include breakpoint($desk) {
+    @include breakpoint($desk-plus) {
       @include adjust-font-size-to(18px, 4.1667);
       margin: 0 0 .9rem;
     }
@@ -247,7 +247,7 @@ header .search-api-form {
 
   // On narrow screens the suggestions should span the entire search form.
   // Need to use !important to override inline styles added by jquery ui.
-  @include breakpoint(0 $mob) {
+  @include breakpoint(0 $phone) {
     left: 8px !important;
     width: calc(100% - 16px) !important;
   }

@@ -201,7 +201,7 @@
       }
     }
 
-    @include breakpoint($desk) {
+    @include breakpoint($desk-plus) {
       .tel .title {
         @include adjust-font-size-to(18px, 5);
       }

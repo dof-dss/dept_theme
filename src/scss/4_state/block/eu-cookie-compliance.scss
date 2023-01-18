@@ -25,7 +25,7 @@
       padding-bottom: 2.1rem;
     }
 
-    @include breakpoint($desk) {
+    @include breakpoint($desk-plus) {
       padding-bottom: 2.5rem;
     }
 
@@ -87,7 +87,7 @@
           font-weight: bold;
         }
 
-        @include breakpoint($desk) {
+        @include breakpoint($desk-plus) {
           margin: 2.5rem 0 1.5rem;
           @include adjust-font-size-to(30px, 6.6667);
         }

@@ -20,7 +20,7 @@
     margin: 2.1rem auto 0;
   }
 
-  @include breakpoint($desk) {
+  @include breakpoint($desk-plus) {
     margin: 2.5rem auto 0;
   }
 
@@ -42,7 +42,7 @@
 
   &--item {
     @include adjust-font-size-to(14px, 4);
-    @include breakpoint($desk) {
+    @include breakpoint($desk-plus) {
       @include adjust-font-size-to(15px, 4.1667);
     }
     display: inline;

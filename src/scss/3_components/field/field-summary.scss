@@ -24,7 +24,7 @@
     margin: 0 0 2.7rem;
   }
 
-  @include breakpoint($desk) {
+  @include breakpoint($desk-plus) {
     margin: 0 0 3rem;
   }
 

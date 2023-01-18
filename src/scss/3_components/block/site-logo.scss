@@ -17,7 +17,7 @@
     @include link-state-style($link-site-logo);
     outline-offset: .6rem;
 
-    @include breakpoint($mob) {
+    @include breakpoint($phone) {
       outline-offset: 1.2rem;
     }
   }

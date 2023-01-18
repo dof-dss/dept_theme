@@ -14,7 +14,7 @@
     height: auto;
     margin: 1em 0;
 
-    @include breakpoint($mob) {
+    @include breakpoint($phone) {
       clear: right;
       float: right;
       width: 48.3871%;

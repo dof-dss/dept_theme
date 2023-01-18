@@ -76,7 +76,7 @@
       margin: .9rem 0;
     }
 
-    @include breakpoint($desk) {
+    @include breakpoint($desk-plus) {
       margin: 1rem 0;
     }
   }
@@ -302,14 +302,14 @@ a.card {
       // Column layout for card (small screen sizes).
       flex-flow: column nowrap;
 
-      @include breakpoint(0 $mob) {
+      @include breakpoint(0 $phone) {
         .card__body {
           padding-top: 1.2rem;
         }
       }
 
       // Row layout for all other screen sizes.
-      @include breakpoint($mob) {
+      @include breakpoint($phone) {
         flex-flow: row nowrap;
 
         .card__image {
@@ -336,7 +336,7 @@ a.card {
         flex-flow: column nowrap;
 
         // Row layout at mid screen sizes.
-        @include breakpoint($mob $tab) {
+        @include breakpoint($phone $tab) {
           flex-flow: row nowrap;
 
           .card__image {
