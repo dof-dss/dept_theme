@@ -129,7 +129,8 @@
     }
 
     @include breakpoint($tab) {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 310fr 590fr;
+      grid-gap: 3.2rem;
       grid-template-rows: auto;
       grid-template-areas: 'side main';
 
@@ -145,8 +146,19 @@
     }
 
     @include breakpoint($lap) {
-      grid-template-columns: $aside-grid-max-width $article-grid-max-width;
+      grid-template-columns: 300fr 590fr;
+      grid-gap: 3.6rem;
       grid-template-rows: auto;
+    }
+
+    @include breakpoint($desk) {
+      grid-template-columns: 340fr 626fr;
+      grid-gap: 6rem;
+    }
+
+    @include breakpoint($desk-plus) {
+      grid-template-columns: 340fr 644fr;
+      grid-gap: 6rem;
     }
   }
 
