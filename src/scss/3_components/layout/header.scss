@@ -21,16 +21,22 @@
 // Style guide: layouts.header
 
 .header {
+  position: relative;
   display: grid;
   grid-template-columns: 6.5rem auto;
   grid-template-rows: auto;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @include breakpoint($phone) {
+    padding: 0 48px;
+  }
 
   @include breakpoint($tab) {
     display: grid;
     grid-template-columns: 592fr 312fr;
     grid-column-gap: 3.2rem;
     grid-template-rows: auto;
-    margin: 0 auto;
     padding: 0 22px 1em;
     max-width: 980px;
     box-shadow: 0 15px 0 -9px var(--brand-primary-color);

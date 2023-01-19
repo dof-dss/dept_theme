@@ -64,7 +64,7 @@ form > .form-item,
 
   .fieldset-wrapper .field-prefix &,
   .fieldset-wrapper .field-suffix & {
-    @include responsive-typo-map($body-text);
+    @include responsive-typo-map($normal-text-no-margins);
     margin: 1em 0 0;
   }
 }
@@ -128,7 +128,7 @@ form > .form-wrapper > section {
 
 label,
 .label {
-  @include responsive-typo-map($body-text);
+  @include responsive-typo-map($normal-text-no-margins);
   display: block;
   margin: 0;
   padding: 0;

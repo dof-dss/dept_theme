@@ -20,7 +20,7 @@
 }
 
 .text-count-wrapper {
-  @include responsive-typo-map($body-text);
+  @include responsive-typo-map($normal-text-no-margins);
   color: #fff;
   background-color: $charcoal;
   padding: .3334em .6rem;

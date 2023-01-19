@@ -5,7 +5,7 @@
 
 %error-bubble {
 
-  @include responsive-typo-map($body-text);
+  @include responsive-typo-map($normal-text-no-margins);
   display: block;
   position: relative;
   z-index: 101;

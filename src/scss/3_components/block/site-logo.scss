@@ -30,7 +30,11 @@
 
     @include breakpoint($tab) {
       margin: 0;
-      max-height: 4.5em;
+      min-height: 5em;
+    }
+
+    @include breakpoint($lap) {
+      min-height: 4.5em;
     }
   }
 }
