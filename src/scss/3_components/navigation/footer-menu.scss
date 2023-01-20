@@ -15,7 +15,7 @@
   }
 
   &-related {
-    @include responsive-typo-map($body-text);
+    @include responsive-typo-map($normal-text-no-margins);
     font-weight: bold;
     padding-top: 3.6rem;
 
@@ -41,7 +41,7 @@
         @include breakpoint($tab) {
           font-size: 1.6rem;
         }
-        @include breakpoint($desk) {
+        @include breakpoint($desk-plus) {
           font-size: 1.7rem;
         }
         font-size: 1.4rem;

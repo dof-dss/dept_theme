@@ -60,7 +60,7 @@ a[aria-hidden='true'] {
 
 .skip-link:focus,
 .skip-link:hover {
-  @include responsive-typo-map($body-text);
+  @include responsive-typo-map($normal-text-no-margins);
   display: block;
   line-height: 1.5;
   padding: .9rem 3.5rem;

@@ -40,7 +40,7 @@
     }
 
     &.pager-hide-small {
-      @media screen and (max-width: $mob) {
+      @media screen and (max-width: $phone) {
         display: none;
       }
     }

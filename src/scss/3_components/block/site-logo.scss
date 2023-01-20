@@ -5,8 +5,12 @@
   padding: 0 15px;
 
   @include breakpoint($tab) {
-    margin: 2em 0 1.5em;
+    margin: 2.25em 0 1em;
     padding: 0;
+  }
+
+  @include breakpoint($lap) {
+    margin: 2.5em 0 1em;
   }
 
   > a {
@@ -17,7 +21,7 @@
     @include link-state-style($link-site-logo);
     outline-offset: .6rem;
 
-    @include breakpoint($mob) {
+    @include breakpoint($phone) {
       outline-offset: 1.2rem;
     }
   }
@@ -30,7 +34,11 @@
 
     @include breakpoint($tab) {
       margin: 0;
-      max-height: 4.5em;
+      min-height: 5em;
+    }
+
+    @include breakpoint($lap) {
+      min-height: 4.5em;
     }
   }
 }
