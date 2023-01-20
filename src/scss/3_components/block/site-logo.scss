@@ -5,8 +5,12 @@
   padding: 0 15px;
 
   @include breakpoint($tab) {
-    margin: 2em 0 1.5em;
+    margin: 2.25em 0 1em;
     padding: 0;
+  }
+
+  @include breakpoint($lap) {
+    margin: 2.5em 0 1em;
   }
 
   > a {

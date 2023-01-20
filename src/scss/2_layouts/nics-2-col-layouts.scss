@@ -152,13 +152,15 @@
     }
 
     @include breakpoint($desk) {
-      grid-template-columns: 340fr 626fr;
-      grid-gap: 6rem;
+      grid-template-columns: 300fr 680fr;
+      grid-gap: 4rem;
+      padding-right: 90px;
     }
 
     @include breakpoint($desk-plus) {
-      grid-template-columns: 340fr 644fr;
-      grid-gap: 6rem;
+      grid-template-columns: 300fr 740fr;
+      grid-gap: 4rem;
+      padding-right: 30px;
     }
   }
 
