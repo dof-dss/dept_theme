@@ -22,7 +22,7 @@ use Drupal\node\NodeInterface;
  */
 function nicsdru_dept_theme_preprocess_html(array &$variables) {
   // Set body classes for specific departments.
-  /** @var Department $dept */
+  /** @var \Drupal\dept_core\Department $dept */
   $dept = \Drupal::service('department.manager')->getCurrentDepartment();
 
   if ($dept instanceof Department) {
@@ -247,9 +247,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "consultation":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
           break;
-        // Specific node types have a main only.
-        case "publication":
-        case "landing_page":
 
         // All the rest have a main with a limited width.
         default:
