@@ -22,10 +22,8 @@ use Drupal\node\NodeInterface;
  */
 function nicsdru_dept_theme_preprocess_html(array &$variables) {
   // Set body classes for specific departments.
-  /** @var \Drupal\dept_core\Department $dept */
   $dept = \Drupal::service('department.manager')->getCurrentDepartment();
-
-  if ($dept instanceof Department) {
+  if (is_object($dept) && method_exists($dept, 'id')) {
     $variables['attributes']['class'][] = match ($dept->id()) {
       'group_2' => 'dept-dof',
       'group_3' => 'dept-daera',
@@ -380,7 +378,7 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
   // Set department logo for system branding block.
   if ($variables['plugin_id'] === 'system_branding_block') {
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
-    if ($dept instanceof Department) {
+    if (is_object($dept) && method_exists($dept, 'id')) {
       $variables["department_logo"] = match ($dept->id()) {
         'group_2' => 'dof.svg',
         'group_3' => 'daera.svg',
@@ -413,7 +411,7 @@ function nicsdru_dept_theme_preprocess_page_title(&$variables) {
   // Set the home page title and visually hide it.
   if (\Drupal::service('path.matcher')->isFrontPage()) {
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
-    if ($dept instanceof Department) {
+    if (is_object($dept) && method_exists($dept, 'name')) {
       $variables['title'] = t('Welcome to ') . $dept->name();
     }
 
