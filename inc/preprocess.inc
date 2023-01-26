@@ -10,6 +10,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
+use Drupal\dept_core\Department;
 use Drupal\media\MediaInterface;
 use Drupal\nicsdru_dept_theme\Helpers;
 use Drupal\nicsdru_dept_theme\LayoutClasses;
@@ -20,59 +21,21 @@ use Drupal\node\NodeInterface;
  * Implements hook_preprocess_html().
  */
 function nicsdru_dept_theme_preprocess_html(array &$variables) {
-
   // Set body classes for specific departments.
-  $dept_manager = \Drupal::service('department.manager');
-  switch ($dept_manager->getCurrentDepartment()->id()) {
-    case 'group_2':
-      $variables['attributes']['class'][] = 'dept-dof';
-      break;
-
-    case 'group_3':
-      $variables['attributes']['class'][] = 'dept-daera';
-      break;
-
-    case 'group_4':
-      $variables['attributes']['class'][] = 'dept-dfc';
-      break;
-
-    case 'group_5':
-      $variables['attributes']['class'][] = 'dept-dfe';
-      break;
-
-    case 'group_6':
-      $variables['attributes']['class'][] = 'dept-de';
-      break;
-
-    case 'group_7':
-      $variables['attributes']['class'][] = 'dept-teo';
-      break;
-
-    case 'group_8':
-      $variables['attributes']['class'][] = 'dept-doh';
-      break;
-
-    case 'group_9':
-      $variables['attributes']['class'][] = 'dept-dfi';
-      break;
-
-    case 'group_10':
-      $variables['attributes']['class'][] = 'dept-doj';
-      break;
-
-    default:
-      $variables['attributes']['class'][] = 'dept-nigov';
-      break;
-  }
-
-  // Set body classes for specific routes.
-  $route = \Drupal::routeMatch()->getRouteName();
-
-  switch ($route) {
-    case "dept_gp.gp_search":
-      // Set a body class on the GP practice search page.
-      $variables['attributes']['class'][] = 'page-search';
-      break;
+  $dept = \Drupal::service('department.manager')->getCurrentDepartment();
+  if (is_object($dept) && method_exists($dept, 'id')) {
+    $variables['attributes']['class'][] = match ($dept->id()) {
+      'group_2' => 'dept-dof',
+      'group_3' => 'dept-daera',
+      'group_4' => 'dept-dfc',
+      'group_5' => 'dept-dfe',
+      'group_6' => 'dept-de',
+      'group_7' => 'dept-teo',
+      'group_8' => 'dept-doh',
+      'group_9' => 'dept-dfi',
+      'group_10' => 'dept-doj',
+      default => 'dept-nigov',
+    };
   }
 }
 
@@ -80,18 +43,15 @@ function nicsdru_dept_theme_preprocess_html(array &$variables) {
  * Implements hook_preprocess_page().
  */
 function nicsdru_dept_theme_preprocess_page(array &$variables) {
-
   // Process node pages.
   if (!empty($variables['node'])) {
-
     $node = $variables['node'];
 
     if (method_exists($node, 'bundle')) {
       switch ($node->bundle()) {
         // Specific node types have a main and aside.
-        case "article":
         case "application":
-        case "health_condition":
+        case "article":
         case "news":
         case "page":
           // If page is not in a book, it has a main and aside.
@@ -107,15 +67,13 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
           break;
 
         // Specific node types have a main only.
-        case "publication":
-        case "embargoed_publication":
-        case "landing_page":
         case "consultation":
+        case "landing_page":
+        case "publication":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
           break;
 
-        // All the rest have a main with a limited width (includes
-        // contact and gp_practice).
+        // All the rest have a main with a limited width.
         default:
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN_LIMITED);
           break;
@@ -129,9 +87,8 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
   // Will need bits and pieces from the request.
   $request = \Drupal::request();
 
-  if (isset($viewpage)) {
+  if (!empty($viewpage)) {
     switch ($viewpage) {
-
       case "publications_search":
         $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
         $variables['sidebar_first_attr']
@@ -146,14 +103,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
           ->addClass('ga-aside')
           ->setAttribute('role', 'search')
           ->setAttribute('aria-roledescription', t('search consultations'));
-        break;
-
-      case "news_search":
-        $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
-        $variables['sidebar_first_attr']
-          ->addClass('ga-aside')
-          ->setAttribute('role', 'search')
-          ->setAttribute('aria-roledescription', t('search news'));
         break;
 
       case "press_release_search":
@@ -187,17 +136,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
   $route = \Drupal::routeMatch()->getRouteName();
 
   switch ($route) {
-    // Contacts page uses multiple routes defined in dept_contacts module.
-    case 'dept_contacts.default':
-    case 'dept_contacts.letter':
-      $variables['main_content_attr']->addClass(LayoutClasses::MAIN_LIMITED);
-      if ($variables['content_wrapper_attr'] instanceof Attribute) {
-        $variables['content_wrapper_attr']
-          ->addClass(['ga-main', 'list-content'])
-          ->setAttribute('role', 'presentation');
-      }
-      break;
-
     // News landing page.
     case 'dept_news.news_listing':
       $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
@@ -251,23 +189,23 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
       $node_type = $node->getType();
 
       switch ($node_type) {
-        case 'news':
-          // Render Featured and Latest news block.
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('featurednews');
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__news_latest_news_block');
-
-        case 'article':
-        case 'news':
         case 'application':
+        case 'article':
         case 'landing_page':
+        case 'news':
         case 'page':
+          if ($node_type === 'news') {
+            // Render Featured and Latest news block.
+            $variables['page']['sidebar_second'][] = Helpers::blockContent('featurednews');
+            $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__news_latest_news_block');
+          }
 
           // Render the Related Content block.
           // We can't use Helpers::blockContent() here as we are loading a
           // plugin block instead of a content block.
           $block_manager = \Drupal::service('plugin.manager.block');
           $plugin_block = $block_manager->createInstance('dept_related_content_block', []);
-          $block_label = 'Related content';
+          $block_label = t('Related content');
 
           // Applying title as hook_block_view_alter() which applies the title
           // for canonical routes doesn't get called here.
@@ -290,17 +228,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
           ];
           break;
 
-        case 'health_condition':
-          // Render Health Conditions search block.
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('exposedformhealth_conditionssearch_sidebar_2');
-
-          // Render Health Conditions AtoZ block.
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('healthconditionsatoz_sidebar_2');
-
-          // Render Health Conditions Related block.
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('healthconditionsrelatedconditions');
-          break;
-
         default:
           break;
       }
@@ -309,43 +236,22 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
       switch ($node_type) {
         case "article":
         case "application":
-        case "health_condition":
         case "news":
         case "page":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN_SIDE);
           $variables['sidebar_second_attr']->addClass('ga-aside');
           break;
 
-        // Specific node types have a main only.
-        case "publication":
-        case "embargoed_publication":
-        case "landing_page":
         case "consultation":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
           break;
 
-        // All the rest have a main with a limited width (includes
-        // contact and gp_practice).
+        // All the rest have a main with a limited width.
         default:
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN_LIMITED);
           break;
       }
 
-      break;
-
-    // Health conditions A to Z letter page
-    // (see dept_health_conditions module).
-    case 'dept_health_conditions.letter':
-      $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
-      if ($variables['content_wrapper_attr'] instanceof Attribute) {
-        $variables['content_wrapper_attr']
-          ->addClass(['ga-main', 'search-content'])
-          ->setAttribute('role', 'presentation');
-      }
-      $variables['sidebar_first_attr']
-        ->addClass('ga-aside')
-        ->setAttribute('role', 'search')
-        ->setAttribute('aria-roledescription', t('search health conditions or choose a letter from the A to Z'));
       break;
 
     default:
@@ -363,6 +269,8 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
  * Implements hook_preprocess_node().
  */
 function nicsdru_dept_theme_preprocess_node(array &$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = &$variables['node'];
 
   // Array of bundles for which the social sharing block should be displayed.
   $social_bundles = [
@@ -371,65 +279,36 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     'contact',
     'consultation',
     'embargoed_publication',
-    'health_condition',
     'news',
     'application',
     'landing_page',
     'page',
     'publication',
-    'gp_practice',
   ];
 
-  $variables['display_social_links'] = in_array($variables['node']->bundle(), $social_bundles);
+  $variables['display_social_links'] = in_array($node->bundle(), $social_bundles);
 
   $variables['show_title'] = TRUE;
   $variables['show_topics'] = TRUE;
 
-  switch ($variables['node']->getType()) {
+  switch ($node->getType()) {
     case "article":
     case "application":
     case "contact":
-    case "gp_practice":
-    case "health_condition":
     case "news":
     case "publication":
-    case "embargoed_publication":
     case "subtopic":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('article-content');
+
+      if (!empty($variables['content']['field_attachment'])) {
+        $variables['content']['field_attachment']['#title'] = t('Documents');
+      }
+
       break;
 
     case "webform":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
-      break;
-
-    case "feature":
-      // Unset any fields which have a specific preprocess variable.
-      // See nicsdru_dept_theme_preprocess_field() for an example.
-      if (!empty($variables['elements']['#exclude_fields'])) {
-        foreach ($variables['elements']['#exclude_fields'] as $field_id) {
-          unset($variables['content'][$field_id]);
-        }
-      }
-
-      if (isset($variables['elements']['#photo_image_style'])) {
-        // Some features use a different image style, eg: top set
-        // of featured content on the homepage.
-        $variables['content']['field_photo'][0]['#view_mode'] = $variables['elements']['#photo_image_style'];
-      }
-      break;
-
-    case "featured_content_list":
-      // Only show the title on the canonical node route.
-      if (\Drupal::routeMatch()->getRouteName() !== 'entity.node.canonical') {
-        $variables['show_title'] = FALSE;
-      }
-
-      break;
-
-    case "publication":
-      // Change field label to 'Documents'.
-      $variables['content']['field_attachment']['#title'] = t('Documents');
       break;
 
     case "landing_page":
@@ -496,67 +375,29 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
-
   // Set department logo for system branding block.
   if ($variables['plugin_id'] === 'system_branding_block') {
-    $dept_manager = \Drupal::service('department.manager');
-    switch ($dept_manager->getCurrentDepartment()->id()) {
-      case 'group_2':
-        $variables["department_logo"] = 'dof.svg';
-        break;
-
-      case 'group_3':
-        $variables["department_logo"] = 'daera.svg';
-        break;
-
-      case 'group_4':
-        $variables["department_logo"] = 'dfc.svg';
-        break;
-
-      case 'group_5':
-        $variables["department_logo"] = 'dfe.svg';
-        break;
-
-      case 'group_6':
-        $variables["department_logo"] = 'de.svg';
-        break;
-
-      case 'group_7':
-        $variables["department_logo"] = 'teo.svg';
-        break;
-
-      case 'group_8':
-        $variables["department_logo"] = 'doh.svg';
-        break;
-
-      case 'group_9':
-        $variables["department_logo"] = 'dfi.svg';
-        break;
-
-      case 'group_10':
-        $variables["department_logo"] = 'doj.svg';
-        break;
-
-      default:
-        $variables["department_logo"] = 'niexec.svg';
-        break;
+    $dept = \Drupal::service('department.manager')->getCurrentDepartment();
+    if (is_object($dept) && method_exists($dept, 'id')) {
+      $variables["department_logo"] = match ($dept->id()) {
+        'group_2' => 'dof.svg',
+        'group_3' => 'daera.svg',
+        'group_4' => 'dfc.svg',
+        'group_5' => 'dfe.svg',
+        'group_6' => 'de.svg',
+        'group_7' => 'teo.svg',
+        'group_8' => 'doh.svg',
+        'group_9' => 'dfi.svg',
+        'group_10' => 'doj.svg',
+        default => 'niexec.svg',
+      };
     }
-  }
-
-  // Set the title for 'Most popular by term' block.
-  $route = \Drupal::routeMatch();
-  if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {
-    $variables['label'] = t('Popular in @term', ['@term' => strtolower($route->getParameter('taxonomy_term')->label())]);
   }
 
   // Add nav-menu class Related Content and Conditions blocks.
   if ($variables['plugin_id'] === 'dept_related_content_block') {
     $variables['content']['related_content']['#attributes']['class'] = ['nav-menu'];
   }
-  elseif ($variables['plugin_id'] === 'healthconditions_related_conditions') {
-    $variables['content']['related_conditions']['#attributes']['class'] = ['nav-menu'];
-  }
-
 }
 
 /**
@@ -569,7 +410,11 @@ function nicsdru_dept_theme_preprocess_page_title(&$variables) {
 
   // Set the home page title and visually hide it.
   if (\Drupal::service('path.matcher')->isFrontPage()) {
-    $variables['title'] = t('Welcome to N I Direct');
+    $dept = \Drupal::service('department.manager')->getCurrentDepartment();
+    if (is_object($dept) && method_exists($dept, 'name')) {
+      $variables['title'] = t('Welcome to ') . $dept->name();
+    }
+
     $variables['title_visible'] = FALSE;
   }
 
@@ -606,76 +451,6 @@ function nicsdru_dept_theme_preprocess_page_title(&$variables) {
       }
       break;
 
-    // Preprocess contacts search page title.
-    case "dept_contacts.default":
-      // Add a subtitle to indicate the current page selected from the pager.
-      $page = $request->get('page');
-      if (!empty($page)) {
-        $page = ++$page;
-        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
-      }
-      break;
-
-    // Preprocess contacts A to Z page title.
-    case "dept_contacts.letter":
-      // Add a subtitle to indicate letter chosen from the A to Z.
-      $letter = $route->getParameter('letter');
-      if (!empty($letter)) {
-        $variables['title'] = 'Contacts';
-        $variables['title_subtitle'] = t('under :letter', [':letter' => strtoupper($letter)]);
-      }
-      break;
-
-    // Preprocess health conditions search page title.
-    case "view.health_conditions.search_page":
-      // Add a subtitle to indicate showing results and the current page
-      // selected from the pager.
-      $page = $request->get('page');
-      $search_query = $request->get('query_health_az');
-      if (!empty($search_query) && empty($page)) {
-        $variables['title_subtitle'] = t('search results');
-      }
-      if (!empty($search_query) && !empty($page)) {
-        $page = ++$page;
-        $variables['title_subtitle'] = t('search results page :page', [':page' => $page]);
-      }
-      break;
-
-    // Preprocess health conditions A to Z listing title.
-    case "dept_health_conditions.letter":
-      // Add a subtitle to indicate letter chosen from the A to Z.
-      $letter = $route->getParameter('letter');
-      if (!empty($letter)) {
-        $variables['title_subtitle'] = t('conditions under :letter', [':letter' => strtoupper($letter)]);
-      }
-      break;
-
-    // Preprocess GP practice search page title.
-    case "dept_gp.gp_search":
-      // Add a subtitle to indicate the current page selected from the pager.
-      $page = $request->get('page');
-      if (!empty($page)) {
-        $page = ++$page;
-        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
-      }
-      break;
-
-    // Preprocess driving instructor search page title.
-    case "view.driving_instructors.driving_instructor_results":
-      // Add a subtitle to indicate showing results and the current page
-      // selected from the pager.
-      $page = $request->get('page');
-      $search_query = $request->get('search_api_fulltext');
-      if (!empty($search_query) && empty($page)) {
-        $variables['title'] = t('Approved driving or motorcycle instructors');
-        $variables['title_subtitle'] = t('search results');
-      }
-      elseif (!empty($search_query) && !empty($page)) {
-        $page = ++$page;
-        $variables['title'] = t('Approved driving or motorcycle instructors');
-        $variables['title_subtitle'] = t('search results page :page', [':page' => $page]);
-      }
-      break;
   }
 }
 
@@ -683,35 +458,16 @@ function nicsdru_dept_theme_preprocess_page_title(&$variables) {
  * Implements hook_preprocess_field().
  */
 function nicsdru_dept_theme_preprocess_field(&$variables) {
-  if ($variables['element']['#field_name'] === 'field_featured_content' && \Drupal::service('path.matcher')->isFrontPage()) {
-    // Only show 3 items on the homepage.
-    if (count($variables['items']) > 3) {
-      $variables['items'] = array_slice($variables['items'], 0, 3);
-    }
-
-    // If we're rendering this field on the front page, see if the parent object
-    // id matches the node id defined for the feature COVID-19 FCL node. If it
-    // does then we want to add a preprocess variable to let us hide the teaser
-    // field which saves having to define a whole new set of view modes + config
-    // for a really small trivial change to the way the feature nodes render.
-    $block = Block::load('featuredcontent_covid19');
-    $covid_fcl_nid = $block->get('settings')['featured_items'];
-    $parent = &$variables['element']['#object'];
-
-    if ($parent instanceof NodeInterface && $parent->id() == $covid_fcl_nid) {
-      foreach ($variables['items'] as $key => &$feature_node) {
-        $feature_node['content']['#exclude_fields'] = ['field_teaser'];
-        // Set custom field_photo image style.
-        $feature_node['content']['#photo_image_style'] = 'article_full';
-      }
-    }
+  // Add a class to the anchor tag on application link fields & append the icon.
+  if (empty($variables['element'])) {
+    return;
   }
 
-  // Add a class to the anchor tag on application link fields & append the icon.
-  if (isset($variables['element'])
-    && $variables['element']['#field_name'] === 'field_link'
-    && $variables['element']['#bundle'] === 'application'
-  ) {
+  $field_name = $variables['element']['#field_name'] ?? '';
+  $element_bundle = $variables['element']['#bundle'] ?? '';
+  $field_type = $variables['element']['#field_type'] ?? '';
+
+  if ($field_name === 'field_link' && $element_bundle === 'application') {
     foreach ($variables['items'] as $key => $item) {
       $icon = '<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>';
       $title = $item['content']['#title'];
@@ -723,10 +479,9 @@ function nicsdru_dept_theme_preprocess_field(&$variables) {
       $variables['items'][0]['content']['#url']->setOption('attributes', ['class' => $classes]);
     }
   }
+
   // Amend classes on the standard address field output.
-  if (isset($variables['element'])
-    && $variables['element']['#field_type'] == 'address'
-  ) {
+  if ($field_type === 'address') {
     $item_count = count($variables['items']);
     for ($i = 0; $i < $item_count; $i++) {
       $variables['items'][$i]["content"]["#prefix"] = '<p class="adr" translate="no">';
@@ -742,10 +497,7 @@ function nicsdru_dept_theme_preprocess_field(&$variables) {
     }
   }
 
-  if (isset($variables['element'])
-    && $variables['element']['#field_name'] === 'body'
-    && $variables['element']['#bundle'] === 'webform'
-  ) {
+  if ($field_name === 'body' && $element_bundle === 'webform') {
     $variables['body_summary'] = $variables['element']['#object']->body->summary;
   }
 }
@@ -768,13 +520,7 @@ function nicsdru_dept_theme_preprocess_views_view(&$variables) {
     $variables['attributes']['role'] = 'region';
     $variables['attributes']['aria-label'] = t('search results');
   }
-  if ($variables['view']->current_display === 'contacts_by_letter') {
-    // Do not show search box if we are in a letter search.
-    $route = \Drupal::routeMatch()->getRouteName();
-    if ($route === 'dept_contacts.letter') {
-      $variables['exposed'] = NULL;
-    }
-  }
+
   if ($variables['id'] === 'popular_content' && $variables['display_id'] === 'pop_by_term') {
     $variables['attributes']['class'][] = 'sub-menu';
     $variables['attributes']['class'][] = 'sub-menu--popular';
