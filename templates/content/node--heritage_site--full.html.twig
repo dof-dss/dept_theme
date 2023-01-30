@@ -70,6 +70,9 @@
  *   in different view modes.
  */
 #}
+{% if banner_image %}
+  {{ banner_image }}
+{% endif %}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
   {% if show_topics and topics_subtopics_list is not empty %}
     {{ topics_subtopics_list }}
