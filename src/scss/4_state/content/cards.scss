@@ -114,3 +114,40 @@
     }
   }
 }
+
+.card-deck--topics {
+  @include breakpoint($tab) {
+    grid-gap: 1.5em 3em;
+  }
+
+  .card {
+    box-shadow: 0 1px 0 0 $ash-grey;
+    padding: 0;
+    margin: 0;
+
+    &__title {
+      @include responsive-typo-map($large-text);
+      margin: 0;
+    }
+
+    &__content {
+      padding-bottom: 1.5em;
+
+      p,
+      .page-summary {
+        @include responsive-typo-map($normal-text);
+        margin: .5em 0 0;
+      }
+    }
+  }
+
+  :last-child .card {
+    box-shadow: none;
+  }
+
+  :nth-last-child(-n + 2) .card {
+    @include breakpoint($phab) {
+      box-shadow: none;
+    }
+  }
+}
