@@ -324,16 +324,14 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
   // used in the node template to give a controllable list of topics
   // and optional subtopics ordered by title.
   if ($variables['show_topics'] && $variables['node'] instanceof NodeInterface) {
-    $topics = \Drupal::service('dept_node.topics')
-      ->getTopics($variables['node'], TRUE, TRUE);
+    $topics = \Drupal::service('dept_topics.topics')->getTopics($variables['node']);
 
     if (!empty($topics)) {
       $variables['topics_subtopics_list'] = [
         '#theme' => 'topics_subtopics_list',
         '#title' => t('Topics'),
         '#items' => $topics,
-        '#render_links' => TRUE,
-        '#include_subtopics' => TRUE,
+        '#links' => TRUE,
       ];
     }
   }
