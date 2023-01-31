@@ -15,14 +15,11 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
-{% if title %}
-  <h3>{{ title }}</h3>
-{% endif %}
 {%
   set classes = [
   'card-deck',
   'card-deck--x2',
-  'card-deck--border-top',
+  'card-deck--plain',
   'card-deck--topics',
 ]
 %}
@@ -31,7 +28,6 @@
   {%
     set row_classes = [
       default_row_class ? 'views-row',
-      'card',
     ]
   %}
   <article{{ row.attributes.addClass(row_classes) }}>

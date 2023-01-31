@@ -1,0 +1,15 @@
+/*
+ * @file
+ * Provides very specific styling for home page.
+ */
+@import '../init';
+
+.section-front {
+  padding: 0 0 1.5em;
+  margin: 0 0 1.5em;
+  box-shadow: 0 5px 0 0 var(--brand-primary-color);
+
+  h2 {
+    @include responsive-typo-map($section-home-h2);
+  }
+}
