@@ -453,6 +453,23 @@ a.card {
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
         }
+
+        ul {
+          margin: .5em 0 1em;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          a {
+            text-decoration: none;
+          }
+        }
+
+        a.more {
+          display: block;
+          text-transform: lowercase;
+        }
       }
     }
 
