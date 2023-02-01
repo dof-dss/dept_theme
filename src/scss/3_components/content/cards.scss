@@ -447,6 +447,11 @@ a.card {
         .page-summary {
           @include responsive-typo-map($normal-text);
           margin: .5em 0 0;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
         }
       }
     }
