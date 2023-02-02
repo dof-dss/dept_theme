@@ -24,18 +24,7 @@ function nicsdru_dept_theme_preprocess_html(array &$variables) {
   // Set body classes for specific departments.
   $dept = \Drupal::service('department.manager')->getCurrentDepartment();
   if (is_object($dept) && method_exists($dept, 'id')) {
-    $variables['attributes']['class'][] = match ($dept->id()) {
-      'group_2' => 'dept-dof',
-      'group_3' => 'dept-daera',
-      'group_4' => 'dept-dfc',
-      'group_5' => 'dept-dfe',
-      'group_6' => 'dept-de',
-      'group_7' => 'dept-teo',
-      'group_8' => 'dept-doh',
-      'group_9' => 'dept-dfi',
-      'group_10' => 'dept-doj',
-      default => 'dept-nigov',
-    };
+    $variables['attributes']['class'][] = 'dept-' . $dept->id();
   }
 }
 
