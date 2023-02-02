@@ -441,12 +441,18 @@ a.card {
       }
 
       &__content {
-        padding-bottom: 1.5em;
+        padding: .5em 1em 1.5em 0;
+
+        p,
+        .page-summary,
+        li,
+        a {
+          @include responsive-typo-map($card-content);
+        }
 
         p,
         .page-summary {
-          @include responsive-typo-map($normal-text);
-          margin: .5em 0 0;
+          margin: 0;
           display: -webkit-box;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -463,12 +469,33 @@ a.card {
 
           a {
             text-decoration: none;
+
+            &:hover {
+              text-decoration: revert;
+            }
           }
         }
 
         a.more {
-          display: block;
-          text-transform: lowercase;
+          @include responsive-typo-map($small-text);
+          display: inline-block;
+          position: relative;
+          padding-right: 2.7rem;
+          color: $link;
+
+          svg.ico.ico-arrow-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            width: 2rem;
+            height: 2rem;
+            display: inline-block;
+            background-color: lighten($link, 15%);
+            fill: #fff;
+            border: .5rem solid transparent;
+            border-radius: 1rem;
+          }
         }
       }
     }
