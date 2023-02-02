@@ -223,6 +223,12 @@ $card-title: (
   null: (24px, 1.364),
 );
 
+$card-content: (
+  null: (16px, 1.5),
+  xl: 18px,
+  xxxl: (18px, 3rem),
+);
+
 // Page summary.
 $page-summary: (
   null: (18px, 2.8rem, 0 0 2.4rem),
