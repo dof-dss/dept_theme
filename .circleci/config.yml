@@ -80,7 +80,7 @@ jobs:
           name: Download dependent contrib modules.
           command: |
             cd $PROJECT_ROOT
-            composer require mglaman/drupal-check --no-interaction
+            composer require mglaman/drupal-check:1.1.27 --no-interaction
       - run:
           name: Move custom code into position
           command: mv ~/nicsdru_dept_theme $PROJECT_ROOT/web/themes/custom/
