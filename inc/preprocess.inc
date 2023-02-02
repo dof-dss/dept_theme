@@ -379,19 +379,8 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
   if ($variables['plugin_id'] === 'system_branding_block') {
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
     if (is_object($dept) && method_exists($dept, 'id')) {
-      $variables["department_logo"] = match ($dept->id()) {
-        'group_2' => 'dof.svg',
-        'group_3' => 'daera.svg',
-        'group_4' => 'dfc.svg',
-        'group_5' => 'dfe.svg',
-        'group_6' => 'de.svg',
-        'group_7' => 'teo.svg',
-        'group_8' => 'doh.svg',
-        'group_9' => 'dfi.svg',
-        'group_10' => 'doj.svg',
-        default => 'niexec.svg',
-      };
-    }
+      $variables["department_logo"] = 'logo-' . $dept->id();
+      }
   }
 
   // Add nav-menu class Related Content and Conditions blocks.
