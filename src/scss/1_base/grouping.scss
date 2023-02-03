@@ -118,7 +118,7 @@ ul {
 }
 
 li {
-  @include responsive-typo-map($body-text);
+  @include responsive-typo-map($normal-text-no-margins);
   color: color(text);
   margin-bottom: .5em;
 

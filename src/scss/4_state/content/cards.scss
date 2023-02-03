@@ -53,7 +53,7 @@
 
   .card {
 
-    @include breakpoint($mob $tab) {
+    @include breakpoint($phone $tab) {
       padding: .6rem;
     }
 
@@ -62,7 +62,7 @@
     }
 
     &__body {
-      @include breakpoint($mob $tab) {
+      @include breakpoint($phone $tab) {
         padding: 0 0 0 1em;
       }
       @include breakpoint($tab) {
@@ -78,7 +78,7 @@
     max-width: $max-content-width;
   }
 
-  @include breakpoint($mob) {
+  @include breakpoint($phone) {
     .card__body {
       padding: 0 0 0 1em;
     }

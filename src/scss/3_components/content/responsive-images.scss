@@ -15,7 +15,7 @@
   height: auto;
 
   // Float media when display gets width enough ...
-  @include breakpoint($mob) {
+  @include breakpoint($phone) {
     clear: right;
     float: right;
     width: 48.3871%;
@@ -101,7 +101,7 @@
         margin: 0;
       }
 
-      @include breakpoint($mob) {
+      @include breakpoint($phone) {
         @include media-image-float;
         animation: thwoop-shrink .3s;
         animation-fill-mode: backwards;

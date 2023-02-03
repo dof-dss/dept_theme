@@ -31,7 +31,7 @@
 
       > p,
       > li {
-        @include responsive-typo-map($body-text);
+        @include responsive-typo-map($normal-text-no-margins);
       }
 
       .card__title {
@@ -163,7 +163,7 @@
 
     @include breakpoint($phab) {
       .tel .title {
-        @include responsive-typo-map($body-text);
+        @include responsive-typo-map($normal-text-no-margins);
       }
 
       .tel .value {
@@ -201,7 +201,7 @@
       }
     }
 
-    @include breakpoint($desk) {
+    @include breakpoint($desk-plus) {
       .tel .title {
         @include adjust-font-size-to(18px, 5);
       }

@@ -37,41 +37,17 @@
     'view-id-' ~ id,
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
-    'search-results',
   ]
 %}
 <div {{attributes.addClass(classes)}}>
-  {% if title %}
-    {{ title }}
-  {% endif %}
-
-  <div role="search" aria-roledescription="{{ 'search contacts'|t }}">
-    {% if exposed %}
-      {{ exposed }}
-    {% endif %}
-
-    {% if links %}
-      <div class="view-links" aria-label="{{ 'search options'|t }}">
-        {% for link in links %}
-          {{ link }}
-          {% if not loop.last %}
-            |
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endif %}
-
-    {% if header %}
-      {{ header }}
-    {% endif %}
-  </div>
+  <h2>{{ "More contacts"|t }}</h2>
 
   {% if rows %}
-    <div class="view-content" aria-roledescription="{{ 'contacts search results'|t }}" role="region">
+    <div class="view-content" role="region">
       {{ rows }}
     </div>
   {% elseif empty %}
-    <div class="view-empty" aria-roledescription="{{ 'contacts search results'|t }}" role="region">
+    <div class="view-empty" role="region">
       {{ empty }}
     </div>
   {% endif %}

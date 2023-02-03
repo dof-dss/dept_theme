@@ -46,7 +46,7 @@
       @include breakpoint($tab) {
         display: flex;
         width: auto;
-        left: -.2rem; // Center align Home with logo's hexagon.
+        left: -.4rem; // Center align Home with logo's hexagon.
       }
 
       @include breakpoint($lap) {
@@ -233,8 +233,6 @@
       }
     }
 
-
-
     // Hamburger X close symbol does partial rotation on hover.
     &[aria-expanded='true']:hover > span {
       transform: rotate(225deg);
@@ -268,6 +266,12 @@
       overflow: visible;
       visibility: visible;
       opacity: 1;
+
+      @include breakpoint($phone) {
+        width:  calc(100% - 96px);
+        max-width: 504px;
+        left: 48px;
+      }
     }
   }
 }

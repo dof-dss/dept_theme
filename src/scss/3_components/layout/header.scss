@@ -21,22 +21,41 @@
 // Style guide: layouts.header
 
 .header {
+  position: relative;
   display: grid;
   grid-template-columns: 6.5rem auto;
   grid-template-rows: auto;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @include breakpoint($phone) {
+    padding: 0 48px;
+  }
 
   @include breakpoint($tab) {
     display: grid;
-    grid-template-columns: 67fr 33fr;
+    grid-template-columns: 592fr 312fr;
+    grid-column-gap: 3.2rem;
     grid-template-rows: auto;
-    margin: 0 auto;
-    padding: 0 20px 1em;
+    padding: 0 22px 1em;
     max-width: 980px;
     box-shadow: 0 15px 0 -9px var(--brand-primary-color);
   }
 
+  @include breakpoint($lap) {
+    grid-template-columns: 596fr 304fr;
+    grid-column-gap: 3.6rem;
+  }
+
   @include breakpoint($desk) {
-    max-width: 1140px;
+    grid-template-columns: 620fr 340fr;
+    grid-column-gap: 12rem;
+    max-width: $max-grid-width;
+  }
+
+  @include breakpoint($desk-plus) {
+    grid-template-columns: 640fr 340fr;
+    grid-column-gap: 10rem;
   }
 
   &__logo {

@@ -71,6 +71,9 @@
  */
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
+  {% if banner_image %}
+    {{ banner_image }}
+  {% endif %}
   {% if show_title %}
     {{ drupal_block('page_title_block', wrapper=false) }}
   {% endif %}

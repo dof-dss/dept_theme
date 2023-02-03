@@ -31,19 +31,21 @@ $image-url-path-to-source: '../' !default;
 $image-url-subdirectory: 'images' !default;
 
 /* Breakpoints ======================================================== */
-$mob: 480px;
+$phone: 480px;
 $phab: 576px;
 $tab: 768px;
 $lap: 992px;
 $desk: 1200px;
+$desk-plus: 1679px;
 
 $grid-breakpoints: (
   xs: 0,
-  sm: $mob,
+  sm: $phone,
   md: $phab,
   lg: $tab,
   xl: $lap,
   xxl: $desk,
+  xxxl: $desk-plus,
 ) !default;
 
 /* Layout max widths for larger breakpoints =========================== */

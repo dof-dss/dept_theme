@@ -33,7 +33,7 @@
   &--side-n-main {
 
     @include breakpoint($tab) {
-      grid-gap: $tab-grid-gap;
+      grid-gap: 2.4rem;
 
       .ga-main {
         /* no grid support? */
@@ -50,7 +50,7 @@
 
     @include breakpoint($lap) {
 
-      grid-gap: $lap-grid-gap;
+      grid-gap: 27px;
 
       .ga-main {
         /* no grid support? */
@@ -64,7 +64,7 @@
     }
 
     @include breakpoint($desk) {
-      grid-gap: $desk-grid-gap;
+      grid-gap: 30px;
     }
   }
 
@@ -85,15 +85,31 @@
     }
 
     @include breakpoint($tab) {
-      grid-template-columns: 62fr 38fr;
+      // columns, grid-gap and container padding = 980
+      grid-template-columns: 590fr 310fr;
+      grid-gap: 3.2rem;
       grid-template-rows: auto;
       grid-template-areas: 'main side';
     }
 
     @include breakpoint($lap) {
-      grid-template-columns: $article-grid-max-width $aside-grid-max-width;
+      // columns, grid-gap and container padding = 980
+      grid-template-columns: 590fr 300fr;
+      grid-gap: 3.6rem;
       grid-template-rows: auto;
       grid-template-areas: 'main side';
+    }
+
+    @include breakpoint($desk) {
+      // columns, grid-gap and container padding = 1140
+      grid-template-columns: 620fr 340fr;
+      grid-gap: 12rem;
+    }
+
+    @include breakpoint($desk-plus) {
+      // columns, grid-gap and container padding = 1140
+      grid-template-columns: 640fr 340fr;
+      grid-gap: 10rem;
     }
   }
 
@@ -113,7 +129,8 @@
     }
 
     @include breakpoint($tab) {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 310fr 590fr;
+      grid-gap: 3.2rem;
       grid-template-rows: auto;
       grid-template-areas: 'side main';
 
@@ -129,8 +146,21 @@
     }
 
     @include breakpoint($lap) {
-      grid-template-columns: $aside-grid-max-width $article-grid-max-width;
+      grid-template-columns: 300fr 590fr;
+      grid-gap: 3.6rem;
       grid-template-rows: auto;
+    }
+
+    @include breakpoint($desk) {
+      grid-template-columns: 300fr 680fr;
+      grid-gap: 4rem;
+      padding-right: 90px;
+    }
+
+    @include breakpoint($desk-plus) {
+      grid-template-columns: 300fr 740fr;
+      grid-gap: 4rem;
+      padding-right: 30px;
     }
   }
 

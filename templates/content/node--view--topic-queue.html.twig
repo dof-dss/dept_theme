@@ -70,22 +70,15 @@
  *   in different view modes.
  */
 #}
-<article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
-  {% if banner_image %}
-    {{ banner_image }}
+<a{{ attributes.addClass("card") }} href="{{ url }}">
+  {{ title_prefix }}
+  {% if not page %}
+    <h3{{ title_attributes.addClass("card__title") }}>
+      {{ label }}
+    </h3>
   {% endif %}
-  {% if show_title %}
-  {{ drupal_block('page_title_block', wrapper=false) }}
-  {% endif %}
-  {% if  content_attributes is not empty %}
-  <div{{ content_attributes }}>
-  {% endif %}
-  {{- content -}}
-  {{ drupal_block('views_block:contact_children-contact_children', wrapper=false) }}
-  {% if  content_attributes is not empty %}
+  {{ title_suffix }}
+  <div class="card__content">
+    {{ content }}
   </div>
-  {% endif %}
-  {% if display_social_links %}
-    {{ drupal_entity('block', 'originssocialsharing', check_access=false) }}
-  {% endif %}
-</article>
+</a>
