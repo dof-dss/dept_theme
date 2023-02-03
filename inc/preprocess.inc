@@ -24,18 +24,7 @@ function nicsdru_dept_theme_preprocess_html(array &$variables) {
   // Set body classes for specific departments.
   $dept = \Drupal::service('department.manager')->getCurrentDepartment();
   if (is_object($dept) && method_exists($dept, 'id')) {
-    $variables['attributes']['class'][] = match ($dept->id()) {
-      'group_2' => 'dept-dof',
-      'group_3' => 'dept-daera',
-      'group_4' => 'dept-dfc',
-      'group_5' => 'dept-dfe',
-      'group_6' => 'dept-de',
-      'group_7' => 'dept-teo',
-      'group_8' => 'dept-doh',
-      'group_9' => 'dept-dfi',
-      'group_10' => 'dept-doj',
-      default => 'dept-nigov',
-    };
+    $variables['attributes']['class'][] = 'dept-' . $dept->id();
   }
 }
 
@@ -377,18 +366,7 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
   if ($variables['plugin_id'] === 'system_branding_block') {
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
     if (is_object($dept) && method_exists($dept, 'id')) {
-      $variables["department_logo"] = match ($dept->id()) {
-        'group_2' => 'dof.svg',
-        'group_3' => 'daera.svg',
-        'group_4' => 'dfc.svg',
-        'group_5' => 'dfe.svg',
-        'group_6' => 'de.svg',
-        'group_7' => 'teo.svg',
-        'group_8' => 'doh.svg',
-        'group_9' => 'dfi.svg',
-        'group_10' => 'doj.svg',
-        default => 'niexec.svg',
-      };
+      $variables["department_logo"] = 'logo-' . $dept->id();
     }
   }
 
