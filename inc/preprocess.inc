@@ -364,9 +364,15 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
   // Set department logo for system branding block.
   if ($variables['plugin_id'] === 'system_branding_block') {
+    /** @var \Drupal\dept_core\Entity\Department $dept */
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
+    $variables['site_name'] = $dept->name();
+
     if (is_object($dept) && method_exists($dept, 'id')) {
       $variables["department_logo"] = 'logo-' . $dept->id() . '.svg';
+    }
+    else {
+      $variables["department_logo"] = 'logo-admin.png';
     }
   }
 
