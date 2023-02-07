@@ -367,6 +367,8 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
     if (is_object($dept) && method_exists($dept, 'id')) {
       $variables["department_logo"] = 'logo-' . $dept->id() . '.svg';
+    } else {
+      $variables["department_logo"] = 'logo-admin.png';
     }
   }
 
