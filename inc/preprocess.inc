@@ -366,13 +366,14 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
   if ($variables['plugin_id'] === 'system_branding_block') {
     /** @var \Drupal\dept_core\Entity\Department $dept */
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
-    $variables['site_name'] = $dept->name();
 
-    if (is_object($dept) && method_exists($dept, 'id')) {
+    if (is_object($dept)) {
       $variables["department_logo"] = 'logo-' . $dept->id() . '.svg';
+      $variables['site_name'] = $dept->name();
     }
     else {
       $variables["department_logo"] = 'logo-admin.png';
+      $variables['site_name'] = 'Dept - admin';
     }
   }
 
