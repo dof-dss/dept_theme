@@ -50,6 +50,11 @@ body {
   --default-brand-secondary-color: #{$corp-secondary-dark};
 }
 
+.dept-admin {
+  --brand-primary-color: #{$corp-admin}; // 4:49:1
+  --brand-primary-color-high-contrast-white: #{$corp-admin-ui-on-white}; // 4.56:1
+}
+
 .dept-nigov {
   --brand-primary-color: #{$corp-nigov}; // 4:49:1
   --brand-primary-color-high-contrast-white: #{$corp-nigov-ui-on-white}; // 4.56:1
