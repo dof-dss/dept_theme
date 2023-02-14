@@ -372,7 +372,7 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
       $variables['site_name'] = $dept->name();
     }
     else {
-      $variables["department_logo"] = 'logo-admin.png';
+      $variables["department_logo"] = 'logo-admin.svg';
       $variables['site_name'] = t('DEPT ADMIN');
     }
   }
