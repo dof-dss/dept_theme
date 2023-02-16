@@ -25,7 +25,8 @@ function nicsdru_dept_theme_preprocess_html(array &$variables) {
   $dept = \Drupal::service('department.manager')->getCurrentDepartment();
   if (is_object($dept) && method_exists($dept, 'id')) {
     $variables['attributes']['class'][] = 'dept-' . $dept->id();
-  } else {
+  }
+  else {
     $variables['attributes']['class'][] = 'dept-admin';
   }
 }
