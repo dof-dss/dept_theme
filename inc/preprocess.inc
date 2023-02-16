@@ -25,7 +25,8 @@ function nicsdru_dept_theme_preprocess_html(array &$variables) {
   $dept = \Drupal::service('department.manager')->getCurrentDepartment();
   if (is_object($dept) && method_exists($dept, 'id')) {
     $variables['attributes']['class'][] = 'dept-' . $dept->id();
-  } else {
+  }
+  else {
     $variables['attributes']['class'][] = 'dept-admin';
   }
 }
@@ -366,7 +367,6 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
   // Set department logo for system branding block.
   if ($variables['plugin_id'] === 'system_branding_block') {
-    /** @var \Drupal\dept_core\Entity\Department $dept */
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
 
     if (is_object($dept) && method_exists($dept, 'id')) {
