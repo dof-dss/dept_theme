@@ -1,6 +1,6 @@
 /*
  * @file
- * Provides the layout styles for nidirect front page and theme taxonomy term pages.
+ * Provides the layout styles for front page.
  */
 
 @import '../init';
@@ -13,3 +13,61 @@
 //
 // Style guide: layouts.front
 
+.layout--front {
+
+  @include breakpoint($tab) {
+    grid-template-columns: 592fr 312fr;
+    grid-template-rows: auto;
+    grid-column-gap: 3.2rem;
+    grid-template-areas:
+        'news       links'
+        'news-more  social'
+        'topics     topics'
+        'agencies   agencies'
+        'docs       docs'
+        'info-acc   info-acc'
+        'about      corporate'
+        'contact    contact';
+  }
+
+  @include breakpoint($lap) {
+    grid-template-columns: 596fr 304fr;
+    grid-column-gap: 3.6rem;
+  }
+
+  @include breakpoint($desk) {
+    grid-template-columns: 620fr 340fr;
+    grid-column-gap: 12rem;
+  }
+
+  @include breakpoint($desk-plus) {
+    grid-template-columns: 640fr 340fr;
+    grid-column-gap: 10rem;
+  }
+
+}
+
+.section-front--quick-links {
+  @include breakpoint($tab) {
+    grid-area: links;
+    padding: 0 .5em;
+  }
+}
+
+.section-front--topics {
+  @include breakpoint($tab) {
+    grid-area: topics;
+  }
+}
+
+.section-front--agency-links {
+  @include breakpoint($tab) {
+    grid-area: agencies;
+  }
+}
+
+.section-front--contact-us {
+  @include breakpoint($tab) {
+    grid-area: contact;
+  }
+}
