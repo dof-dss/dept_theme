@@ -1,6 +1,6 @@
 {
   "name": "nicsdru_dept_theme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A package of utilities used to theme our site",
   "main": "index.js",
   "license": "MIT",
