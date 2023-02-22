@@ -54,6 +54,12 @@
   }
 }
 
+.section-front--social-links {
+  @include breakpoint($tab) {
+    grid-area: social;
+  }
+}
+
 .section-front--topics {
   @include breakpoint($tab) {
     grid-area: topics;

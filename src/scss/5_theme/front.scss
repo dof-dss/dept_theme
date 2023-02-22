@@ -21,4 +21,50 @@
     padding: 0 .5em 1.5em;
     box-shadow: none;
   }
+
+  &--social-links {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    box-shadow: none;
+
+    h2 {
+      @include responsive-typo-map($sub-section-home-h2);
+      margin: 0 7px 0 0;
+      font-weight: bold;
+      color: #4d4d4d;
+    }
+
+    ul,
+    li {
+      display: flex;
+      flex-flow: row nowrap;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      display: inline-block;
+      width: 2.5em;
+      height: 2.5em;
+      min-width: 44px;
+      min-height: 44px;
+      margin: 0 0 0 .25em;
+      background: #4d4d4d center center / 2em auto no-repeat;
+
+      &[href*='//twitter.com'] {
+        background-image: url('/themes/custom/nicsdru_dept_theme/images/twitter.svg');
+        background-size: 1.5em auto;
+      }
+
+      &[href*='//www.facebook.com'] {
+        background-image: url('/themes/custom/nicsdru_dept_theme/images/facebook.svg');
+      }
+
+      &[href*='//www.flickr.com'] {
+        background-image: url('/themes/custom/nicsdru_dept_theme/images/flickr.svg');
+      }
+    }
+  }
 }
