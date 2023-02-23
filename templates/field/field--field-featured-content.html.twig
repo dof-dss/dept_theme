@@ -10,9 +10,12 @@
  * @ingroup themeable
  */
 #}
-{% set classes = ['card-deck', 'card-deck--list-to-x3'] %}
+{% set classes = ['card-deck', 'card-deck--list'] %}
 <div{{ attributes.addClass(classes) }}>
 {% for item in items %}
   {{ item.content }}
 {% endfor %}
+  <footer>
+    <a href="/news">More news...</a>
+  </footer>
 </div>
