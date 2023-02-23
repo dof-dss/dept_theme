@@ -47,7 +47,8 @@
 
 }
 
-.section-front--quick-links {
+.section-front--quick-links,
+.section-front--latest-news {
   @include breakpoint($tab) {
     grid-area: links;
     padding: 0 .5em;
