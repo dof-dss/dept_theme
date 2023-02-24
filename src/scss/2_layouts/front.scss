@@ -14,67 +14,55 @@
 // Style guide: layouts.front
 
 .layout--front {
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 1rem;
+
+  // By default, home page sections span full width
+  // of the grid.
+  > * {
+    grid-column: 1 / span 12;
+  }
 
   @include breakpoint($tab) {
-    grid-template-columns: 592fr 312fr;
-    grid-template-rows: auto;
-    grid-column-gap: 3.2rem;
-    grid-template-areas:
-        'news       links'
-        'news-more  social'
-        'topics     topics'
-        'agencies   agencies'
-        'docs       docs'
-        'info-acc   info-acc'
-        'about      corporate'
-        'contact    contact';
-  }
 
-  @include breakpoint($lap) {
-    grid-template-columns: 596fr 304fr;
-    grid-column-gap: 3.6rem;
-  }
+    .section-front {
 
-  @include breakpoint($desk) {
-    grid-template-columns: 620fr 340fr;
-    grid-column-gap: 12rem;
-  }
+      &--featured {
+        grid-column: 1 / span 7;
+      }
 
-  @include breakpoint($desk-plus) {
-    grid-template-columns: 640fr 340fr;
-    grid-column-gap: 10rem;
-  }
+      &--quick-links,
+      &--latest-news {
+        grid-column: 9 / span 4;
+      }
 
-}
+      &--social-links {
+        grid-column: 9 / span 4;
+      }
 
-.section-front--quick-links,
-.section-front--latest-news {
-  @include breakpoint($tab) {
-    grid-area: links;
-    padding: 0 .5em;
-  }
-}
+      &--topics {
+        grid-column: 1 / span 12;
+      }
 
-.section-front--social-links {
-  @include breakpoint($tab) {
-    grid-area: social;
-  }
-}
+      &--agency-links {
+        grid-column: 1 / span 12;
+      }
 
-.section-front--topics {
-  @include breakpoint($tab) {
-    grid-area: topics;
-  }
-}
+      &--access-to-information {
+        grid-column: 1 / span 12;
+      }
 
-.section-front--agency-links {
-  @include breakpoint($tab) {
-    grid-area: agencies;
-  }
-}
+      &--about-us {
+        grid-column: 1 / span 5;
+      }
 
-.section-front--contact-us {
-  @include breakpoint($tab) {
-    grid-area: contact;
+      &--corporate-links {
+        grid-column: 8 / span 5;
+      }
+
+      &--contact-us {
+        grid-column: 1 / span 12;
+      }
+    }
   }
 }
