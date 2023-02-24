@@ -67,10 +67,11 @@
 
   &--social-links {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     box-shadow: none;
+    padding: 0 .5em 1.5em;
 
     h2 {
       @include responsive-typo-map($sub-section-home-h2);
@@ -90,6 +91,14 @@
 
     li {
       margin: .25em;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
 
       @include breakpoint($tab $desk-plus) {
         margin: .1667em;
