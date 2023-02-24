@@ -27,7 +27,7 @@
  * @ingroup themeable
  */
 #}
-{% set classes = ['section--featured', 'section-front'] %}
+{% set classes = ['section-front', 'section-front--featured', ] %}
 {% set attributes = attributes.addClass(classes) %}
 {% set attributes = attributes.removeAttribute('id') %}
 <section{{ attributes }}>
