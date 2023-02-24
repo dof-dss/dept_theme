@@ -9,12 +9,16 @@
   margin: 0;
   box-shadow: 0 -5px 0 0 var(--brand-primary-color);
 
+  &:first-child {
+    box-shadow: none;
+  }
+
   h2 {
     @include responsive-typo-map($section-home-h2);
   }
 
-  &:first-child {
-    box-shadow: none;
+  p {
+    max-width: $max-content-width;
   }
 
   &--quick-links,
