@@ -9,12 +9,16 @@
   margin: 0;
   box-shadow: 0 -5px 0 0 var(--brand-primary-color);
 
+  &:first-child {
+    box-shadow: none;
+  }
+
   h2 {
     @include responsive-typo-map($section-home-h2);
   }
 
-  &:first-child {
-    box-shadow: none;
+  p {
+    max-width: $max-content-width;
   }
 
   &--quick-links,
@@ -224,5 +228,18 @@
       @include responsive-typo-map($h3-text);
       margin: 0;
     }
+  }
+
+  &--access-to-information {
+    box-shadow: 0 5px 0 0 var(--brand-primary-color), 0 -5px 0 0 var(--brand-primary-color);
+  }
+
+  &--about-us,
+  &--corporate-links {
+    box-shadow: none;
+  }
+
+  &--contact-us {
+    box-shadow: 0 -1px 0 0 $grey-medium;
   }
 }
