@@ -70,11 +70,13 @@
  *   in different view modes.
  */
 #}
-<a href="{{ url }}">
+<a class="card card--plain" href="{{ url }}">
   {{ title_prefix }}
-  {{ label }}
+  <h4 class="card__title">{{ label }}</h4>
   {{ title_suffix }}
-  <span class="meta">
-    {{ 'Published'|t }} {{ content.field_published_date | field_value }}
-  </span>
+  <div class="card__content">
+    <span class="meta">
+      {{ 'Published'|t }} {{ content.field_published_date | field_value }}
+    </span>
+  </div>
 </a>

@@ -70,17 +70,19 @@
  *   in different view modes.
  */
 #}
-<a href="{{ url }}">
+<a class="card card--plain" href="{{ url }}">
   {{ title_prefix }}
-  {{ label }}
+  <h4 class="card__title">{{ label }}</h4>
   {{ title_suffix }}
-  <span class="meta">
-    {% set consultation_date_end = content.field_consultation_dates.0.end_date['#text'] %}
-    {% set now = date() %}
-    {% if date(consultation_date_end) >= now %}
-      closing date: {{ consultation_date_end }}
-    {% elseif date(consultation_date_end) < now %}
-      consultation closed {{ consultation_date_end }}
-    {% endif %}
-  </span>
+  <div class="card__content">
+    <span class="meta">
+      {% set consultation_date_end = content.field_consultation_dates.0.end_date['#text'] %}
+      {% set now = date() %}
+      {% if date(consultation_date_end) >= now %}
+        Closing date: {{ consultation_date_end }}
+      {% elseif date(consultation_date_end) < now %}
+        Consultation closed {{ consultation_date_end }}
+      {% endif %}
+    </span>
+  </div>
 </a>
