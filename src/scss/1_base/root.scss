@@ -50,6 +50,11 @@ body {
   --default-brand-secondary-color: #{$corp-secondary-dark};
 }
 
+.dept-admin {
+  --brand-primary-color: #{$corp-admin}; // 4:49:1
+  --brand-primary-color-high-contrast-white: #{$corp-admin-ui-on-white}; // 4.56:1
+}
+
 .dept-nigov {
   --brand-primary-color: #{$corp-nigov}; // 4:49:1
   --brand-primary-color-high-contrast-white: #{$corp-nigov-ui-on-white}; // 4.56:1
@@ -75,7 +80,7 @@ body {
   --brand-primary-color-high-contrast-white: #{$corp-dfe-ui-on-white}; // 4.88:1
 }
 
-dept-education  {
+.dept-education  {
   --brand-primary-color: #{$corp-de};      // 4.89:1
   --brand-primary-color-high-contrast-white: #{$corp-de-ui-on-white}; // 4.89:1
 }
