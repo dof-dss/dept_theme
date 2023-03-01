@@ -6,7 +6,7 @@
 
 .section-front {
   padding: 0 0 1.5em;
-  margin: 0;
+  margin: 0 0 1em;
   box-shadow: 0 -5px 0 0 var(--brand-primary-color);
 
   &:first-child {
@@ -278,8 +278,46 @@
       margin: 0 0 1em;
     }
 
-    .card__title {
+    .card__title:not(h3) {
       @include responsive-typo-map($normal-text-no-margins);
+    }
+
+    .niexec-budget,
+    .niexec-pfg {
+      .card {
+        box-shadow: none;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-column-gap: 1em;
+
+        &__title {
+          grid-column: 1 / span 2;
+        }
+
+        &__image {
+          grid-column: 1;
+        }
+
+        &__body {
+          grid-column: 2;
+
+          > *:first-child {
+            margin-top: 0;
+          }
+
+          > * {
+            @include responsive-typo-map($smallish-text);
+          }
+        }
+      }
+    }
+
+    @at-root {
+      .dept-nigov .latest-publications,
+      .dept-nigov .latest-consultations {
+        padding-top: 1.5em;
+        box-shadow: 0 -1px 0 0 $grey-medium;
+      }
     }
   }
 
@@ -294,5 +332,10 @@
 
   &--contact-us {
     box-shadow: 0 -1px 0 0 $grey-medium;
+
+    @at-root .dept-nigov & {
+      margin-top: 1.5em;
+      box-shadow: 0 -5px 0 0 var(--brand-primary-color);
+    }
   }
 }
