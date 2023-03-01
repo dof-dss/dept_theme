@@ -19,7 +19,8 @@
 
   // By default, home page sections span full width
   // of the grid.
-  > * {
+  > *,
+  .section-front {
     grid-column: 1 / span 12;
   }
 
@@ -48,12 +49,34 @@
         grid-column: 1 / span 12;
       }
 
+      &--our-documents {
+        grid-column: 1 / span 12;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          'header header'
+          'left   right';
+        grid-column-gap: 3em;
+
+        h2 {
+          grid-area: header;
+        }
+
+        .latest-consultations {
+          grid-area: left;
+        }
+
+        .latest-publications {
+          grid-area: right;
+        }
+      }
+
       &--access-to-information {
         grid-column: 1 / span 12;
       }
 
       &--about-us {
-        grid-column: 1 / span 5;
+        grid-column: 1 / span 6;
       }
 
       &--corporate-links {

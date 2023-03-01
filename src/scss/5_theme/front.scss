@@ -13,12 +13,44 @@
     box-shadow: none;
   }
 
+  &__sub-section:not(:last-child) {
+    margin-bottom: 2.5em;
+
+    @include breakpoint($tab) {
+      margin-bottom: 0;
+    }
+  }
+
   h2 {
     @include responsive-typo-map($section-home-h2);
   }
 
   p {
     max-width: $max-content-width;
+  }
+
+  .meta {
+    @include responsive-typo-map($small-text);
+    display: block;
+    margin-top: 4px;
+    color: $ash-grey;
+
+    @include breakpoint($tab) {
+      margin-top: 3px;
+    }
+
+    @include breakpoint($desk-plus) {
+      margin-top: 5px;
+    }
+
+    > * {
+      display: inline-block;
+      margin-right: 1.5em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   &--quick-links,
@@ -51,21 +83,6 @@
       // sass-lint:disable no-misspelled-properties
       text-decoration-thickness: 2px;
       // sass-lint:enable no-misspelled-properties
-    }
-
-    .meta {
-      @include responsive-typo-map($small-text);
-      display: block;
-      margin-top: 4px;
-      color: $ash-grey;
-
-      @include breakpoint($tab) {
-        margin-top: 3px;
-      }
-
-      @include breakpoint($desk-plus) {
-        margin-top: 5px;
-      }
     }
   }
 
@@ -244,8 +261,30 @@
     }
   }
 
+  &--our-documents {
+
+    h3 {
+      margin-top: 0;
+    }
+
+    li {
+      padding: 0;
+      margin: 0;
+    }
+
+    .card {
+      box-shadow: 0 1px 0 0 $grey-medium;
+      padding: 0 0 1em;
+      margin: 0 0 1em;
+    }
+
+    .card__title {
+      @include responsive-typo-map($normal-text-no-margins);
+    }
+  }
+
   &--access-to-information {
-    box-shadow: 0 5px 0 0 var(--brand-primary-color), 0 -5px 0 0 var(--brand-primary-color);
+    box-shadow: 0 5px 0 0 var(--brand-primary-color);
   }
 
   &--about-us,
