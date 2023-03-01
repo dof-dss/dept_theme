@@ -174,22 +174,32 @@
 
   &.section--featured {
     article {
-      display: flex;
+      //display: flex;
       border-top: 1px solid $ash-grey;
       padding-top: 1.8rem;
+
+      .card {
+        display: flex;
+        flex-flow: row nowrap;
+      }
 
       .card__image {
         flex: 0 0 13rem;
         padding-right: 1rem;
+        max-width: 50%;
 
-        @include breakpoint($phone) {
+        @include breakpoint($phab) {
           flex-basis: 16.5rem;
           padding-right: 1.5rem;
         }
       }
 
       .card__body {
-        padding: 0;
+        padding: 0 0 0 .5rem;
+
+        h3 {
+          @include responsive-typo-map($featured-news-h3-small);
+        }
 
         h3,
         p {
@@ -197,28 +207,28 @@
         }
 
         .card__meta {
-          margin: .3rem 0;
-        }
-
-        h3 {
-          @include responsive-typo-map($featured-news-h3-small);
+          margin: .4em 0;
         }
       }
 
       &:first-of-type {
-        flex-wrap: wrap;
         border-top: 0;
         padding-top: 0;
 
-        @include breakpoint($phone) {
-          flex-wrap: nowrap;
+        a {
+          flex-wrap: wrap;
+
+          @include breakpoint($phab) {
+            flex-wrap: nowrap;
+          }
         }
 
         .card__image {
           flex-basis: 100%;
           padding-right: 0;
+          max-width: 100%;
 
-          @include breakpoint($phone) {
+          @include breakpoint($phab) {
             flex-basis: 41%;
             min-width: 16.5rem;
           }
@@ -226,16 +236,20 @@
 
         h3 {
           @include responsive-typo-map($h3-text);
-        }
+          margin: .5em 0;
 
-        .card__meta,
-        h3 {
-          margin: .7rem 0 0;
+          @include breakpoint($phab) {
+            margin: 0 0 .5em;
+          }
+
         }
 
         .card__body {
-          @include breakpoint($phone) {
-            padding-left: 1.3rem;
+          align-self: auto;
+          padding-left: 0;
+
+          @include breakpoint($phab) {
+            padding-left: 1.8rem;
           }
         }
       }
