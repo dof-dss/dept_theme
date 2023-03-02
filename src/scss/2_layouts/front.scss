@@ -45,6 +45,25 @@
         grid-column: 1 / span 12;
       }
 
+      &--featured-topics {
+        grid-column: 1 / span 12;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0 3em;
+
+        > * {
+          grid-column: 1 / span 2;
+        }
+
+        .niexec-budget {
+          grid-column: 1;
+        }
+
+        .niexec-pfg {
+          grid-column: 2;
+        }
+      }
+
       &--agency-links {
         grid-column: 1 / span 12;
       }
@@ -59,20 +78,14 @@
           grid-column: 1 / span 2;
         }
 
-        .latest-consultations {
-          grid-column: 1;
-        }
-
         .latest-publications {
-          grid-column: 2;
-        }
-
-        .niexec-budget {
           grid-column: 1;
+          grid-row: 2;
         }
 
-        .niexec-pfg {
+        .latest-consultations {
           grid-column: 2;
+          grid-row: 2;
         }
       }
 
