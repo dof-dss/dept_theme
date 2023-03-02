@@ -69,20 +69,20 @@
       &:has(.title) {
         text-decoration: none;
       }
-    }
 
-    .title {
-      text-decoration: underline;
-      // sass-lint:disable no-misspelled-properties
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      // sass-lint:enable no-misspelled-properties
-    }
+      .title {
+        text-decoration: underline;
+        // sass-lint:disable no-misspelled-properties
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        // sass-lint:enable no-misspelled-properties
+      }
 
-    &:hover .title {
-      // sass-lint:disable no-misspelled-properties
-      text-decoration-thickness: 2px;
-      // sass-lint:enable no-misspelled-properties
+      &:hover .title {
+        // sass-lint:disable no-misspelled-properties
+        text-decoration-thickness: 2px;
+        // sass-lint:enable no-misspelled-properties
+      }
     }
   }
 
