@@ -174,9 +174,8 @@
 
   &.section--featured {
     article {
-      //display: flex;
-      border-top: 1px solid $ash-grey;
-      padding-top: 1.8rem;
+      box-shadow: 0 1px 0 0 $grey-medium;
+      padding-bottom: 1.8rem;
 
       .card {
         display: flex;
@@ -197,17 +196,25 @@
       .card__body {
         padding: 0 0 0 .5rem;
 
-        h3 {
+        .card__title {
           @include responsive-typo-map($featured-news-h3-small);
+          margin: 0 0 .3em;
         }
 
-        h3,
         p {
-          margin: 0;
+          margin: .3em 0 0;
         }
 
         .card__meta {
           margin: .4em 0;
+
+          > * {
+            margin: 0 1.5em .15em 0;
+
+            &:last-child {
+              margin: .15em 0 0;
+            }
+          }
         }
       }
 
@@ -239,7 +246,7 @@
           margin: .5em 0;
 
           @include breakpoint($phab) {
-            margin: 0 0 .5em;
+            margin: 0 0 .3em;
           }
 
         }
@@ -252,6 +259,10 @@
             padding-left: 1.8rem;
           }
         }
+      }
+
+      &:last-of-type {
+        box-shadow: none;
       }
     }
 
