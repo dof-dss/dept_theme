@@ -261,6 +261,15 @@
     }
   }
 
+  &--agency-links {
+    ul {
+      @include breakpoint($tab) {
+        columns: 2;
+        column-gap: 3em;
+      }
+    }
+  }
+
   &--our-documents {
 
     h3 {

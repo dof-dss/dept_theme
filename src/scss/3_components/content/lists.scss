@@ -52,9 +52,16 @@
       }
     }
   }
+
+  &--split-list {
+    columns: 2;
+    column-gap: 2em;
+  }
 }
 
 .split-list {
-  columns: 2;
-  column-gap: 2em;
+  @include breakpoint($phab) {
+    columns: 2;
+    column-gap: 2em;
+  }
 }
