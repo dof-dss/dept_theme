@@ -461,7 +461,7 @@ a.card {
     }
 
     :nth-last-child(-n + 2) .card {
-      @include breakpoint($phab) {
+      @include breakpoint($tab) {
         box-shadow: none;
       }
     }
