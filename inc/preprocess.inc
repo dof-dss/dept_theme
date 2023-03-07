@@ -525,7 +525,7 @@ function nicsdru_dept_theme_preprocess_form(array &$variables) {
     case "views-exposed-form-publications-search-publications-search":
     case "views-exposed-form-consultations-search-consultations-search":
     case "views-exposed-form-news-search-news-search":
-    case "views-exposed-form-press-release-search-pr-search-page":
+    case "views-exposed-form-news-search-press-release-search":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
       break;
