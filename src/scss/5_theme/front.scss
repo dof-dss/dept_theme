@@ -355,5 +355,10 @@
       margin-top: 1.5em;
       box-shadow: 0 -5px 0 0 var(--brand-primary-color);
     }
+
+    a.more {
+      @include responsive-typo-map($large-text);
+      font-weight: bold;
+    }
   }
 }
