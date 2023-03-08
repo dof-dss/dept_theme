@@ -10,12 +10,15 @@
  * @ingroup themeable
  */
 #}
+
+{% set link = department.id == 'nigov' ? '/press-releases' : '/news' %}
+
 {% set classes = ['card-deck', 'card-deck--list'] %}
 <div{{ attributes.addClass(classes) }}>
 {% for item in items|slice(0, 3) %}
   {{ item.content }}
 {% endfor %}
   <footer>
-    <a href="/news">More news...</a>
+      <a href="{{ link }}">More news...</a>
   </footer>
 </div>
