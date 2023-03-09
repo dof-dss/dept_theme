@@ -267,8 +267,10 @@
     }
 
     footer {
-      @include responsive-typo-map($h3-text);
-      margin: 0;
+      a {
+        @include responsive-typo-map($h3-text);
+        margin: 0;
+      }
     }
   }
 
