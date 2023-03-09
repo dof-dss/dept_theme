@@ -32,4 +32,7 @@
   {% block content %}
     {{ content }}
   {% endblock %}
+  <p>
+    <a class="more" href="{{ path('view.contacts.contacts_list') }}">{{ 'See all contacts'|t }}</a>
+  </p>
 </section>
