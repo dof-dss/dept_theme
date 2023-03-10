@@ -96,11 +96,15 @@
       }
 
       &--about-us {
-        grid-column: 1 / span 6;
+        grid-column: 1 / span 7;
+
+        @at-root .dept-nigov & {
+          grid-column: 1 / span 12;
+        }
       }
 
       &--corporate-links {
-        grid-column: 8 / span 5;
+        grid-column: 9 / span 4;
       }
 
       &--contact-us {
