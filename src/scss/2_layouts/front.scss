@@ -30,7 +30,7 @@
 
       &--featured {
         grid-column: 1 / span 7;
-        grid-row: auto / span 2;
+        grid-row: 1 / span 2;
       }
 
       &--quick-links,
@@ -40,7 +40,6 @@
 
       &--social-links {
         grid-column: 9 / span 4;
-        align-self: end;
       }
 
       &--topics {
@@ -96,15 +95,11 @@
       }
 
       &--about-us {
-        grid-column: 1 / span 7;
-
-        @at-root .dept-nigov & {
-          grid-column: 1 / span 12;
-        }
+        grid-column: 1 / span 6;
       }
 
       &--corporate-links {
-        grid-column: 9 / span 4;
+        grid-column: 8 / span 5;
       }
 
       &--contact-us {

@@ -29,14 +29,6 @@
     max-width: $max-content-width;
   }
 
-  p,
-  ul,
-  li {
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   .meta {
     @include responsive-typo-map($small-text);
     display: block;
@@ -61,20 +53,10 @@
     }
   }
 
-  &--minor {
-    h2 {
-      @include responsive-typo-map($h2-text);
-    }
-  }
-
   &--quick-links,
-  &--latest-news,
-  &--corporate-links {
-
-    @include breakpoint($tab) {
-      padding: 0 .5em 1.5em;
-      box-shadow: none;
-    }
+  &--latest-news {
+    padding: 0 .5em 1.5em;
+    box-shadow: none;
 
     li {
       margin-bottom: .5em;
@@ -191,14 +173,9 @@
   }
 
   &.section--featured {
-
-    .card-deck {
-      margin-bottom: 0;
-    }
-
     article {
       box-shadow: 0 1px 0 0 $grey-medium;
-      padding-bottom: 1em;
+      padding-bottom: 1.8rem;
 
       .card {
         display: flex;
@@ -290,12 +267,9 @@
     }
 
     footer {
-      margin: 0;
-      line-height: 3em;
-
       a {
-        @include responsive-typo-map($large-text);
-        font-weight: bold;
+        @include responsive-typo-map($h3-text);
+        margin: 0;
       }
     }
   }
@@ -341,7 +315,6 @@
       @include breakpoint($tab) {
         columns: 2;
         column-gap: 3em;
-        margin-bottom: 0;
       }
     }
   }
@@ -370,23 +343,20 @@
 
   &--access-to-information {
     box-shadow: 0 5px 0 0 var(--brand-primary-color);
-
-    h2 {
-      margin-top: 0;
-    }
   }
 
   &--about-us,
   &--corporate-links {
     box-shadow: none;
-
-    @at-root .dept-nigov & {
-      box-shadow: 0 -5px 0 0 var(--brand-primary-color);
-    }
   }
 
   &--contact-us {
     box-shadow: 0 -1px 0 0 $grey-medium;
+
+    @at-root .dept-nigov & {
+      margin-top: 1.5em;
+      box-shadow: 0 -5px 0 0 var(--brand-primary-color);
+    }
 
     a.more {
       @include responsive-typo-map($large-text);
