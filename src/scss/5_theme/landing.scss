@@ -31,7 +31,7 @@
 
       > p,
       > li {
-        @include responsive-typo-map($body-text);
+        @include responsive-typo-map($normal-text-no-margins);
       }
 
       .card__title {
@@ -49,6 +49,10 @@
 
     @include breakpoint($tab, $no-query: true) {
       margin-top: rhythm(-4.5);
+    }
+
+    @include breakpoint($desk, $no-query: true) {
+      margin-top: rhythm(-5);
     }
   }
 
@@ -94,6 +98,10 @@
           margin: .9rem 0 0;
         }
 
+        @include breakpoint($desk, $no-query: true) {
+          margin: 1rem 0 0;
+        }
+
         .more {
           white-space: nowrap;
           color: $link;
@@ -136,6 +144,10 @@
           @include breakpoint($tab, $no-query: true) {
             margin: 0 1.8rem 1em;
           }
+
+          @include breakpoint($desk, $no-query: true) {
+            margin: 0 2rem 1em;
+          }
         }
       }
     }
@@ -151,7 +163,7 @@
 
     @include breakpoint($phab) {
       .tel .title {
-        @include responsive-typo-map($body-text);
+        @include responsive-typo-map($normal-text-no-margins);
       }
 
       .tel .value {
@@ -186,6 +198,16 @@
 
       .tel .supplementary {
         @include adjust-font-size-to(15px, 4)
+      }
+    }
+
+    @include breakpoint($desk-plus) {
+      .tel .title {
+        @include adjust-font-size-to(18px, 5);
+      }
+
+      .tel .supplementary {
+        @include adjust-font-size-to(16px, 5)
       }
     }
 

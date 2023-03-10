@@ -74,7 +74,10 @@
     @include responsive-typo-map($small-text);
     margin: 1.8rem 0 .7rem; // Tightens up to the h1.
     @include breakpoint($tab) {
-      margin: 2.1rem 0 1rem;
+      margin: 2.1rem 0 .7rem;
+    };
+    @include breakpoint($desk-plus) {
+      margin: 2.5rem 0 1rem;
     };
   }
 
@@ -83,19 +86,21 @@
   }
 }
 
+.page-node-type-publication .last-updated {
+  @include responsive-typo-map($small-text);
+  margin: .7rem 0;
+}
+
 .path-taxonomy {
   .social-sharing {
     margin: 3em 0;
   }
 }
 
-.article-content h2 {
-  margin-top: 0;
-}
-
 .page-node-type-publication,
 .page-node-type-embargoed-publication,
-.page-node-type-consultation {
+.page-node-type-consultation,
+.page-node-type-subtopic {
   .narrow-title {
     @include breakpoint($phab) {
       width: 83.33%;

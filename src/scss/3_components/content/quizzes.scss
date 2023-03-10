@@ -25,7 +25,7 @@
   &-feedback {
 
     summary {
-      @include responsive-typo-map($body-text);
+      @include responsive-typo-map($normal-text-no-margins);
       font-weight: bold;
       border-bottom: 1px solid $grey-medium;
       padding-bottom: .5em;

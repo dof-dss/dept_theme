@@ -71,6 +71,9 @@
  */
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
+  {% if banner_image %}
+    {{ banner_image }}
+  {% endif %}
   {% if show_title %}
   {{ drupal_block('page_title_block', wrapper=false) }}
   {% endif %}
@@ -78,7 +81,6 @@
   <div{{ content_attributes }}>
   {% endif %}
   {{- content -}}
-  {{ drupal_block('views_block:contact_children-contact_children', wrapper=false) }}
   {% if  content_attributes is not empty %}
   </div>
   {% endif %}

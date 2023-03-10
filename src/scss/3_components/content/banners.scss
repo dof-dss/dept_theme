@@ -19,6 +19,10 @@
     @include rhythm-margins(4.5, 7.5);
   }
 
+  @include breakpoint($desk, $no-query: true) {
+    @include rhythm-margins(5, 7.5);
+  }
+
   position: relative;
   width: 100%;
   font-size: .1px;

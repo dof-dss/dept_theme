@@ -30,43 +30,44 @@ $image-url-path-to-source: '../' !default;
 // The relative path from the root sass directory to where your components usually lie.
 $image-url-subdirectory: 'images' !default;
 
-/* Layout ============================================================ */
-$max-grid-width: 980px;
-$max-content-width: 720px; // Apply to content in a single column.
-$grid-gap: 24px;
-$grid-gap-lg: 28px;
-$total-columns: 940; // yep - 940
-$article-max-width: 620px;
-$aside-max-width: 292px;
-$article-grid-max-width: 620fr;
-$aside-grid-max-width: 292fr;
-$article-float-max-width: 65.958%; // of 940 = 620
-$aside-float-max-width: 31.064%; // of 940 = 292
-
-
 /* Breakpoints ======================================================== */
-$mob: 480px;
-$phab: 600px;
+$phone: 480px;
+$phab: 576px;
 $tab: 768px;
-$lap: 980px;
-$desk: 1382px;
+$lap: 992px;
+$desk: 1200px;
+$desk-plus: 1679px;
 
 $grid-breakpoints: (
   xs: 0,
-  sm: $mob,
+  sm: $phone,
   md: $phab,
   lg: $tab,
   xl: $lap,
   xxl: $desk,
+  xxxl: $desk-plus,
 ) !default;
 
-// The amount lists, blockquotes and comments are indented.
-$indent-amount: 1.8rem;
+/* Layout max widths for larger breakpoints =========================== */
+$max-grid-width: 1140px;
+$max-content-width: 76rem; // Apply to content in a single column.
 
-// Set the width of child grid items in the .header
-// The first child will typically be the site branding wrapper, additional items (typically just the main search form)
-// can be controlled with this variable which only becomes applicable @breakpoint $tab (768px).
-$header-template-columns: auto 43% !default;
+$grid-gap: 24px;
+$tab-grid-gap: 27px;
+$grid-gap-lg: $tab-grid-gap;
+$lap-grid-gap: 36px;
+$desk-grid-gap: 45px;
+
+$total-columns: 1140;
+$article-max-width: 750px;
+$aside-max-width: 360px;
+$article-grid-max-width: 750fr;
+$aside-grid-max-width: 360fr;
+$article-float-max-width: 65.789%;
+$aside-float-max-width: 31.579%;
+
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 1em;
 
 // Map out CSS properties for link states (:visited, :focus, :hover, :active) for different types of link.
 // Maps defined here are passed to the @mixin link-state-styles (see init/links/_links.scss) like so:
@@ -126,7 +127,6 @@ $link-site-logo: (
     hover: '.3rem dashed #{$grey}',
     active: '.3rem dashed #{$grey-dark}',
   ),
-  font-size: 0
 );
 
 $link-site-logo-alt: (
@@ -155,28 +155,32 @@ $link-main-menu: (
   color: '#fff',
   background-color: (
     default: transparent,
-    active: color(brand-primary-dark),
   ),
   text-decoration: none,
   box-shadow: (
     default: none,
-    active: 'inset 8px 0 0 0 #{color(brand-secondary)}'
   ),
   outline: (
     default: 0,
     visited: 0,
-    focus: '3px solid #fff',
-    hover: '3px solid #fff',
+    focus: '3px solid',
+    hover: '3px solid',
   ),
-  outline-offset: -8px,
-  transition: 'outline-color .3s'
+  outline-offset: -.5em,
 );
 
 $link-main-menu-horizontal: (
-  color: color(link),
-  box-shadow: (
-    active: 'inset 0 -7px 0 0 #{color(brand-secondary)}'
-  )
+  color: (
+    default: color(link),
+    focus: #fff,
+    hover: #fff,
+  ),
+  background: (
+    default: transparent,
+    focus: var(--brand-primary-color-high-contrast-white),
+    hover: var(--brand-primary-color-high-contrast-white),
+  ),
+  outline: none,
 );
 
 $link-main-menu-social: (

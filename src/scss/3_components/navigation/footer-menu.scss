@@ -15,7 +15,7 @@
   }
 
   &-related {
-    @include responsive-typo-map($body-text);
+    @include responsive-typo-map($normal-text-no-margins);
     font-weight: bold;
     padding-top: 3.6rem;
 
@@ -40,6 +40,9 @@
       li {
         @include breakpoint($tab) {
           font-size: 1.6rem;
+        }
+        @include breakpoint($desk-plus) {
+          font-size: 1.7rem;
         }
         font-size: 1.4rem;
         margin: .5em .5em .5em 0;
@@ -93,8 +96,8 @@
         text-decoration: none;
 
         @include breakpoint($tab) {
-          width: 4rem;
-          height: 4rem;
+          width: 4.5rem;
+          height: 4.5rem;
         }
 
         &:hover {

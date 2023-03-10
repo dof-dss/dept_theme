@@ -22,7 +22,7 @@ nidirect-global-styles:
       css/2_layouts/nics-1-col-layouts.css: { minified: true }
       css/2_layouts/nics-2-col-layouts.css: { minified: true }
       css/2_layouts/nics-3-col-layouts.css: { minified: true }
-      css/2_layouts/nidirect-2-col-layouts.css: { minified: true }
+      css/2_layouts/front.css: { minified: true }
     # The SMACSS category, "component", is loaded after "base and layout" styles.
     component:
       css/3_components/layout/header.css: { minified: true }
@@ -57,6 +57,7 @@ nidirect-global-styles:
       css/3_components/block/section-feedback.css: { minified: true }
       css/3_components/block/section-translation-help.css: { minified: true }
       css/3_components/block/social-sharing.css: { minified: true }
+      css/3_components/block/section-related.css: { minified: true }
   js:
     js/thwoop-images.js: { minified: true }
     js/section-feedback.js: { minified: true }
@@ -86,11 +87,14 @@ nidirect-specific-styles:
       css/4_state/content/cards.css: { minified: true }
     theme:
       css/5_theme/entities.css: { minified: true }
+      css/5_theme/front.css: { minified: true }
       css/5_theme/searches.css: { minified: true }
       css/5_theme/views.css: { minified: true }
       css/5_theme/landing.css: { minified: true }
       css/5_theme/horizontal-rule.css: { minified: true }
       '//fonts.googleapis.com/css2?family=Roboto': { type: external }
+      '//fonts.googleapis.com/css2?family=Libre+Franklin': { type: external }
+      '//fonts.googleapis.com/css2?family=Libre+Bodoni': { type: external }
 
 nidirect-table-of-contents:
   version: VERSION

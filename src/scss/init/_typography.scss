@@ -4,7 +4,7 @@
 // used by mixins like adjust-font-size-to().
 // These variable and mixins are documented in [Compass](http://compass-style.org/reference/compass/typography/vertical_rhythm/).
 // We also use a custom mixin responsive-typo-map() to make responsive typography much more manageable using sass maps.
-// We import Google fonts in the head of the document and set the base family to be
+// We import Google fonts in the head of the document and set the base family to include
 // 'Open Sans', sans-serif
 //
 // Style guide: init.variables.typography
@@ -12,137 +12,247 @@
 $base-font-family: 'Roboto', 'Open Sans', sans-serif;
 $font-monospace:   'Courier New', 'DejaVu Sans Mono', monospace, sans-serif;;
 
-//// The font sizes for h1-h6.
-//$h1-font-size: 4 * $base-font-size;
-//$h2-font-size: 2.8 * $base-font-size;
-//$h3-font-size: 2.4 * $base-font-size;
-//$h4-font-size: 1.8 * $base-font-size;
-//$h5-font-size: 1.8 * $base-font-size;
-//$h6-font-size: 1.8 * $base-font-size;
-//$p-font-size: 1.8 * $base-font-size;
+// ## Responsive typography with vertical rhythm.
+//
+// Sass maps that map out font size, line-height and margins for an element at different responsive breakpoints.
+//
+// @see https://www.smashingmagazine.com/2015/06/responsive-typography-with-sass-maps/
+// @see @mixin responsive-typo-map in src/scss/init/responsive-typo/_resp-typo.scss
+//
+// The base font size for dept sites changes at
+// these breakpoints:
+//
+// - 16px for screen sizes up to 992px (xs, sm, md, lg).
+// - 18px for screen sizes up to 1679px (xl, xxl).
+// - 20px for screen sizes over 1679px (xxxl).
+//
+// To maintain vertical rhythm, line-heights and margins of text
+// elements should add up to some multiple or factor of the base font-size.
+//
+// If the base font size is 16px:
+// - line height will be 24px for normal text (1.5 * font-size)
+// - multiples of 4 or 8 work best for margins (or padding)
+//
+// If the base font size is 18px:
+// - line height will be 27px for normal text (1.5 * font-size)
+// - multiples of 3, 6, or 9 work best for margins (or padding).
+//
+// If the base font size is 20px:
+// - line height will be 30px for normal text (1.5 * font-size)
+// - multiples of 5 or 10 work best for margins (or padding).
+//
+// Based on the above, we can define a sass map like this for
+// normal paragraph text:
+// ```scss
+//   $normal-text: (
+//    null: (16px, 24px, 16px 0 24px),
+//    xl: (18px, 27px, 18px 0 27px),
+//    xxxl: (20px, 30px, 20px 0 30px),
+//  );
+// ```
+//
+// Or ... even better, by taking advantage of css inheritance
+// ```scss
+//   $normal-text: (
+//    null: (16px, 1.5, 1em 0 1em),
+//    xl: 18px,
+//    xxxl: 20px,
+//  );
+// ```
+//
+// Then we can do this:
+// ```scss
+//   p {
+//     @include responsive-typo-map($normal-text);
+//   }
+// ```
+//
+// And that will compile to css as:
+// (note px is converted to rem automatically)
+//
+// ```css
+// p {
+//   font-size: 1.6rem;
+//   line-height: 1.5;
+//   margin: 1em 0 2em
+// }
+//
+// @media screen and (min-width: 992px) {
+//   p {
+//     font-size: 1.8rem
+//   }
+// }
+//
+// @media screen and (min-width: 1679px) {
+//   p {
+//     font-size: 2rem
+//   }
+// }
+// ```
 
-$body-text: (
-  null: (16px, 1.5),
-  lg: 18px,
-  //xxl: 20px,
-);
 
-$small-text: (
-  null: (1.5rem, 1.4),
-  lg: (1.6rem, 1.5),
-  //xxl: (1.7rem, 1.7647),
-);
-
-$breadcrumb-text: (
-  null: (14px, 2.4rem, 1.2rem 0 2rem 2px),
-  sm: (null, null, 1.6rem 0 2.4rem),
-  lg: (null, 2.7rem, 2.1rem 0 2.7rem),
-  //xxl: (16px, 3rem, 2rem 0 3rem)
-);
-
+// Normal text.
 $normal-text: (
   null: (16px, 1.5, 1em 0 1.5em),
-  md: (null, null, 1em 0 1.5em),
-  lg: 18px,
-  //xxl: 20px,
+  xl: 18px,
+  xxxl: 20px,
 );
 
+// Normal text without margins.
+$normal-text-no-margins: (
+  null: (16px, 1.5),
+  xl: 18px,
+  xxxl: 20px,
+);
+
+// Small, medium, large, extra large text (no margins).
+$small-text: (
+  null: (1.5rem, 2rem),
+  xl: (1.6rem, 2.1rem),
+  xxxl: (1.7rem, 2.5rem),
+);
+
+$smallish-text: (
+  null: (1.6rem, 2.2rem),
+  xl: (1.7rem, 2.4rem),
+  xxxl: (1.8rem, 2.5rem),
+);
+
+$medium-text: $normal-text-no-margins;
+
 $large-text: (
-  null: (18px, 1.5),
-  md: (20px, 1.5),
-  lg: (21px, 1.3),
-  //xl: (24px, 1.3334)
+  null: (20px, 2.8rem),
+  xl: (21px, 3rem),
+  xxl: (22px, 3.3rem),
+  xxxl: (22px, 3.5rem)
 );
 
 $xl-text: (
-  null: (20px, 1.4),
-  md: (22px, 1.4546),
-  lg: (24px, 1.5),
-  //xl: (28px, 1.2857)
+  null: (22px, 32px),
+  xl: (23px, 33px),
+  xxl: (25px, 36px),
+  xxxl: (27px, 40px)
 );
 
 $xxl-text: (
-  null: (24px, 1.3334),
-  lg: (27px, 1.3334),
-  xl: (30px, 1.3334)
+  null: (24px, 36px),
+  xl: (27px, 39px),
+  xxxl: (30px, 45px)
 );
 
+// Headings (with margins).
 $h1-text: (
-  null: (28px, 3.2rem, 1.6rem 0 0),
-  md: (30px, 3.6rem, 2.4rem 0 0),
-  lg: (32px, 3.9rem, 2.7rem 0 0),
-  xl: (32px, 3.9rem, 3rem 0 0),
-  //xxl: (36px, 4.5rem, 4rem 0 3rem)
+  null: (24px, 3.2rem, 3.2rem 0 1.6rem),
+  lg: (28px, 3.6rem, 4rem 0 1.6rem),
+  xl: (30px, 3.9rem, 4.5rem 0 1.8rem),
+  xxxl: (30px, 4rem, 5rem 0 2rem)
 );
 
 $h2-text: (
   null: (24px, 3.2rem, 3.2rem 0 1.6rem),
-  lg: (28px, 3.6rem, 3.6rem 0 1.8rem),
-  //xxl: (30px, 4rem, 4rem 0 2rem)
+  xl: (26px, 3.6rem, 3.6rem 0 1.8rem),
+  xxxl: (28px, 4rem, 4rem 0 2rem)
 );
 
 $h3-text: (
   null: (21px, 2.4rem, 3.2rem 0 1.2rem),
-  lg: (24px, 3rem, 3.6rem 0 1.8rem),
-  //xxl: (25px, 3rem, 4rem 0 2rem)
+  xl: (22px, 3rem, 3.6rem 0 1.8rem),
+  xxxl: (24px, 3rem, 4rem 0 2rem)
 );
 
 $h4-text: (
   null: (18px, 2.4rem, 3.2rem 0 1.2rem),
-  lg: (21px, 2.7rem, 3.6rem 0 1.8rem),
-  //xxl: (24px, 3rem, 4rem 0 2rem)
+  xl: (20px, 2.7rem, 3.6rem 0 1.8rem),
+  xxxl: (22px, 3rem, 4rem 0 2rem)
 );
 
 $h5-text: (
   null: (16px, 2.4rem, 3.2rem 0 1.2rem),
-  lg: (18px, 2.7rem, 3.6rem 0 1.8rem),
-  //xxl: (20px, 3rem, 4rem 0 2rem)
+  xl: (18px, 2.7rem, 3.6rem 0 1.8rem),
+  xxxl: (20px, 3rem, 4rem 0 2rem)
 );
 
 $h6-text: (
   null: (16px, 2.4rem, 3.2rem 0 1.2rem),
-  lg: (18px, 2.7rem, 3.6rem 0 1.8rem),
-  //xxl: (20px, 3rem, 4rem 0 2rem)
+  xl: (18px, 2.7rem, 3.6rem 0 1.8rem),
+  xxxl: (20px, 3rem, 4rem 0 2rem)
 );
 
-$card-title: (
-  null: (24px, 1.364),
-);
-
+// Buttons.
 $btn-small: (
   null: (1.4rem, 2.2rem),
-  lg: (1.6rem, 2.4rem)
+  xl: (1.6rem, 2.4rem),
+  xxxl: (1.7rem, 2.5rem)
 );
 
 $btn-default: (
   null: (1.6rem, 2.4rem),
-  lg: (1.8rem, 2.7rem)
+  xl: (1.8rem, 2.7rem),
+  xxxl: (2rem, 3rem)
 );
 
 $btn-medium: (
   null: (1.8rem, 2.4rem),
-  lg: (2.1rem, 3rem)
+  xl: (2.1rem, 3rem),
+  xxxl: (2.2rem, 3.5rem)
 );
 
 $btn-large: (
-  null: (2.1rem, 2.8rem),
-  lg: (2.4rem, 3.6rem)
+  null: (2.1rem, 3.2rem),
+  xl: (2.4rem, 3.6rem),
+  xxxl: (2.5rem, 4rem)
 );
 
+// Forms.
 $form-legend: (
-  null: (21px, 2.4rem, 0 0 .2rem),
-  lg: (24px, 3rem, 0 0 .3rem),
-  //xxl: (28px, 3rem, 0 0 2rem)
+  null: (21px, 2.8rem, 0),
+  xl: (24px, 3.3rem, 0),
+  xxxl: (26px, 3.5rem, 0)
 );
 
 $form-legend-plain: (
   null: (1.6rem, 1.5, 0),
-  md: (1.8rem, 1.5, 0),
+  xl: (1.8rem, 1.5, 0),
+  xxxl: (2rem, 1.5, 0),
 );
 
+// Landing pages.
 $landing-page-summary: (
-  null: (20px, 1.4, 2.4rem 0 3.2rem),
-  md: (22px, 1.4546),
-  lg: (26px, 1.3846, 3rem 0 3.6rem),
-  xl: (30px, 1.3, 4.5rem 0 4.5rem)
+  null: (2rem, 2.8rem, 2.4rem 0 3.2rem),
+  lg: (2.2rem, 3.2rem),
+  xl: (2.6rem, 3.6rem, 3rem 0 3.6rem),
+  xxxl: (3rem, 4rem, 4.5rem 0 4.5rem)
+);
+
+// Cards.
+$card-title: (
+  null: (24px, 1.364),
+);
+
+// Page summary.
+$page-summary: (
+  null: (18px, 2.8rem, 0 0 2.4rem),
+  lg: (19px, 2.8rem, 0 0 2.4rem),
+  xl: (21px, 3rem, 0 0 2.7rem),
+  xxxl: (22px, 3.5rem, 0 0 3rem)
+);
+
+// Home page headings.
+$section-home-h2: (
+  null: (24px, 3.2rem, 3.2rem 0 1.6rem),
+  lg: (26px, 3.6rem, 3.2rem 0 1.6rem),
+  xl: (28px, 3.9rem, 3.6rem 0 1.8rem),
+  xxxl: (28px, 4rem, 3.5rem 0 2rem)
+);
+
+$sub-section-home-h2: (
+  null: (22px, 3.2rem, 0),
+  xl: (24px, 3.3rem),
+  xxxl: (26px, 3.5rem)
+);
+
+$featured-news-h3-small: (
+  null: (18px, 2.4rem),
+  xl: (20px, 2.7rem),
+  xxxl: (22px, 3rem)
 );

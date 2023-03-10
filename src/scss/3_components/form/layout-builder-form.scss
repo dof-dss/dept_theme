@@ -570,7 +570,7 @@
     }
 
     article {
-      @include responsive-typo-map($body-text);
+      @include responsive-typo-map($normal-text-no-margins);
       position: relative;
       width: auto;
       order: 0;

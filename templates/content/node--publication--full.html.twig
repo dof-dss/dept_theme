@@ -71,6 +71,9 @@
  */
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
+  {% if banner_image %}
+    {{ banner_image }}
+  {% endif %}
   <div class="narrow-title">
   {% if show_title %}
     {{ drupal_block('page_title_block', wrapper=false) }}
@@ -79,11 +82,12 @@
 {#  <div{{ content_attributes }}>#}
 {#  {% endif %}#}
     {{ content.field_published_date }}
+    {{ content.field_last_updated }}
     {% if show_topics and topics_subtopics_list is not empty %}
       {{ topics_subtopics_list }}
     {% endif %}
   </div>
-  {{- content|without('field_published_date') -}}
+  {{- content|without('field_published_date', 'field_last_updated') -}}
 {#  {% if  content_attributes is not empty %}#}
 {#  </div>#}
 {#  {% endif %}#}

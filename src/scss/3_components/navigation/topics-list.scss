@@ -14,15 +14,34 @@
 
 .site-topics,
 %site-topics {
-  margin: .6rem 0 1.2rem;
-  padding: 0 0 .7rem;
-  @include adjust-font-size-to(16px, 4);
+  margin: .8rem 0 1.2rem;
+  padding: 0 0 .8rem;
+  @include adjust-font-size-to(14px, 3.3334);
   display: flex;
   column-gap: 10px;
 
-  @include breakpoint($phab) {
-    margin: .7rem 0 1.3rem;
-    padding: 0 0 .7rem;
+  @include breakpoint($tab) {
+    @include adjust-font-size-to(15px, 3.5);
+    margin: .9rem 0 1.2rem;
+    padding: 0 0 .9rem;
+  }
+
+  @include breakpoint($desk-plus) {
+    @include adjust-font-size-to(16px, 3.3334);
+    margin: 1rem 0 1.5rem;
+    padding: 0 0 1rem;
+  }
+
+  @at-root h1 + & {
+    margin-top: -.8rem;
+
+    @include breakpoint($tab) {
+      margin-top: -.9rem;
+    }
+
+    @include breakpoint($desk-plus) {
+      margin-top: -1rem;
+    }
   }
 
   @media print {
@@ -41,7 +60,8 @@
   }
 
   &--item {
-    @include adjust-font-size-to(16px, 4);
+    font-size: inherit;
+    line-height: inherit;
     display: inline;
     list-style-type: none;
     margin: 0;

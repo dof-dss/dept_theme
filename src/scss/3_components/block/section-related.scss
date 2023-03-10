@@ -1,0 +1,35 @@
+@import '../../init';
+
+.section-related {
+  grid-column: 1/3;
+
+  @include breakpoint($tab) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    justify-content: space-between;
+  }
+
+  .section-hr {
+    margin: 0;
+  }
+
+  h2 {
+    width: 100%;
+    margin: 2.4rem 0 0;
+  }
+
+  > div {
+    @include breakpoint($tab) {
+      flex-basis: 48%;
+    }
+  }
+
+  h3 {
+    margin: 2.4rem 0 1.2rem;
+  }
+
+  ul {
+    margin: 0;
+  }
+}

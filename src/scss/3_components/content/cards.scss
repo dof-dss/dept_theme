@@ -68,13 +68,17 @@
   }
 
   &__meta {
-    @include adjust-font-size-to(15px, 3.6667);
+    @include responsive-typo-map($small-text);
+    color: $meta;
+    margin: .8rem 0;
+
     @include breakpoint($tab) {
-      @include adjust-font-size-to(16px, 4);
+      margin: .9rem 0;
     }
 
-    margin: .9rem 0;
-    color: $meta;
+    @include breakpoint($desk-plus) {
+      margin: 1rem 0;
+    }
   }
 
   &__meta + p {
@@ -261,17 +265,13 @@ a.card {
 
   // .card-deck--x2 allows up to two columns of cards as screen size increases.
   &--x2 {
-    @include breakpoint($phab) {
+    @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr;
     }
   }
 
   // .card-deck--x3 allows up to three columns of cards as screen size increases.
   &--x3 {
-    @include breakpoint($phab) {
-      grid-template-columns: 1fr 1fr;
-    }
-
     @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr 1fr;
     }
@@ -279,12 +279,8 @@ a.card {
 
   // .card-deck--x4 allows up to four columns of cards as screen size increases.
   &--x4 {
-    @include breakpoint($phab) {
-      grid-template-columns: 1fr 1fr;
-    }
-
     @include breakpoint($tab) {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     @include breakpoint($lap) {
@@ -298,14 +294,14 @@ a.card {
       // Column layout for card (small screen sizes).
       flex-flow: column nowrap;
 
-      @include breakpoint(0 $mob) {
+      @include breakpoint(0 $phone) {
         .card__body {
           padding-top: 1.2rem;
         }
       }
 
       // Row layout for all other screen sizes.
-      @include breakpoint($mob) {
+      @include breakpoint($phone) {
         flex-flow: row nowrap;
 
         .card__image {
@@ -332,7 +328,7 @@ a.card {
         flex-flow: column nowrap;
 
         // Row layout at mid screen sizes.
-        @include breakpoint($mob $tab) {
+        @include breakpoint($phone $tab) {
           flex-flow: row nowrap;
 
           .card__image {
@@ -397,6 +393,11 @@ a.card {
       &__meta {
         margin: .9rem 0;
         padding: 0;
+
+        .department-name {
+          display: block;
+          margin: 0.9rem 0 0 0;
+        }
       }
 
       &__content {
@@ -420,6 +421,49 @@ a.card {
       box-shadow: none;
       border-top: 1px solid $headings;
       padding: 1.2rem;
+    }
+  }
+
+  // Card deck modifier for topic cards.
+  &--topics {
+    @include breakpoint($tab) {
+      grid-gap: 1.5em 3em;
+    }
+
+    .card {
+      box-shadow: 0 1px 0 0 $grey-medium;
+      padding: 0;
+      margin: 0;
+
+      &__title {
+        @include responsive-typo-map($large-text);
+        margin: 0;
+      }
+
+      &__content {
+        padding-bottom: 1.5em;
+
+        p,
+        .page-summary {
+          @include responsive-typo-map($normal-text);
+          margin: .5em 0 0;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+
+    :last-child .card {
+      box-shadow: none;
+    }
+
+    :nth-last-child(-n + 2) .card {
+      @include breakpoint($phab) {
+        box-shadow: none;
+      }
     }
   }
 

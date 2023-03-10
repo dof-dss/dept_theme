@@ -10,6 +10,22 @@
     padding: 0;
   }
 
+  &--hyphen-bullet {
+    list-style: none;
+    padding: 0;
+
+    li {
+      position: relative;
+      padding-left: 1em;
+
+      &::before {
+        content: '-';
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+
   &--inline li {
     display: inline-block;
     padding-right: .334em;
@@ -24,7 +40,7 @@
       margin-right: 4px;
       padding-left: 21px;
 
-      @include breakpoint($mob, $no-query: true) {
+      @include breakpoint($phone, $no-query: true) {
         background-size: 18px 18px;
         margin-right: 7px;
         padding-left: 24px;
@@ -40,5 +56,5 @@
 
 .split-list {
   columns: 2;
-  column-gap: 3.6rem;
+  column-gap: 2em;
 }
