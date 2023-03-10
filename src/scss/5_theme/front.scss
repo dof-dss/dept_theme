@@ -191,9 +191,14 @@
   }
 
   &.section--featured {
+
+    .card-deck {
+      margin-bottom: 0;
+    }
+
     article {
       box-shadow: 0 1px 0 0 $grey-medium;
-      padding-bottom: 1.8rem;
+      padding-bottom: 1em;
 
       .card {
         display: flex;
@@ -286,6 +291,7 @@
 
     footer {
       margin: 0;
+      line-height: 3em;
 
       a {
         @include responsive-typo-map($large-text);
