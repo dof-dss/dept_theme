@@ -439,7 +439,7 @@ a.card {
         box-shadow: none;
       }
 
-      &:nth-last-child(-n + 2) .card {
+      &:nth-last-child(-n + 2) {
         @include breakpoint($tab) {
           box-shadow: none;
         }
