@@ -6,7 +6,7 @@
 
 .section-front {
   padding: 0 0 1.5em;
-  margin: 0;
+  margin: 0 0 1em;
   box-shadow: 0 -5px 0 0 var(--brand-primary-color);
 
   &:first-child {
@@ -27,6 +27,14 @@
 
   p {
     max-width: $max-content-width;
+  }
+
+  p,
+  ul,
+  li {
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .meta {
@@ -53,10 +61,26 @@
     }
   }
 
+  .more-link a,
+  a.more {
+    @include link-state-style($link-body-no-visited);
+    font-weight: bold;
+  }
+
+  &--minor {
+    h2 {
+      @include responsive-typo-map($h2-text);
+    }
+  }
+
   &--quick-links,
-  &--latest-news {
-    padding: 0 .5em 1.5em;
-    box-shadow: none;
+  &--latest-news,
+  &--corporate-links {
+
+    @include breakpoint($tab) {
+      padding: 0 .5em 1.5em;
+      box-shadow: none;
+    }
 
     li {
       margin-bottom: .5em;
@@ -69,20 +93,20 @@
       &:has(.title) {
         text-decoration: none;
       }
-    }
 
-    .title {
-      text-decoration: underline;
-      // sass-lint:disable no-misspelled-properties
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      // sass-lint:enable no-misspelled-properties
-    }
+      .title {
+        text-decoration: underline;
+        // sass-lint:disable no-misspelled-properties
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        // sass-lint:enable no-misspelled-properties
+      }
 
-    &:hover .title {
-      // sass-lint:disable no-misspelled-properties
-      text-decoration-thickness: 2px;
-      // sass-lint:enable no-misspelled-properties
+      &:hover .title {
+        // sass-lint:disable no-misspelled-properties
+        text-decoration-thickness: 2px;
+        // sass-lint:enable no-misspelled-properties
+      }
     }
   }
 
@@ -146,37 +170,41 @@
         transform: scale(1.1);
       }
 
-      &[href*='//twitter.com'] {
+      &[href*='twitter.com/'] {
         background-image: url('/themes/custom/nicsdru_dept_theme/images/twitter.svg');
         background-size: 1.5em auto;
       }
 
-      &[href*='//www.facebook.com'] {
+      &[href*='facebook.com/'] {
         background-image: url('/themes/custom/nicsdru_dept_theme/images/facebook.svg');
         background-size: 1.6667em auto;
       }
 
-      &[href*='//www.flickr.com'] {
+      &[href*='flickr.com/'] {
         background-image: url('/themes/custom/nicsdru_dept_theme/images/flickr.svg');
         background-size: 2em auto;
       }
 
-      &[href*='//www.youtube.com'] {
+      &[href*='youtube.com/'] {
         background-image: url('/themes/custom/nicsdru_dept_theme/images/youtube.svg');
         background-size: 2em auto;
       }
 
-      &[href*='//linkedin.com'] {
+      &[href*='linkedin.com/'] {
         background-image: url('/themes/custom/nicsdru_dept_theme/images/linkedin.svg');
       }
     }
   }
 
   &.section--featured {
+
+    .card-deck {
+      margin-bottom: 0;
+    }
+
     article {
-      //display: flex;
-      border-top: 1px solid $ash-grey;
-      padding-top: 1.8rem;
+      box-shadow: 0 1px 0 0 $grey-medium;
+      padding-bottom: 1.8rem;
 
       .card {
         display: flex;
@@ -197,17 +225,25 @@
       .card__body {
         padding: 0 0 0 .5rem;
 
-        h3 {
+        .card__title {
           @include responsive-typo-map($featured-news-h3-small);
+          margin: 0 0 .3em;
         }
 
-        h3,
         p {
-          margin: 0;
+          margin: .3em 0 0;
         }
 
         .card__meta {
           margin: .4em 0;
+
+          > * {
+            margin: 0 1.5em .15em 0;
+
+            &:last-child {
+              margin: .15em 0 0;
+            }
+          }
         }
       }
 
@@ -239,7 +275,7 @@
           margin: .5em 0;
 
           @include breakpoint($phab) {
-            margin: 0 0 .5em;
+            margin: 0 0 .3em;
           }
 
         }
@@ -253,11 +289,67 @@
           }
         }
       }
+
+      &:last-of-type {
+        box-shadow: none;
+      }
     }
 
     footer {
-      @include responsive-typo-map($h3-text);
-      margin: 0;
+      line-height: 3em;
+
+      a {
+        @include responsive-typo-map($h3-text);
+        @include link-state-style($link-body-no-visited);
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+  }
+
+  &--topics {
+    .card-deck--topics {
+      margin-bottom: 0;
+    }
+  }
+
+  .niexec-budget,
+  .niexec-pfg {
+    .card {
+      box-shadow: none;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-column-gap: 1em;
+
+      &__title {
+        grid-column: 1 / span 2;
+      }
+
+      &__image {
+        grid-column: 1;
+      }
+
+      &__body {
+        grid-column: 2;
+
+        > *:first-child {
+          margin-top: 0;
+        }
+
+        > * {
+          @include responsive-typo-map($smallish-text);
+        }
+      }
+    }
+  }
+
+  &--agency-links {
+    ul {
+      @include breakpoint($tab) {
+        columns: 2;
+        column-gap: 3em;
+        margin: 0;
+      }
     }
   }
 
@@ -278,21 +370,35 @@
       margin: 0 0 1em;
     }
 
-    .card__title {
+    .card__title:not(h3) {
       @include responsive-typo-map($normal-text-no-margins);
     }
   }
 
   &--access-to-information {
     box-shadow: 0 5px 0 0 var(--brand-primary-color);
+
+    h2 {
+      margin-top: 0;
+    }
   }
 
   &--about-us,
   &--corporate-links {
+
     box-shadow: none;
+
+    @at-root .dept-nigov & {
+      margin-top: 1.5em;
+      box-shadow: 0 -5px 0 0 var(--brand-primary-color);
+    }
   }
 
   &--contact-us {
     box-shadow: 0 -1px 0 0 $grey-medium;
+
+    a.more {
+      @include responsive-typo-map($large-text);
+    }
   }
 }

@@ -9,6 +9,12 @@
     "require": {
         "php": ">=7.0"
     },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
     "authors": [
         {
             "name": "David Corbett",
