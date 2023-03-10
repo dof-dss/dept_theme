@@ -30,6 +30,7 @@
 
       &--featured {
         grid-column: 1 / span 7;
+        grid-row: auto / span 2;
       }
 
       &--quick-links,
@@ -39,6 +40,7 @@
 
       &--social-links {
         grid-column: 9 / span 4;
+        align-self: end;
       }
 
       &--topics {
