@@ -61,6 +61,12 @@
     }
   }
 
+  .more-link a,
+  a.more {
+    @include link-state-style($link-body-no-visited);
+    font-weight: bold;
+  }
+
   &--minor {
     h2 {
       @include responsive-typo-map($h2-text);
@@ -385,11 +391,6 @@
     @at-root .dept-nigov & {
       margin-top: 1.5em;
       box-shadow: 0 -5px 0 0 var(--brand-primary-color);
-    }
-
-    a.more {
-      @include responsive-typo-map($large-text);
-      font-weight: bold;
     }
   }
 
