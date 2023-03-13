@@ -435,6 +435,16 @@ a.card {
       padding: 0;
       margin: 0;
 
+      &:last-child {
+        box-shadow: none;
+      }
+
+      &:nth-last-child(-n + 2) {
+        @include breakpoint($tab) {
+          box-shadow: none;
+        }
+      }
+
       &__title {
         @include responsive-typo-map($large-text);
         margin: 0;
@@ -453,16 +463,14 @@ a.card {
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
         }
-      }
-    }
 
-    :last-child .card {
-      box-shadow: none;
-    }
+        p + ul {
+          margin-top: .5em;
+        }
 
-    :nth-last-child(-n + 2) .card {
-      @include breakpoint($tab) {
-        box-shadow: none;
+        ul li a {
+          text-decoration: none;
+        }
       }
     }
   }

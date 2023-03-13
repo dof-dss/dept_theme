@@ -25,13 +25,6 @@
 %}
 <div{{ attributes.addClass(classes) }}>
 {% for row in rows %}
-  {%
-    set row_classes = [
-      default_row_class ? 'views-row',
-    ]
-  %}
-  <article{{ row.attributes.addClass(row_classes) }}>
-    {{- row.content -}}
-  </article>
+  {{- row.content -}}
 {% endfor %}
 </div>
