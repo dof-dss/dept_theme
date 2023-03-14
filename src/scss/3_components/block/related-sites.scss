@@ -2,15 +2,13 @@
   list-style: none;
 }
 
-.related-websites-list li:first-child {
+.department-sites-first, .related-sites-first {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.related-websites-list li:has(> a.related-site) {
+.related-sites-first {
   border-top: 3px solid var(--brand-primary-color);
-  font-size: 2rem;
-  font-weight: bold;
   margin-top: 2em;
   padding-top: 2em;
 }
