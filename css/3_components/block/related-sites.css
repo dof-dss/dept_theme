@@ -1,0 +1,21 @@
+/* line 1, src/scss/3_components/block/related-sites.scss */
+.related-websites-list {
+  list-style: none;
+}
+
+/* line 5, src/scss/3_components/block/related-sites.scss */
+.related-websites-list li:first-child {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* line 10, src/scss/3_components/block/related-sites.scss */
+.related-websites-list li:has(> a.related-site) {
+  border-top: 3px solid var(--brand-primary-color);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2em;
+  padding-top: 2em;
+}
+
+/*# sourceMappingURL=related-sites.css.map */
