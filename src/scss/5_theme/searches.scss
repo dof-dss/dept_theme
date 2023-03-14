@@ -22,20 +22,12 @@
 .search-results {
 
   header {
-    margin: 1em 0 0;
-
-    @include breakpoint($tab) {
-      margin: 0;
-    }
+    margin: 0 0 1em;
 
     .view--rss-link {
-      margin: 0 0 1.5em;
+      margin: 1em 0 2em;
 
       @include breakpoint($tab) {
-        margin: 2em 0 0;
-      }
-
-      + .view--count {
         margin-top: 0;
       }
     }
@@ -68,7 +60,7 @@
     }
 
     + .view-sort-options {
-      margin: -.5em 0 1.2rem;
+      margin: -.5em 0 0;
     }
   }
 
@@ -160,3 +152,19 @@ a.facet--btn {
   }
 }
 
+// News and press releases search pages.
+
+.path-news,
+.path-press-releases {
+
+  .proni-archive {
+    margin: 1.5em 0;
+    box-shadow: 0 -1px 0 0 $grey-medium;
+    padding-top: 1em;
+
+    > * {
+      @include responsive-typo-map($small-text);
+      margin: 0;
+    }
+  }
+}

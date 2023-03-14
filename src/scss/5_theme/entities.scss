@@ -124,10 +124,3 @@
   }
 }
 
-.path-news {
-  .proni-archive {
-    p {
-      @include responsive-typo-map($small-text);
-    }
-  }
-}

@@ -48,9 +48,7 @@
 
   {% if header %}
     <header>
-      <h2 class="view--count">
-        {{ header }}
-      </h2>
+      {{ header }}
       {{ drupal_block('facets_summary_block:news_summary') }}
     </header>
   {% endif %}

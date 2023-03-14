@@ -16,34 +16,14 @@
 .view-search-container form,
 .search-api-form form,
 .search-form {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
+  position: relative;
   max-width: $max-content-width;
 
   .ga-aside & {
     margin-bottom: 1em;
   }
 
-  .form-item-search-api-fulltext,
-  .form-item-search-api-views-fulltext,
-  .form-type-search-api-autocomplete {
-    flex: auto 1 1;
-    max-width: 375px;
-    width: calc(100% - 6rem);
-  }
-
-  > .form-wrapper {
-    flex: 100% 0 0;
-  }
-
-  .form-actions {
-    flex: 6rem 0 0;
-    align-self: flex-end;
-  }
-
-  & > .form-item,
-  & > .form-actions {
+  & > .form-item {
     margin: .5em 0;
 
     &:first-child {
@@ -51,18 +31,20 @@
     }
   }
 
+  > .form-wrapper {
+    flex: 100% 0 0;
+  }
+
   label {
-    @include adjust-font-size-to(16px, 4);
-    margin: 0 0 .8rem;
+    @include responsive-typo-map($smallish-text);
+    margin: 0 0 .5em;
 
     @include breakpoint($tab) {
-      @include adjust-font-size-to(17px, 4);
       margin: 0 0 .9rem;
     }
 
     @include breakpoint($desk-plus) {
-      @include adjust-font-size-to(18px, 4.1667);
-      margin: 0 0 .9rem;
+      margin: 0 0 1rem;
     }
   }
 
@@ -75,7 +57,7 @@
 
     &[type='search'],
     &[type='text'] {
-      width: 100%;
+      width: calc(100% - 6rem);
       min-width: 120px;
       height: 4.5rem;
       padding: .6rem;
@@ -120,6 +102,13 @@
     }
   }
 
+  .form-actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+  }
+
   // Search index page search form
   //
   // There are number 'search indexes' on the site, each of which have a unique page where a user can view results and
@@ -161,12 +150,6 @@ header .search-api-form {
   @include breakpoint($tab) {
     background-color: inherit;
     padding: 0;
-  }
-
-  .form-type-search-api-autocomplete,
-  .form-type-search {
-    max-width: 100%;
-    flex: auto 1 1;
   }
 
   .form-item,

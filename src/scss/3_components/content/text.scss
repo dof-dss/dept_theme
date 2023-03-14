@@ -4,19 +4,28 @@
  */
 @import '../../init';
 
-.small-text {
+.small-text,
+.small-text * {
   @include responsive-typo-map($small-text);
 }
 
-.large-text {
+.smallish-text,
+.smallish-text * {
+  @include responsive-typo-map($smallish-text);
+}
+
+.large-text,
+.large-text * {
   @include responsive-typo-map($large-text);
 }
 
-.xl-text {
+.xl-text,
+.xl-text * {
   @include responsive-typo-map($xl-text);
 }
 
-.xxl-text {
+.xxl-text,
+.xxl-text * {
   @include responsive-typo-map($xxl-text);
 }
 
