@@ -43,11 +43,10 @@
       {% endif %}
       {% if fields.field_consultation_dates %}
         {% set consultation_date_end = fields.field_consultation_dates.content | render | striptags %}
-        {% set consultation_date_end_pretty = consulation_date_end | date('d F Y') %}
         {% set now = date() %}
         <span>
           {% if date(consultation_date_end) >= now %}
-            Closes {{ consultation_date_end_pretty }}
+            Closes {{ consultation_date_end|date("d F Y") }}
           {% elseif date(consultation_date_end) < now %}
             Consultation closed
           {% endif %}
@@ -56,3 +55,4 @@
     </span>
   </div>
 </a>
+
