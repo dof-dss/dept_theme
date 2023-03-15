@@ -1,0 +1,14 @@
+.related-websites-list {
+  list-style: none;
+}
+
+.department-sites-first, .related-sites-first {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.related-sites-first {
+  border-top: 3px solid var(--brand-primary-color);
+  margin-top: 2em;
+  padding-top: 2em;
+}
