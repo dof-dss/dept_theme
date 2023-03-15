@@ -70,31 +70,19 @@
  *   in different view modes.
  */
 #}
-{% if banner_image %}
-  {{ banner_image }}
+
+<h3{{ title_attributes.addClass('card__title') }}>
+  <a class="no-ext-icon" href="{{ url }}">{{ label }}</a>
+</h3>
+{% if content.field_summary %}
+<div class="card__summary">
+  {{ content.field_summary.0['#text'] }}
+</div>
 {% endif %}
-<article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
-  <div class="narrow-title">
-    {% if show_title %}
-      {{ drupal_block('page_title_block', wrapper=false) }}
-    {% endif %}
-  </div>
-  {% if content_attributes is not empty %}
-  <div{{ content_attributes }}>
+<div class="card__meta">
+  <span>{{ content.field_published_date.0['#text'] }}</span>
+  {% if content.field_domain_source %}
+    <span>{{ content.field_domain_source.0['#plain_text'] }}</span>
   {% endif %}
-  {{ content|without('subtopics_list') }}
-  {%
-    set classes = [
-    'card-deck',
-    'card-deck--x2',
-    'card-deck--plain',
-    'card-deck--topics',
-  ]
-  %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ content.subtopics_list }}
-  </div>
-  {% if content_attributes is not empty %}
-  </div>
-  {% endif %}
-</article>
+</div>
+
