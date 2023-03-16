@@ -80,13 +80,26 @@
   {% if show_title %}
     {{ drupal_block('page_title_block', wrapper=false) }}
   {% endif %}
-  {% if content_attributes is not empty %}
-    <div{{ content_attributes }}>
-  {% endif %}
-    {{ content }}
-  {% if content_attributes is not empty %}
+  <div class="layout--main-n-side">
+    <div class="ga-main">
+      {% if content_attributes is not empty %}
+      <div{{ content_attributes }}>
+        {% endif %}
+        {{ content|without('field_photo') }}
+        {% if content_attributes is not empty %}
+      </div>
+      {% endif %}
     </div>
-  {% endif %}
+    <div class="ga-aside">
+      {% if content_attributes is not empty %}
+      <div{{ content_attributes }}>
+        {% endif %}
+        {{ content.field_photo }}
+        {% if content_attributes is not empty %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
   {% if display_social_links %}
     {{ drupal_entity('block', 'originssocialsharing', check_access=false) }}
   {% endif %}

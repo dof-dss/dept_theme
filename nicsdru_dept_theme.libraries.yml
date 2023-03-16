@@ -89,6 +89,7 @@ nidirect-specific-styles:
     theme:
       css/5_theme/entities.css: { minified: true }
       css/5_theme/front.css: { minified: true }
+      css/5_theme/heritage-sites.css: { minified: true }
       css/5_theme/searches.css: { minified: true }
       css/5_theme/views.css: { minified: true }
       css/5_theme/landing.css: { minified: true }
