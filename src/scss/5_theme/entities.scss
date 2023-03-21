@@ -124,10 +124,21 @@
   }
 }
 
-.path-news {
-  .proni-archive {
-    p {
-      @include responsive-typo-map($small-text);
+.page-node-type-topic {
+
+  .subtopics {
+    box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
+    margin-top: 3em;
+    padding-top: .5em;
+  }
+
+  .body:has(.page-summary:last-child) + .subtopics {
+    box-shadow: 0 -1.5px 0 0 #ddd;
+    margin-top: 2.5em;
+    padding-top: 2.5em;
+
+    .subtopics__title {
+      @include visually-hidden();
     }
   }
 }
