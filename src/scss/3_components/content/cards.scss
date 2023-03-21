@@ -441,32 +441,40 @@ a.card {
     }
 
     .card {
-      box-shadow: 0 1px 0 0 $grey-medium;
-      padding: 0;
+      box-shadow: 0 -1px 0 0 #ddd;
+      padding: 1.5em 0 0 0;
       margin: 0;
 
-      &:last-child {
+      &:first-child {
         box-shadow: none;
       }
 
-      &:nth-last-child(-n + 2) {
+      &:nth-child(-n + 2) {
         @include breakpoint($tab) {
           box-shadow: none;
+          padding-top: 0;
         }
       }
 
       &__title {
         @include responsive-typo-map($large-text);
         margin: 0;
+
+        a {
+          text-decoration: none;
+        }
       }
 
       &__content {
-        padding-bottom: 1.5em;
+        margin: .5em 0 0;
+
+        *:not(ul) {
+          @include responsive-typo-map($smallish-text);
+        }
 
         p,
         .page-summary {
-          @include responsive-typo-map($normal-text);
-          margin: .5em 0 0;
+          margin: 0;
           display: -webkit-box;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -474,12 +482,12 @@ a.card {
           -webkit-box-orient: vertical;
         }
 
-        p + ul {
-          margin-top: .5em;
+        ul {
+          margin: 0 0 .5em;
         }
 
-        ul li a {
-          text-decoration: none;
+        p + ul {
+          margin-top: .5em;
         }
       }
     }
