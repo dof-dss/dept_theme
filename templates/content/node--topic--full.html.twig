@@ -74,27 +74,23 @@
   {{ banner_image }}
 {% endif %}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
+
   <div class="narrow-title">
     {% if show_title %}
       {{ drupal_block('page_title_block', wrapper=false) }}
     {% endif %}
   </div>
-  {% if content_attributes is not empty %}
-  <div{{ content_attributes }}>
-  {% endif %}
-  {{ content|without('subtopics_list') }}
-  {%
-    set classes = [
-    'card-deck',
-    'card-deck--x2',
-    'card-deck--plain',
-    'card-deck--topics',
-  ]
-  %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ content.subtopics_list }}
+
+  <div class="body max-content-width">
+    {{ content|without('subtopics_list') }}
   </div>
-  {% if content_attributes is not empty %}
+
+  {% if content.subtopics_list is not empty %}
+  <div class="subtopics">
+    <h2 class="subtopics__title">{{ label }} contents</h2>
+    <div class="card-deck card-deck--x2 card-deck--plain card-deck--topics">
+      {{ content.subtopics_list }}
+    </div>
   </div>
   {% endif %}
 </article>
