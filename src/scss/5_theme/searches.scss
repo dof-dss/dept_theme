@@ -152,16 +152,18 @@ a.facet--btn {
   }
 }
 
-// Press releases search page (niexec site).
-
+// News and press releases search pages.
+.path-news,
 .path-press-releases {
 
   .proni-archive {
+    margin: 1.5em 0;
+    box-shadow: 0 -1px 0 0 $grey-medium;
+    padding-top: 1em;
 
-    p,
-    li,
-    a {
+    > * {
       @include responsive-typo-map($small-text);
+      margin: 0;
     }
   }
 }

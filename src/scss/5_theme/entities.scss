@@ -149,7 +149,7 @@
     padding-top: .5em;
   }
 
-  .body:has(.page-summary:last-child) + .subtopics {
+  .page-summary + .subtopics {
     box-shadow: 0 -1.5px 0 0 #ddd;
     margin-top: 2.5em;
     padding-top: 2.5em;
@@ -159,3 +159,4 @@
     }
   }
 }
+
