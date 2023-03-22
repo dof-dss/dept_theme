@@ -169,6 +169,12 @@ $link-main-menu: (
   outline-offset: -.5em,
 );
 
+$link-main-menu-active: (
+  color: '#fff',
+  background: var(--brand-primary-color-high-contrast-white),
+  outline: none,
+);
+
 $link-main-menu-horizontal: (
   color: (
     default: color(link),
