@@ -75,14 +75,17 @@
 {% endif %}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
 
-  <div class="narrow-title">
+  <header class="narrow-title">
     {% if show_title %}
       {{ drupal_block('page_title_block', wrapper=false) }}
     {% endif %}
-  </div>
+  </header>
+
+  {{ content.field_photo }}
+  {{ content.field_summary }}
 
   <div class="body max-content-width">
-    {{ content|without('subtopics_list') }}
+    {{ content.body }}
   </div>
 
   {% if content.subtopics_list is not empty %}
