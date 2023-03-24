@@ -82,12 +82,13 @@
   </header>
 
   {{ content.field_photo }}
-  {{ content.field_summary }}
-  {% if content.body.0 %}
-  <div class="body max-content-width">
-    {{ content.body }}
+
+  <div class="ga-main article-content">
+    {{ content.field_summary }}
+    {% if content.body.0 %}
+      {{ content.body }}
+    {% endif %}
   </div>
-  {% endif %}
 
   {% if content.subtopics_list is not empty %}
   <div class="subtopics">
