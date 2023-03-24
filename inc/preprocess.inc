@@ -581,7 +581,9 @@ function nicsdru_dept_theme_preprocess_views_view_rss(&$variables) {
   // Based on https://jungleran.com/node/44 for preprocess
   // code to refine the output of the news RSS feed.
   $view = $variables['view'];
-  if ($view->current_display === 'news_feed' && $view->id() === 'news') {
+
+  if (in_array($view->id(), ['news', 'press_releases'])
+    && in_array($view->current_display, ['news_feed', 'press_releases_feed'])) {
     // The 'link' in the preprocess variables doesn't give us the full path so
     // we can create a new one here to give us what we need.
     $display = $view->getDisplay();

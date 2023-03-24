@@ -54,7 +54,7 @@
       }
     }
 
-    &-link {
+    &-link, &-item .active {
       @include link-state-style($link-main-menu);
       display: block;
       padding: 1em 1.6rem;
@@ -91,6 +91,10 @@
         @include adjust-font-size-to(18px, 4.5);
         padding: .5em 1.5rem;
       }
+    }
+
+    &-item .active {
+      @include link-state-style($link-main-menu-active);
     }
 
     &-social {
