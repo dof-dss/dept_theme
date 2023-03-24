@@ -441,12 +441,13 @@ a.card {
     }
 
     .card {
-      box-shadow: 0 -1px 0 0 #ddd;
+      box-shadow: 0 -1px 0 0 $grey-medium;
       padding: 1.5em 0 0 0;
       margin: 0;
 
       &:first-child {
         box-shadow: none;
+        padding-top: 0;
       }
 
       &:nth-child(-n + 2) {
@@ -483,11 +484,15 @@ a.card {
         }
 
         ul {
-          margin: 0 0 .5em;
+          margin: 0 0 1em;
         }
 
         p + ul {
           margin-top: .5em;
+        }
+
+        .more-link {
+          font-weight: bold;
         }
       }
     }
