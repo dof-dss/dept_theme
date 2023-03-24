@@ -14,9 +14,10 @@
 #}
 {% if content %}
   <aside id="related" class="section-related">
-    <hr class="section-hr" role="presentation">
-    {% if subtopic_field_title %}
-      <h2>Related to {{ subtopic_field_title }}</h2>
+    {% if topic_title %}
+      <h2>Related to {{ topic_title }}</h2>
+    {% else %}
+      <h2>Related</h2>
     {% endif %}
     {{ content }}
   </aside>

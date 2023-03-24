@@ -441,32 +441,41 @@ a.card {
     }
 
     .card {
-      box-shadow: 0 1px 0 0 $grey-medium;
-      padding: 0;
+      box-shadow: 0 -1px 0 0 $grey-medium;
+      padding: 1.5em 0 0 0;
       margin: 0;
 
-      &:last-child {
+      &:first-child {
         box-shadow: none;
+        padding-top: 0;
       }
 
-      &:nth-last-child(-n + 2) {
+      &:nth-child(-n + 2) {
         @include breakpoint($tab) {
           box-shadow: none;
+          padding-top: 0;
         }
       }
 
       &__title {
         @include responsive-typo-map($large-text);
         margin: 0;
+
+        a {
+          @include link-state-style($link-body-no-visited);
+        }
       }
 
       &__content {
-        padding-bottom: 1.5em;
+        margin: .5em 0 0;
+
+        *:not(ul) {
+          @include responsive-typo-map($smallish-text);
+        }
 
         p,
         .page-summary {
-          @include responsive-typo-map($normal-text);
-          margin: .5em 0 0;
+          margin: 0;
           display: -webkit-box;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -474,12 +483,27 @@ a.card {
           -webkit-box-orient: vertical;
         }
 
+        ul {
+          margin: 0 0 1em;
+        }
+
         p + ul {
           margin-top: .5em;
         }
 
-        ul li a {
+        li a {
           text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+            text-decoration-color: #333;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+          }
+        }
+
+        .more-link {
+          font-weight: bold;
         }
       }
     }

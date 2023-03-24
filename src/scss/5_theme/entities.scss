@@ -124,3 +124,71 @@
   }
 }
 
+.page-node-type-topic {
+
+  .media-image:first-of-type {
+
+    margin: 1.5em 0;
+
+    > * {
+
+      @include breakpoint($phone) {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+      }
+
+      @include breakpoint($tab) {
+        float: right;
+        width: 25vw;
+        margin: 0 0 0 1.5em;
+      }
+
+      @include breakpoint($desk) {
+        margin: 0 0 0 2.5em;
+      }
+    }
+  }
+
+  .page-summary:only-child,
+  .page-summary p:last-child {
+    margin-bottom: 0;
+  }
+
+  .article-content {
+    // clearfix.
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      clear: both;
+    }
+  }
+
+  .subtopics {
+    width: 100%;
+    clear: both;
+    box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
+    margin-top: 3em;
+    padding-top: .5em;
+  }
+
+  .article-content:has(.page-summary:only-child) + .subtopics,
+  article:has(.page-summary:only-child) + .section-related {
+    margin-top: 2.5em;
+    padding-top: 1.5em;
+
+    .subtopics__title {
+      @include visually-hidden();
+    }
+  }
+
+  article:has(.page-summary:only-child) + .section-related {
+    padding-top: 0;
+  }
+
+  .card-deck--topics {
+    padding-top: .5em;
+  }
+}
+
