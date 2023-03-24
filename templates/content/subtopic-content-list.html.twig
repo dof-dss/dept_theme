@@ -13,7 +13,7 @@
   <h3 class="card__title">{{ title_link }}</h3>
   {% endif %}
   <div class="card__content">
-    {% if content_summary %}
+    {% if content_summary and content_links|length < 3 %}
       {{ content_summary }}
     {% endif %}
     {% if content_links %}
@@ -23,8 +23,10 @@
         {% endfor %}
       </ul>
     {% endif %}
-    {% if read_more_link and content_links|length > 3 %}
-      <a class="more" href="{{ read_more_link.url }}">Read more<span class="visually-hidden"> about {{ title }}</span></a>
+    {% if read_more_link and content_links|length >= 3 %}
+      <div class="more-link">
+        <a href="{{ read_more_link.url }}">Learn more <span class="visually-hidden">about {{ title }}</span></a>
+      </div>
     {% endif %}
   </div>
 </article>
