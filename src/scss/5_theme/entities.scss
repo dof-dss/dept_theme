@@ -126,18 +126,27 @@
 
 .page-node-type-topic {
 
-  .media-image[data-picture-mapping='inline'] > * {
+  .media-image:first-of-type {
 
-    @include breakpoint($tab) {
-      margin: 0 0 1.5em 1.5em;
-    }
+    margin: 1.5em 0;
 
-    @include breakpoint($desk) {
-      margin: 0 0 2.5em 2.5em;
-    }
+    > * {
 
-    @include breakpoint($desk-plus) {
-      margin: 0 0 2.5em 2.5em;
+      @include breakpoint($phone) {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+      }
+
+      @include breakpoint($tab) {
+        float: right;
+        width: 25vw;
+        margin: 0 0 1.5em 1.5em;
+      }
+
+      @include breakpoint($desk) {
+        margin: 0 0 2em 2.5em;
+      }
     }
   }
 

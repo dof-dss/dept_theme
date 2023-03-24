@@ -75,11 +75,9 @@
 {% endif %}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
 
-  <header class="narrow-title">
-    {% if show_title %}
-      {{ drupal_block('page_title_block', wrapper=false) }}
-    {% endif %}
-  </header>
+  {% if show_title %}
+    {{ drupal_block('page_title_block', wrapper=false) }}
+  {% endif %}
 
   {{ content.field_photo }}
 
