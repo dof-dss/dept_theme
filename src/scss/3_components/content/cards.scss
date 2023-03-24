@@ -462,7 +462,7 @@ a.card {
         margin: 0;
 
         a {
-          text-decoration: none;
+          @include link-state-style($link-body-no-visited);
         }
       }
 
@@ -489,6 +489,17 @@ a.card {
 
         p + ul {
           margin-top: .5em;
+        }
+
+        li a {
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+            text-decoration-color: #333;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+          }
         }
 
         .more-link {
