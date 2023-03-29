@@ -7,8 +7,10 @@
 
 use Drupal\block\Entity\Block;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityBase;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
 use Drupal\Component\Utility\Html;
 use Drupal\dept_core\Department;
 use Drupal\media\MediaInterface;
@@ -357,6 +359,20 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     }
     else {
       $output = t('Closed');
+    }
+  }
+
+  if (!empty($node->book)) {
+    $book = $node->book;
+    $pid = $book['pid'];
+
+    if ($pid) {
+      $parent_node = \Drupal\node\Entity\Node::load($pid);
+      $parent_title = $parent_node->getTitle();
+      $parent_url = '/node/' . $pid;
+      $variables['book'] = TRUE;
+      $variables['parent_title'] = $parent_title;
+      $variables['parent_url'] = $parent_url;
     }
   }
 }

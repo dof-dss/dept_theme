@@ -124,3 +124,10 @@
   }
 }
 
+.site-book {
+  margin-top: 0;
+}
+
+.site-topics:has(+ .site-book) {
+  margin-bottom: 0;
+}
