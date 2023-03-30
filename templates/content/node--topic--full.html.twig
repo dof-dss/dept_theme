@@ -79,14 +79,16 @@
     {{ drupal_block('page_title_block', wrapper=false) }}
   {% endif %}
 
-  {{ content.field_photo }}
-
-  <div class="ga-main article-content">
+  <div class="topic-header">
     {{ content.field_summary }}
-    {% if content.body.0 %}
-      {{ content.body }}
-    {% endif %}
+    {{ content.field_photo }}
   </div>
+
+  {% if content.body.0 %}
+  <div class="ga-main article-content">
+      {{ content.body }}
+  </div>
+  {% endif %}
 
   {% if content.subtopics_list is not empty %}
   <div class="subtopics">

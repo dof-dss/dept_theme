@@ -126,26 +126,62 @@
 
 .page-node-type-topic {
 
-  .media-image:first-of-type {
+  .topic-header {
+    box-shadow: 0 1.5px 0 0 var(--brand-primary-color);
+    padding-bottom: 2em;
 
-    margin: 1.5em 0;
+    &:last-child {
+      box-shadow: none;
+      padding-bottom: 1em;
+    }
 
-    > * {
+    &:has(.field-photo) {
+      padding-bottom: 1em;
 
-      @include breakpoint($phone) {
-        float: none;
-        width: 100%;
-        margin-left: 0;
-      }
-
+      // Larger screens: photo to right of large text summary.
       @include breakpoint($tab) {
-        float: right;
-        width: 25vw;
-        margin: 0 0 0 1.5em;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-column-gap: 1.5rem;
+
+        .page-summary {
+          grid-column: 1 / span 6;
+        }
+
+        .field-photo {
+          grid-column: 8 / span 5;
+        }
       }
 
       @include breakpoint($desk) {
-        margin: 0 0 0 2.5em;
+
+        .page-summary {
+          grid-column: 1 / span 7;
+        }
+
+        .field-photo {
+          grid-column: 9 / span 4;
+        }
+      }
+
+      .page-summary {
+        p {
+          @include responsive-typo-map($xl-text);
+
+          @include breakpoint($tab) {
+            margin-top: .5em;
+          }
+        }
+      }
+
+      .media-image {
+        margin: 0;
+
+        img {
+          max-height: 200px;
+          object-fit: cover;
+          margin: 0;
+        }
       }
     }
   }
@@ -156,6 +192,8 @@
   }
 
   .article-content {
+    margin-top: 2.5em;
+
     // clearfix.
     &::after {
       content: '';
@@ -163,28 +201,46 @@
       width: 100%;
       clear: both;
     }
+
+    .field-photo .media-image {
+
+      @include breakpoint($tab) {
+        float: right;
+        max-width: 300px;
+        margin: 0 0 1.5em 1.5em;
+      }
+    }
   }
 
   .subtopics {
     width: 100%;
     clear: both;
-    box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
-    margin-top: 3em;
-    padding-top: .5em;
-  }
+    margin-top: .5em;
 
-  .article-content:has(.page-summary:only-child) + .subtopics,
-  article:has(.page-summary:only-child) + .section-related {
-    margin-top: 2.5em;
-    padding-top: 1.5em;
+    .card__title a {
+      color: $brand-secondary;
 
-    .subtopics__title {
-      @include visually-hidden();
+      &:focus {
+        color: #fff;
+      }
     }
   }
 
-  article:has(.page-summary:only-child) + .section-related {
-    padding-top: 0;
+  .article-content + .subtopics {
+    box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
+    margin-top: 2.5em;
+    padding-top: .5em;
+  }
+
+  .topic-header:has(.page-summary:only-child) {
+    + .subtopics,
+    + .section-related {
+      margin-top: 1.5em;
+
+      .subtopics__title {
+        @include visually-hidden();
+      }
+    }
   }
 
   .card-deck--topics {
