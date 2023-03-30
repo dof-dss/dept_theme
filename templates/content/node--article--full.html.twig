@@ -80,11 +80,11 @@
   {% if show_topics and topics_subtopics_list is not empty %}
     {{ topics_subtopics_list }}
   {% endif %}
-  {% if parent_title %}
+  {% if book_parent_title %}
     <nav class="container site-topics site-book">
       <span>{{ 'Part of:'|t }}</span>
       <ul class="site-topics--list">
-        <li class="site-topics--item first"><a href={{ parent_url }}>{{ parent_title }}</a></li>
+        <li class="site-topics--item first"><a href={{ book_parent_url }}>{{ book_parent_title }}</a></li>
       </ul>
     </nav>
   {% endif %}
