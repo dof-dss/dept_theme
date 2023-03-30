@@ -189,6 +189,11 @@
         background-size: 2em auto;
       }
 
+      &[href*='instagram.com/'] {
+        background-image: url('/themes/custom/nicsdru_dept_theme/images/instagram.svg');
+        background-size: 1.3em auto;
+      }
+
       &[href*='linkedin.com/'] {
         background-image: url('/themes/custom/nicsdru_dept_theme/images/linkedin.svg');
       }
