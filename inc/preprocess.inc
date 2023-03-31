@@ -7,8 +7,10 @@
 
 use Drupal\block\Entity\Block;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityBase;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
 use Drupal\Component\Utility\Html;
 use Drupal\dept_core\Department;
 use Drupal\media\MediaInterface;
@@ -359,6 +361,18 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
       $output = t('Closed');
     }
   }
+
+  if (!empty($node->book)) {
+    $book = $node->book;
+    $pid = $book['pid'];
+
+    if ($pid) {
+      $parent_node = Node::load($pid);
+      $parent_title = $parent_node->getTitle();
+      $variables['book_parent_title'] = $parent_title;
+      $variables['book_parent_url'] = '/node/' . strval($pid);
+    }
+  }
 }
 
 /**
@@ -581,7 +595,9 @@ function nicsdru_dept_theme_preprocess_views_view_rss(&$variables) {
   // Based on https://jungleran.com/node/44 for preprocess
   // code to refine the output of the news RSS feed.
   $view = $variables['view'];
-  if ($view->current_display === 'news_feed' && $view->id() === 'news') {
+
+  if (in_array($view->id(), ['news', 'press_releases'])
+    && in_array($view->current_display, ['news_feed', 'press_releases_feed'])) {
     // The 'link' in the preprocess variables doesn't give us the full path so
     // we can create a new one here to give us what we need.
     $display = $view->getDisplay();
@@ -622,8 +638,8 @@ function nicsdru_dept_theme_preprocess_region(&$variables) {
   // Make the title field text available in the related region.
   if ($variables['region'] == 'related') {
     if ($node = \Drupal::routeMatch()->getParameter('node')) {
-      if ($node->getType() == 'subtopic') {
-        $variables['subtopic_field_title'] = $node->get('title')->view();
+      if ($node->getType() == 'topic' || $node->getType() == 'subtopic') {
+        $variables['topic_title'] = $node->get('title')->view();
       }
     }
   }

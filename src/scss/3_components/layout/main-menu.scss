@@ -46,15 +46,15 @@
       @include breakpoint($tab) {
         display: flex;
         width: auto;
-        left: -.4rem; // Center align Home with logo's hexagon.
+        left: -.1rem; // Center align Home with logo's hexagon.
       }
 
       @include breakpoint($lap) {
-        left: -.6rem; // Center align Home with logo's hexagon.
+        left: -.4rem; // Center align Home with logo's hexagon.
       }
     }
 
-    &-link {
+    &-link, &-item .active {
       @include link-state-style($link-main-menu);
       display: block;
       padding: 1em 1.6rem;
@@ -63,6 +63,7 @@
         @include link-state-style($link-main-menu-horizontal);
         @include adjust-font-size-to(16px, 4.5);
         padding: .9rem 1.2rem;
+        margin-right: 3px;
 
         // IE fix.
         // IE does not support outline-offset. So just remove the outline.
@@ -91,6 +92,10 @@
         @include adjust-font-size-to(18px, 4.5);
         padding: .5em 1.5rem;
       }
+    }
+
+    &-item .active {
+      @include link-state-style($link-main-menu-active);
     }
 
     &-social {

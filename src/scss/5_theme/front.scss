@@ -63,7 +63,6 @@
 
   .more-link a,
   a.more {
-    @include link-state-style($link-body-no-visited);
     font-weight: bold;
   }
 
@@ -106,6 +105,14 @@
         // sass-lint:disable no-misspelled-properties
         text-decoration-thickness: 2px;
         // sass-lint:enable no-misspelled-properties
+      }
+    }
+  }
+
+  &--latest-news {
+    a:focus {
+      .meta {
+        color: $grey-light;
       }
     }
   }
@@ -188,6 +195,11 @@
       &[href*='youtube.com/'] {
         background-image: url('/themes/custom/nicsdru_dept_theme/images/youtube.svg');
         background-size: 2em auto;
+      }
+
+      &[href*='instagram.com/'] {
+        background-image: url('/themes/custom/nicsdru_dept_theme/images/instagram.svg');
+        background-size: 1.3em auto;
       }
 
       &[href*='linkedin.com/'] {

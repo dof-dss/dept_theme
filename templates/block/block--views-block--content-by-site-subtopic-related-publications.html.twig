@@ -25,7 +25,7 @@
  * @see template_preprocess_block()
  */
 #}
-<div{{ attributes }}>
+<div{{ attributes.addClass('section-related__sub-section') }}>
   {{ title_prefix }}
   {% if label %}
     <h3{{ title_attributes }}>{{ label }}</h3>

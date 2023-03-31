@@ -33,26 +33,24 @@
   <h4 class="card__title">
     {{ fields.title.content }}
   </h4>
-  <div class="card__content">
-    <span class="meta">
-      {% if fields.field_domain_source %}
-        <span>{{ fields.field_domain_source.content }}</span>
-      {% endif %}
-      {% if fields.field_published_date %}
-        <span>Published {{ fields.field_published_date.content }}</span>
-      {% endif %}
-      {% if fields.field_consultation_dates %}
-        {% set consultation_date_end = fields.field_consultation_dates.content | render | striptags %}
-        {% set now = date() %}
-        <span>
-          {% if date(consultation_date_end) >= now %}
-            Closes {{ consultation_date_end|date("d F Y") }}
-          {% elseif date(consultation_date_end) < now %}
-            Consultation closed
-          {% endif %}
-        </span>
-      {% endif %}
-    </span>
+  <div class="card__meta">
+    {% if fields.field_domain_source %}
+      <span>{{ fields.field_domain_source.content }}</span>
+    {% endif %}
+    {% if fields.field_published_date %}
+      <span>Published {{ fields.field_published_date.content }}</span>
+    {% endif %}
+    {% if fields.field_consultation_dates %}
+      {% set consultation_date_end = fields.field_consultation_dates.content | render | striptags %}
+      {% set now = date() %}
+      <span>
+        {% if date(consultation_date_end) >= now %}
+          Closes {{ consultation_date_end|date("d F Y") }}
+        {% elseif date(consultation_date_end) < now %}
+          Consultation closed
+        {% endif %}
+      </span>
+    {% endif %}
   </div>
 </a>
 
