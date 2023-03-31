@@ -109,6 +109,14 @@
     }
   }
 
+  &--latest-news {
+    a:focus {
+      .meta {
+        color: $grey-light;
+      }
+    }
+  }
+
   &--social-links {
     display: flex;
     flex-flow: row wrap;
