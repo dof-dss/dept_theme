@@ -156,36 +156,53 @@ $link-main-menu: (
   background-color: (
     default: transparent,
   ),
-  text-decoration: none,
+  text-decoration: (
+    default: none,
+    focus: underline 2px,
+    hover: underline 2px
+  ),
+  text-underline-offset: (
+    default: none,
+    focus: 4px,
+    hover: 4px,
+  ),
   box-shadow: (
     default: none,
   ),
   outline: (
     default: 0,
     visited: 0,
-    focus: '3px solid',
-    hover: '3px solid',
   ),
   outline-offset: -.5em,
 );
 
 $link-main-menu-active: (
-  color: '#fff',
-  background: var(--brand-primary-color-high-contrast-white),
-  outline: none,
+  outline: 2px solid,
 );
 
 $link-main-menu-horizontal: (
   color: (
     default: color(link),
-    focus: #fff,
-    hover: #fff,
   ),
   background: (
     default: transparent,
-    focus: var(--brand-primary-color-high-contrast-white),
-    hover: var(--brand-primary-color-high-contrast-white),
   ),
+  outline: none,
+  text-decoration: (
+    default: none,
+    focus: underline 3px,
+    hover: underline 3px,
+  ),
+  text-underline-offset: (
+    default: auto,
+    focus: 5px,
+    hover: 5px,
+  )
+);
+
+$link-main-menu-horizontal-active: (
+  color: '#fff',
+  background: var(--brand-primary-color-high-contrast-white),
   outline: none,
 );
 
