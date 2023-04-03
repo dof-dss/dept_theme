@@ -7,23 +7,11 @@
   <h3 class="card__title">{{ label }}</h3>
   <div class="card__summary">{{ content.field_summary.0['#text'] }}</div>
   <div class="card__meta">
-    {% if content.departments %}
-    <span class="department-name">
-      {% for department in content.departments %}
-        {{ department }}{% if not loop.last %} ,{% endif %}
-      {% endfor %}
-    </span>
+    {% if department.id == 'nigov' %}
+      {{ content.field_domain_source }}
     {% endif %}
     {{ content.field_published_date }}
     {{ content.field_publication_type }}
-    {% set node_type = node.type.entity.label %}
-    {% if node_type == "Subtopic" %}
-      {{ 'Topic'|t }}
-    {% elseif node_type != "Publication" %}
-      <span class="node-type">
-        {{ node.type.entity.label }}
-      </span>
-    {% endif %}
     {{ content.consultation_status }}
   </div>
 </a>
