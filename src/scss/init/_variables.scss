@@ -219,25 +219,22 @@ $link-main-menu-social: (
 
 $link-footer: (
   color: (
-    default: $link,
+    default: $link-footer,
     focus: #fff,
     active: $link-active
   ),
   background-color: (
     default: transparent,
-    focus: $charcoal,
+    focus: $link-footer,
   ),
   text-decoration: (
-    default: none,
-    hover: underline,
-  ),
-  text-decoration-color: (
-    hover: $brand-secondary,
+    default: underline,
+    hover: underline 3px,
   ),
   text-underline-offset: 3px,
   outline: (
     default: 0,
-    focus: '3px solid #{$charcoal}',
+    focus: '3px solid #{$link-footer}',
   ),
   outline-offset: (
     default: null,

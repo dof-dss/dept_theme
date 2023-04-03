@@ -41,6 +41,7 @@ $chroma: add-colors((
   steel-blue:             #4478b8, // 4.54:1 with white
   prussian-blue:          #154365, // 8:1 with grey-medium, 12.73:1 with white
   tangaroa:               #041e34,
+  purple-blue:            #558,
 
   brand-primary:          #00aae5,
   brand-primary-dark:     #076cba, // 5.43:1 with white
@@ -68,6 +69,7 @@ $chroma: add-colors('functional', (
   link-hover:             'link',
   link-active:            'hc-red',
   link-focus:             'link',
+  link-footer:            'purple-blue',
 
   border:                 'grey-light',
 
@@ -131,7 +133,7 @@ $link-visited: color(link-visited);
 $link-focus: color(link-focus);
 $link-hover: color(link-hover);
 $link-active: color(link-active);
-
+$link-footer: color(link-footer);
 
 $border: color('border');
 
