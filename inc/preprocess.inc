@@ -534,6 +534,7 @@ function nicsdru_dept_theme_preprocess_views_view(&$variables) {
 function nicsdru_dept_theme_preprocess_form(array &$variables) {
   $view = $variables['element']['#id'];
   switch ($view) {
+    case "search-api-form":
     case "views-exposed-form-contacts-a-z-contacts-by-letter":
     case "views-exposed-form-contacts-contact-search":
     case "views-exposed-form-publications-search-publications-search":
