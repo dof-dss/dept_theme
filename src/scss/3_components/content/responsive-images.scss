@@ -134,9 +134,8 @@
     }
 
     figcaption {
+      @include responsive-typo-map($smallish-text);
       display: block;
-      font-style: italic;
-      text-align: center;
       padding: .5em;
       background-color: $grey-lightest;
       color: $text;
