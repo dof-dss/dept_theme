@@ -14,17 +14,6 @@
   margin-top: 3em;
   border-top: 5px solid var(--brand-primary-color);
 
-  .container {
-    @include breakpoint($lap) {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  &-main {
-    align-self: flex-end;
-  }
-
   .nav {
     &-menu {
       @include breakpoint($lap) {
