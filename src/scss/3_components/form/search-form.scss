@@ -212,6 +212,11 @@ header .search-api-form {
 }
 
 .search-form--site {
+
+  .path-search & {
+    margin-bottom: 1.5em;
+  }
+
   &[type='submit'] {
     border-color: var(--default-brand-primary-color);
     background-color: var(--default-brand-primary-color);
