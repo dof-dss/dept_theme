@@ -85,18 +85,18 @@
   <div{{ content_attributes.addClass('content') }}>
     <div class="summary content-field--label-inline">
       <div class="consultation-dates content-field__label">
-        {{ 'Consultation opened on'|t }}
-        {% apply spaceless %}
-          <strong>{{ content.field_consultation_dates[0].start_date }}</strong>{{ '.'|t }}
-        {% endapply %}
-        {{ 'Closing date '|t }}
-        <strong>{{ content.field_consultation_dates[0].end_date }}</strong>
-        {{ 'at '|t }}
-        <strong>{{ consultation_end_time }}</strong>{{ '.'|t }}
+        <p>
+          <span class="label">{{ 'Consultation opened on'|t }}</span>
+          <time datetime="{{ content.field_consultation_dates[0].start_date['#attributes']['datetime'] }}">{{ content.field_consultation_dates[0].start_date}}</time>
+        </p>
+        <p>
+          <span class="label">{{ 'Closing date'|t }}</span>
+          <time datetime="{{ content.field_consultation_dates[0].end_date['#attributes']['datetime'] }}">{{ content.field_consultation_dates[0].end_date }}{{ ' at '|t }}{{ consultation_end_time }}</time>
+        </p>
       </div>
       <div class="field-summary content-field__value">
         <h2>{{ content.field_summary['#title'] }}</h2>
-        <p>{{ content.field_summary }}</p>
+        {{ content.field_summary }}
       </div>
     </div>
     {{ content.field_attachment }}
