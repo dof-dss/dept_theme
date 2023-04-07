@@ -8,22 +8,41 @@
   .content {
     .summary {
       background: #f3f3f3;
-      margin: 3rem 0 4rem;
+      margin: 1.5em 0 2em;
+      padding-left: 1em;
 
       .consultation-dates {
-        padding: 1.2rem;
-        font-size: 2.1rem;
+        padding: 1em 1em 1em 0;
+        font-size: inherit;
+
+        p {
+          margin: 0 0 1.5em;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+
+        span.label {
+          font-weight: bold;
+        }
       }
 
       .field-summary {
-        padding: 1.2rem;
+        padding: 1em 1em 1.5em 0;
 
         h2 {
           margin: 0;
         }
 
-        p {
-          margin: .5rem 0 0;
+        .page-summary {
+          margin: .5em 1em 0 0;
+        }
+
+        .page-summary,
+        .page-summary > p {
+          font-size: inherit;
+          line-height: inherit;
         }
       }
     }

@@ -27,7 +27,11 @@
   }
 
   &-main {
-    padding-top: .3rem;
+    padding: 3rem 0 2rem;
+
+    @include breakpoint($tab) {
+      padding-top: 4rem;
+    }
 
     .nav-menu {
       display: flex;

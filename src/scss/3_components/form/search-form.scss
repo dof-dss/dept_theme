@@ -119,11 +119,23 @@
   // Style guide: components.search-form.page-search
   &--page {
 
+    .ga-main & {
+      max-width: 40rem;
+    }
+
     input {
+
+      &[type='search'] {
+        max-width: 100%;
+      }
 
       &[type='submit'] {
         background-color: var(--default-brand-primary-color);
         border-color: var(--default-brand-primary-color);
+
+        .ga-main & {
+          height: 2.5em;
+        }
       }
 
       .ga-aside & {
@@ -200,6 +212,11 @@ header .search-api-form {
 }
 
 .search-form--site {
+
+  .path-search & {
+    margin-bottom: 1.5em;
+  }
+
   &[type='submit'] {
     border-color: var(--default-brand-primary-color);
     background-color: var(--default-brand-primary-color);

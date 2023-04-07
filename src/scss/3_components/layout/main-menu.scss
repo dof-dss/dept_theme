@@ -96,6 +96,10 @@
 
     &-item .active {
       @include link-state-style($link-main-menu-active);
+
+      @include breakpoint($tab) {
+        @include link-state-style($link-main-menu-horizontal-active)
+      }
     }
 
     &-social {

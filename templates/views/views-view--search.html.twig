@@ -51,19 +51,19 @@
   {% endif %}
 
   {% if rows %}
-    <div class="view-content" role="region" aria-roledescription="{{ "search results"|t }}">
+    <section class="view-content" aria-roledescription="{{ "search results"|t }}">
       {% if header %}
         {{ header }}
       {% endif %}
       {{ rows }}
-    </div>
+    </section>
   {% elseif empty %}
-    <div class="view-empty" role="region" aria-roledescription="{{ "search results"|t }}">
+    <section class="view-empty" aria-roledescription="{{ "search results"|t }}">
       {% if header %}
         {{ header }}
       {% endif %}
       {{ empty }}
-    </div>
+    </section>
   {% endif %}
 
   {% if pager %}
