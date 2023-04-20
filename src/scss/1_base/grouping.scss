@@ -50,21 +50,23 @@ blockquote {
     box-shadow: none;
     padding: 0 1.5em;
     margin: 0;
-  }
 
-  /*
-  Add bottom box-shadow to blockquote if it
-  is the last one or it is not followed by
-  another blockquote and it is not the first in the chain.
-  */
-  &:not(:first-of-type) {
-    &:last-of-type,
-    &:has(+ *:not(blockquote)) {
-      box-shadow: 0 1.5px 0 0 #e8e7e7;
-      padding: 0 1.5em .5em;
-      margin-bottom: 2em;
+    /*
+    Add bottom box-shadow to blockquote if it
+    is the last one or it is not followed by
+    another blockquote and it is not the first in the chain.
+    */
+    &:not(:first-of-type) {
+      &:last-of-type,
+      &:has(+ *:not(blockquote)) {
+        box-shadow: 0 1.5px 0 0 #e8e7e7;
+        padding: 0 1.5em .5em;
+        margin-bottom: 2em;
+      }
     }
   }
+
+
 
   cite {
     display: block;
