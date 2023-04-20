@@ -70,17 +70,21 @@
  *   in different view modes.
  */
 #}
-{{ title_prefix }}
-{% if not page %}
-  <h3{{ title_attributes.addClass('card__title') }}>
-    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-  </h3>
-{% endif %}
-{{ title_suffix }}
+{% set summary_attribute = create_attribute() %}
+{% set summary_classes = [
+    'field-content',
+    'card__content'
+  ]
+%}
 
-{{ content | without('field_published_date', 'consultation_status') }}
-<div class="card__meta">
-  {{ content.field_published_date }}
-  {{ content.consultation_status }}
-</div>
+<h3{{ title_attributes.addClass('card__title') }}>
+  <a href="{{ url }}">{{ label }}</a>
+</h3>
+<p{{ summary_attribute.addClass(summary_classes) }}>{{ content.field_summary | render | striptags }}</p>
+<p class="card__meta">
+  <span class="label-inline">{{ "Published" | t}} </span>
+  <span class="date-display-single">{{ content.field_published_date | field_value }}</span>
+  <span class="card__meta-type">{{ content.consultation_status }}</span>
+</p>
 
+{{ content | without('field_published_date', 'consultation_status', 'field_summary') }}
