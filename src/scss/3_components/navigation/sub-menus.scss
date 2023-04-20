@@ -20,6 +20,18 @@
     margin: 0;
   }
 
+  .ga-aside & {
+    box-shadow: 0 -3px 0 0 var(--brand-primary-color);
+    padding-top: 1.5em;
+    margin-top: 1.5em;
+
+    @include breakpoint($tab) {
+      box-shadow: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+
   .menu-title { // TODO: should be .sub-menu__title?
     @include responsive-typo-map($xl-text);
     margin-top: 0;
