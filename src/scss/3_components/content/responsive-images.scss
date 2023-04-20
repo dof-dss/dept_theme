@@ -71,11 +71,7 @@
   // Floated styles.
   &[data-picture-mapping='inline'],
   &[data-picture-mapping='portrait_float'] {
-
-    > figure,
-    > img {
-      @include media-image-float;
-    }
+    @include media-image-float;
   }
 
   &[data-picture-mapping='inline_expandable'],

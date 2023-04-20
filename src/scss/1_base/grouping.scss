@@ -31,13 +31,15 @@ Add box-shadow to blockquote.
 blockquote {
   border: 0;
   box-shadow: 0 -1.5px 0 0 #e8e7e7, 0 1.5px 0 0 #e8e7e7;
-  padding: 1em;
+  padding: .5em 1.5em;
+  margin: 2em 0;
 
   /*
   If first in chain, only top box-shadow
    */
   &:has(+ blockquote) {
-    padding: 1em 1em 0;
+    padding: .5em 1.5em 0;
+    margin: 2em 0 0;
     box-shadow: 0 -1.5px 0 0 #e8e7e7;
   }
 
@@ -46,8 +48,8 @@ blockquote {
   */
   & + blockquote {
     box-shadow: none;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 1.5em;
+    margin: 0;
   }
 
   /*
@@ -59,7 +61,8 @@ blockquote {
     &:last-of-type,
     &:has(+ *:not(blockquote)) {
       box-shadow: 0 1.5px 0 0 #e8e7e7;
-      padding: 0 1em 1em;
+      padding: 0 1.5em .5em;
+      margin-bottom: 2em;
     }
   }
 
