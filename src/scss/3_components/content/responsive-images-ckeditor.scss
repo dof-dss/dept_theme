@@ -12,6 +12,10 @@ drupal-media {
 
   .media-image {
     margin: 0;
+
+    &[data-picture-mapping='inline'] {
+      width: 100%;
+    }
   }
 
   img,

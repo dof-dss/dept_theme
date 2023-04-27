@@ -126,6 +126,23 @@ ul {
   }
 }
 
+ol {
+  list-style-type: decimal;
+
+  ol {
+    list-style: upper-alpha;
+
+    ol {
+      list-style: lower-roman;
+
+      ol {
+        list-style: lower-alpha;
+      }
+    }
+  }
+}
+
+
 //dt {
 //   Add your styles.
 //}
