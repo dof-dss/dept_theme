@@ -22,6 +22,10 @@ libraries-override:
     css:
       theme:
         css/3_components/navigation/pager.css: false
+  layout_builder/drupal.layout_builder:
+    css:
+      theme:
+        css/layout-builder.css: css/3_components/form/layout-builder-form.css
   eu_cookie_compliance/eu_cookie_compliance_bare:
     css:
       state:
