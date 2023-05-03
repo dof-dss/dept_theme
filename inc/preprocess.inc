@@ -64,6 +64,7 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "consultation":
         case "landing_page":
         case "publication":
+        case "subtopic":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
           break;
 
