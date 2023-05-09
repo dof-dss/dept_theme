@@ -14,20 +14,27 @@
 
 .sub-menu {
 
-  margin: 1.5em 0;
+  margin: 1em 0 1.5em;
 
   &:first-child {
     margin: 0;
   }
 
-  .menu-title { // TODO: should be .sub-menu__title?
-    @include adjust-font-size-to(24px, 5);
-    margin: 0 0 1.2rem;
+  .ga-aside & {
+    box-shadow: 0 -3px 0 0 var(--brand-primary-color);
+    padding-top: 1.5em;
+    margin-top: 1.5em;
 
-    &--large {
-      @include adjust-font-size-to(28px, 6);
-      font-weight: normal;
+    @include breakpoint($tab) {
+      box-shadow: none;
+      padding-top: 0;
+      margin-top: 0;
     }
+  }
+
+  .menu-title { // TODO: should be .sub-menu__title?
+    @include responsive-typo-map($xl-text);
+    margin-top: 0;
   }
 
   .nav { // TODO: should be .sub-menu__nav?
@@ -40,7 +47,7 @@
     &-item {
       position: relative;
       list-style: none;
-      padding: 0 1rem 0 1.5rem;
+      padding: 0 0 0 1em;
       margin: .5em 0;
 
       &::before {
@@ -61,20 +68,21 @@
   }
 
   &--related {
-    //border-top: 5px solid color(brand-primary-medium);
-    padding: 1.5em 10px .5em;
-    //background-color: color(brand-primary-lightest);
+
+    li {
+      @include responsive-typo-map($smallish-text);
+    }
   }
 
   &--widget {
     border-top: 5px solid color(brand-primary-medium);
-    padding: 1.5em 10px .5em;
+    padding: 1.5em .5em .5em;
     background-color: transparent;
   }
 
   &--sibling {
     margin-top: 0;
-    padding: 0 10px .5em;
+    padding: 0 .5em .5em;
     background-color: transparent;
   }
 

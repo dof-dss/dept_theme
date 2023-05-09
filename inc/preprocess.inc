@@ -568,7 +568,9 @@ function nicsdru_dept_theme_preprocess_responsive_image_formatter(array &$variab
   $caption = $media_image->field_caption->value;
 
   if (!empty($caption)) {
-    $variables['responsive_image']['#attributes']['caption'] = $caption;
+    if ($variables['responsive_image_style_id'] != 'featured_news_thumbnail') {
+      $variables['responsive_image']['#attributes']['caption'] = $caption;
+    }
   }
 }
 
