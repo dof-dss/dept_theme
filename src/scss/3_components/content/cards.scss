@@ -526,13 +526,8 @@ a.card {
     flex-flow: column nowrap;
   }
 
-  // This class is added to all blocks in layout builder and adds unwanted padding.
-  &.layout-builder-block {
-    padding: 0;
-  }
-
+  // This class is added to all blocks in layout builder.
   .layout-builder-block {
-    padding: 0;
     width: 100%;
     height: 100%;
   }
