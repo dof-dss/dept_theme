@@ -93,15 +93,7 @@
       &__content {
         max-width: 720px;
         padding: 0;
-        margin: .8rem 0 0;
-
-        @include breakpoint($tab, $no-query: true) {
-          margin: .9rem 0 0;
-        }
-
-        @include breakpoint($desk, $no-query: true) {
-          margin: 1rem 0 0;
-        }
+        margin: .5em 0 0;
 
         .more {
           white-space: nowrap;
@@ -115,46 +107,26 @@
   // Theming of accordions for landing pages. Generic accordion component defined in 3_components/content/accordions
   .accordion {
 
-    border-bottom: 1px solid $brand-primary;
-
-    .accordion-heading {
-      padding-left: .8rem;
-
-      @include breakpoint($tab, $no-query: true) {
-        padding-left: 1.5rem;
-      }
-    }
+    box-shadow: 0 1px 0 0 var(--brand-primary-color);
 
     .accordion-section {
 
       .no-js & {
-
-        @include breakpoint($tab, $no-query: true) {
-          margin: 0 1.6rem 1em;
-        }
-
-        margin: 0 1.6rem 1em;
+        margin: 0 1em 1em;
         padding: 0;
       }
 
       .js & {
 
         &.expanded {
-          margin: 0 1.6rem 1em;
-
-          @include breakpoint($tab, $no-query: true) {
-            margin: 0 1.8rem 1em;
-          }
-
-          @include breakpoint($desk, $no-query: true) {
-            margin: 0 2rem 1em;
-          }
+          padding: .5em 1em;
+          margin: 0;
         }
       }
     }
 
     .accordion-section-title {
-      border-top: 1px solid $brand-primary;
+      box-shadow: 0 -1px 0 0 var(--brand-primary-color);
     }
   }
 
