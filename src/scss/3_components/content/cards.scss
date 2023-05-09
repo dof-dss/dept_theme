@@ -532,6 +532,10 @@ a.card {
     height: 100%;
   }
 
+  .layout-builder-block:not(.card--contact) {
+    padding: 0;
+  }
+
   // Prevent adding multiple cards (blocks) into a card-deck section (region) in layout builder
   section .layout-builder-block + .layout-builder__add-block {
     display: none;
