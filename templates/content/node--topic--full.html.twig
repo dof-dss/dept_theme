@@ -90,12 +90,13 @@
   </div>
   {% endif %}
 
-  {% if content.subtopics_list is not empty %}
+  {% if content.field_topic_content is not empty %}
   <div class="subtopics">
     <h2 class="subtopics__title">{{ label }} contents</h2>
     <div class="card-deck card-deck--x2 card-deck--plain card-deck--topics">
-      {{ content.subtopics_list }}
+      {{ content.field_topic_content }}
     </div>
   </div>
   {% endif %}
 </article>
+
