@@ -445,7 +445,7 @@ a.card {
   // Card deck modifier for topic cards.
   &--topics {
     @include breakpoint($tab) {
-      grid-gap: 2em 5em;
+      grid-gap: 2em 3em;
     }
 
     .card {
