@@ -5,7 +5,8 @@
 @import '../init';
 
 .page-node-type-landing-page,
-.page-node-type-subtopic {
+.page-node-type-subtopic,
+.page-node-type-topic {
 
   .info-notice,
   .card-deck,
@@ -24,8 +25,8 @@
     }
   }
 
-  .card-deck:not(.card-deck--plain) .card {
-    border-top: .9rem solid $brand-primary-medium;
+  .card-deck:not(.card-deck--plain):not(.card-deck--topics) .card {
+    border-top: var(--base-rhythm) solid var(--brand-primary-color);
     outline-width: 0;
 
     .card__image:empty ~ .card__body {
@@ -41,7 +42,7 @@
     }
   }
 
-  .card-deck + .card-deck:not(.card-deck--plain) {
+  .card-deck + .card-deck:not(.card-deck--plain, .card-deck--topics) {
     margin-top: rhythm(-3);
 
     @include breakpoint($phab, $no-query: true) {
@@ -66,14 +67,11 @@
   .card-deck--plain {
 
     .card {
-      padding: .6rem 1.8rem .9rem 1.5rem;
-      border-left: .3rem solid lighten($brand-primary-medium, 40%);
-
-      &:focus,
-      &:hover {
-        border-left-color: $brand-primary-medium;
-        background-color: $brand-primary-lightest;
-      }
+      height: auto;
+      align-self: start;
+      padding: var(--base-rhythm-frag) calc(var(--base-rhythm-frag) + 1em);
+      border-left: var(--base-rhythm-frag) solid var(--brand-primary-color-lite);
+      box-shadow: none;
 
       &__title {
         @include responsive-typo-map($card-title);
@@ -101,6 +99,12 @@
           text-decoration: underline;
         }
       }
+    }
+
+    a.card:focus,
+    a.card:hover {
+      border-left-color: var(--brand-primary-color);
+      background-color: $brand-primary-lightest;
     }
   }
 
@@ -193,5 +197,12 @@
       }
     }
   }
+
+  // Hide related section if there is no related content.
+  .section-related:has(#block-related-departmental-details-access-info:only-of-type) {
+    display: none;
+  }
 }
+
+
 
