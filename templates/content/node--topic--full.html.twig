@@ -79,23 +79,11 @@
     {{ drupal_block('page_title_block', wrapper=false) }}
   {% endif %}
 
-  <div class="topic-header">
-    {{ content.field_summary }}
-    {{ content.field_photo }}
-  </div>
-
-  {% if content.body.0 %}
-  <div class="ga-main article-content">
-      {{ content.body }}
-  </div>
+  {% if content_attributes is not empty %}
+  <div{{ content_attributes }}>
   {% endif %}
-
-  {% if content.subtopics_list is not empty %}
-  <div class="subtopics">
-    <h2 class="subtopics__title">{{ label }} contents</h2>
-    <div class="card-deck card-deck--x2 card-deck--plain card-deck--topics">
-      {{ content.subtopics_list }}
-    </div>
+  {{- content -}}
+  {% if content_attributes is not empty %}
   </div>
   {% endif %}
 </article>
