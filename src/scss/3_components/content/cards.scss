@@ -58,27 +58,20 @@
     > p,
     > ul,
     > ol {
-      margin: .9rem 0;
+      @include responsive-typo-map($smallish-text);
+      margin: var(--base-rhythm) 0;
     }
   }
 
   &__title {
     @include responsive-typo-map($card-title);
-    margin: 0 0 .9rem;
+    margin: 0 0 var(--base-rhythm);
   }
 
   &__meta {
     @include responsive-typo-map($small-text);
     color: $meta;
-    margin: .8rem 0;
-
-    @include breakpoint($tab) {
-      margin: .9rem 0;
-    }
-
-    @include breakpoint($desk-plus) {
-      margin: 1rem 0;
-    }
+    margin: var(--base-rhythm) 0;
   }
 
   &__meta + p {
@@ -124,7 +117,7 @@ a.card {
   &:hover,
   &:focus {
     background-color: $brand-primary-lighter;
-    outline: .9rem solid $brand-primary-lighter;
+    outline: var(--base-rhythm) solid $brand-primary-lighter;
     outline-offset: 0;
 
     .card__title::after {
@@ -243,7 +236,7 @@ a.card {
   // By default, use grid to layout the cards in a single column.
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 1.5em 2rem;
+  grid-gap: 1.5em 2em;
   margin-top: 0;
   margin-bottom: 2.5em;
 
@@ -296,7 +289,7 @@ a.card {
 
       @include breakpoint(0 $phone) {
         .card__body {
-          padding-top: 1.2rem;
+          padding-top: calc(var(--base-rhythm) + var(--base-rhythm-frag));
         }
       }
 
@@ -414,7 +407,7 @@ a.card {
 
         .department-name {
           display: block;
-          margin: 0.9rem 0 0 0;
+          margin: var(--base-rhythm) 0 0 0;
         }
       }
 
@@ -438,7 +431,7 @@ a.card {
     .card {
       box-shadow: none;
       border-top: 1px solid $headings;
-      padding: 1.2rem;
+      padding: calc(var(--base-rhythm) + var(--base-rhythm-frag));
     }
   }
 
@@ -515,30 +508,6 @@ a.card {
         }
       }
     }
-  }
-
-  // Layout Builder adjustments for card decks and cards.
-
-  // Cards can be dragged and dropped into card deck regions.  Multiple cards in the same
-  // region must stack on top of each other.
-  .layout-builder__region {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-
-  // This class is added to all blocks in layout builder.
-  .layout-builder-block {
-    width: 100%;
-    height: 100%;
-  }
-
-  .layout-builder-block:not(.card--contact) {
-    padding: 0;
-  }
-
-  // Prevent adding multiple cards (blocks) into a card-deck section (region) in layout builder
-  section .layout-builder-block + .layout-builder__add-block {
-    display: none;
   }
 }
 

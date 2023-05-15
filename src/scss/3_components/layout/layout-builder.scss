@@ -305,3 +305,27 @@
 .layout-builder-components-table .tabledrag-changed-warning {
   display: none !important;
 }
+
+// Layout Builder adjustments for card decks and cards.
+
+// Cards can be dragged and dropped into card deck regions.  Multiple cards in the same
+// region must stack on top of each other.
+.layout-builder__region {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+// This class is added to all blocks in layout builder.
+.layout-builder-block {
+  width: 100%;
+  height: 100%;
+}
+
+.layout-builder-block:not(.card--contact) {
+  padding: 0;
+}
+
+// Prevent adding multiple cards (blocks) into a card-deck section (region) in layout builder
+section .layout-builder-block + .layout-builder__add-block {
+  display: none;
+}
