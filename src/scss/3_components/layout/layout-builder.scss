@@ -203,26 +203,37 @@
 
 #drupal-off-canvas .layout-selection li {
   display: block;
-  padding-bottom: 1em;
+  padding: 10px 0;
 }
 
 #drupal-off-canvas .layout-selection li a {
   display: block;
-  padding-top: .55em;
+  padding: 10px;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+#drupal-off-canvas .layout-selection li a:hover {
+  background-color: #333;
+}
+
+#drupal-off-canvas .layout-selection li a .layout-icon {
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 #drupal-off-canvas .inline-block-list {
   display: block;
 }
 
-#drupal-off-canvas .inline-block-create-button {
+#drupal-off-canvas a.inline-block-create-button {
   display: block;
   padding: 24px;
   padding-left: 44px;
-  color: #eee;
   border-bottom: 1px solid #333;
   background: url('/core/misc/icons/bebebe/plus.svg') transparent 16px no-repeat;
   font-size: 16px;
+  text-decoration: none !important;
 }
 
 #drupal-off-canvas .inline-block-create-button,
