@@ -8,6 +8,7 @@
 .page-node-type-subtopic,
 .page-node-type-topic {
 
+  .banner,
   .info-notice,
   .card-deck,
   .accordion,
@@ -15,7 +16,7 @@
   .text-block,
   .layout__region > .card--contact,
   .layout__region > .subtopics {
-    margin: 1.5em 0 3em;
+    margin: 0 0 calc(var(--base-font-size) * 3);
   }
 
   .card-deck:not(.card-deck--plain):not(.card-deck--topics) .card {
