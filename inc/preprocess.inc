@@ -380,6 +380,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
+
   // Set department logo for system branding block.
   if ($variables['plugin_id'] === 'system_branding_block') {
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
@@ -393,6 +394,15 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
     else {
       $variables["department_logo"] = 'logo-admin.svg';
       $variables['site_name'] = t('DEPT ADMIN');
+    }
+  }
+
+  // Get banner link for banner image block.
+  if ($variables['plugin_id'] === 'field_block:node:subtopic:field_banner_image') {
+    $node = $variables['content']['#object'];
+
+    if ($node instanceof NodeInterface) {
+      $variables['banner_link'] = $node->get('field_banner_link');
     }
   }
 
