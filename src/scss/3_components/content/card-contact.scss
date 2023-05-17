@@ -81,7 +81,7 @@
   }
 
   .card__content {
-
+    max-width: $max-content-width;
     padding: 0;
 
     > * {
