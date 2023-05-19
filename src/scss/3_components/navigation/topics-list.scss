@@ -14,34 +14,14 @@
 
 .site-topics,
 %site-topics {
-  margin: .8rem 0 1.2rem;
-  padding: 0 0 .8rem;
-  @include adjust-font-size-to(14px, 3.3334);
+  margin: var(--base-rhythm) 0 calc(var(--base-rhythm) + var(--base-rhythm-frag));
+  padding: 0 0 var(--base-rhythm);
+  @include responsive-typo-map($small-text);
   display: flex;
   column-gap: 10px;
 
-  @include breakpoint($tab) {
-    @include adjust-font-size-to(15px, 3.5);
-    margin: .9rem 0 1.2rem;
-    padding: 0 0 .9rem;
-  }
-
-  @include breakpoint($desk-plus) {
-    @include adjust-font-size-to(16px, 3.3334);
-    margin: 1rem 0 1.5rem;
-    padding: 0 0 1rem;
-  }
-
   @at-root h1 + & {
-    margin-top: -.8rem;
-
-    @include breakpoint($tab) {
-      margin-top: -.9rem;
-    }
-
-    @include breakpoint($desk-plus) {
-      margin-top: -1rem;
-    }
+    margin-top: calc(var(--base-rhythm) * -1);
   }
 
   @media print {
