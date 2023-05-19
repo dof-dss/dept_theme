@@ -46,7 +46,9 @@
     {{ content.field_title }}
   </h2>
   {% autoescape false %}
-  <p class="card__content">{{ card_content|trim(".") }}&nbsp;&hellip;&nbsp;<span class="more">read more</span></p>
+  <div class="card__content">
+    <p>{{ card_content|trim(".") }}&nbsp;&hellip;&nbsp;<span class="more">read more</span></p>
+  </div>
   {% endautoescape %}
 </a>
 {% endblock paragraph %}
