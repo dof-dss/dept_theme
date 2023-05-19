@@ -398,7 +398,7 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
   }
 
   // Get banner link for banner image block.
-  if ($variables['plugin_id'] === 'field_block:node:subtopic:field_banner_image') {
+  if ($variables['plugin_id'] === 'field_block:node:subtopic:field_banner_image' && !empty($variables['content']['#object'])) {
     $node = $variables['content']['#object'];
 
     if ($node instanceof NodeInterface) {
