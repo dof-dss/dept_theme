@@ -8,6 +8,14 @@
 .page-node-type-subtopic,
 .page-node-type-topic {
 
+  h1:has(~ .layout .banner) {
+    @include visually-hidden();
+
+    ~ .site-topics {
+      margin-top: calc(var(--base-font-size) * 2);
+    }
+  }
+
   .banner,
   .info-notice,
   .card-deck,
