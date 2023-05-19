@@ -5,13 +5,13 @@
  * Theme hook_preprocess functions.
  */
 
+use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityBase;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
-use Drupal\block\Entity\Block;
 use Drupal\dept_core\Department;
 use Drupal\media\MediaInterface;
 use Drupal\nicsdru_dept_theme\Helpers;
