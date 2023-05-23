@@ -59,19 +59,23 @@
     > ul,
     > ol {
       @include responsive-typo-map($smallish-text);
-      margin: var(--base-rhythm) 0;
+      margin: var(--rhythm-spacing-sm) 0;
     }
   }
 
   &__title {
     @include responsive-typo-map($card-title);
-    margin: 0 0 var(--base-rhythm);
+    margin: 0 0 var(--rhythm-spacing-sm);
   }
 
   &__meta {
     @include responsive-typo-map($small-text);
     color: $meta;
-    margin: var(--base-rhythm) 0;
+    margin: var(--rhythm-spacing-sm) 0 0;
+
+    &:empty {
+      margin: 0;
+    }
   }
 
   &__meta + p {
@@ -117,7 +121,7 @@ a.card {
   &:hover,
   &:focus {
     background-color: $brand-primary-lighter;
-    outline: var(--base-rhythm) solid $brand-primary-lighter;
+    outline: .5em solid $brand-primary-lighter;
     outline-offset: 0;
 
     .card__title::after {
@@ -289,7 +293,7 @@ a.card {
 
       @include breakpoint(0 $phone) {
         .card__body {
-          padding-top: calc(var(--base-rhythm) + var(--base-rhythm-frag));
+          padding-top: var(--rhythm-spacing-md);
         }
       }
 
@@ -379,14 +383,19 @@ a.card {
         padding: 0;
       }
 
-      &__summary {
+      &__summary,
+      &__content {
         @include responsive-typo-map($smallish-text);
-        margin: .5em 0 0;
+        margin: var(--rhythm-spacing-sm) 0 0;
       }
 
       &__meta {
-        margin: .5em 0;
+        margin: var(--rhythm-spacing-sm) 0 0;
         padding: 0;
+
+        &:empty {
+          margin: 0;
+        }
 
         > span,
         > div,
@@ -394,6 +403,10 @@ a.card {
           display: inline-block;
           color: $ash-grey;
           margin: 0 1em 0 0;
+
+          &.label-inline {
+            margin-right: 0;
+          }
 
           &:last-child {
             margin: 0;
@@ -407,13 +420,8 @@ a.card {
 
         .department-name {
           display: block;
-          margin: var(--base-rhythm) 0 0 0;
+          margin: var(--rhythm-spacing-sm) 0 0 0;
         }
-      }
-
-      &__content {
-        margin: 0;
-        padding: 0;
       }
     }
   }
@@ -431,7 +439,7 @@ a.card {
     .card {
       box-shadow: none;
       border-top: 1px solid $headings;
-      padding: calc(var(--base-rhythm) + var(--base-rhythm-frag));
+      padding: var(--rhythm-spacing-md);
     }
   }
 
