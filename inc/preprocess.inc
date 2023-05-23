@@ -314,21 +314,6 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
       break;
   }
 
-  // Gather a list of topics for the node, if needed, which can be
-  // used in the node template to give a controllable list of topics
-  // and optional subtopics ordered by title.
-//  if ($variables['show_topics'] && $variables['node'] instanceof NodeInterface) {
-//    $topics = \Drupal::service('dept_topics.topics')->getTopics($variables['node']);
-//
-//    if (!empty($topics)) {
-//      $variables['topics_subtopics_list'] = [
-//        '#theme' => 'topics_subtopics_list',
-//        '#title' => t('Topics'),
-//        '#items' => $topics,
-//        '#links' => TRUE,
-//      ];
-//    }
-//  }
   // Only use this code for consultations content type.
   if ($variables['node']->getType() === 'consultation') {
 
