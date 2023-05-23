@@ -69,55 +69,66 @@ body {
 
 .dept-admin {
   --brand-primary-color: #{$corp-admin}; // 4:49:1
+  --brand-primary-color-lite: #{lighten($corp-admin, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-admin-ui-on-white}; // 4.56:1
 }
 
 .dept-nigov {
   --brand-primary-color: #{$corp-nigov}; // 4:49:1
+  --brand-primary-color-lite: #{lighten($corp-nigov, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-nigov-ui-on-white}; // 4.56:1
 }
 
 .dept-finance {
   --brand-primary-color: #{$corp-dof};    // 3:1
+  --brand-primary-color-lite: #{lighten($corp-dof, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-dof-ui-on-white}; // 4.55:1
 }
 
 .dept-daera  {
   --brand-primary-color: #{$corp-daera};    // 3.4:1
+  --brand-primary-color-lite: #{lighten($corp-daera, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-daera-ui-on-white}; // 4.54:1
 }
 
 .dept-communities  {
   --brand-primary-color: #{$corp-dfc};     // 5.25:1
+  --brand-primary-color-lite: #{lighten($corp-dfc, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-dfc-ui-on-white}; // 5.25:1
 }
 
 .dept-economy  {
   --brand-primary-color: #{$corp-dfe};      // 4.88:1
+  --brand-primary-color-lite: #{lighten($corp-dfe, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-dfe-ui-on-white}; // 4.88:1
 }
 
 .dept-education  {
   --brand-primary-color: #{$corp-de};      // 4.89:1
+  --brand-primary-color-lite: #{lighten($corp-de, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-de-ui-on-white}; // 4.89:1
 }
 
 .dept-executiveoffice  {
   --brand-primary-color: #{$corp-teo};     // 4.29:1
+  --brand-primary-color-lite: #{lighten($corp-teo, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-teo-ui-on-white}; // 4.6:1
 }
 
 .dept-health  {
   --brand-primary-color: #{$corp-doh};      // 3.66:1
+  --brand-primary-color-lite: #{lighten($corp-doh, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-doh-ui-on-white}; // 4.54:1
 }
 
 .dept-infrastructure  {
   --brand-primary-color: #{$corp-dfi};     // 1.73:1
+  --brand-primary-color-lite: #{lighten($corp-dfi, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-dfi-ui-on-white}; // 5.43:1 (complementary)
 }
 
 .dept-justice  {
   --brand-primary-color: #{$corp-doj};
+  --brand-primary-color-lite: #{lighten($corp-doj, 20%)};
   --brand-primary-color-high-contrast-white: #{$corp-doj-ui-on-white}; // 7.27:1
 }

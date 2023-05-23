@@ -203,27 +203,41 @@
 
 #drupal-off-canvas .layout-selection li {
   display: block;
-  padding-bottom: 1em;
+  padding: 10px 0;
 }
 
 #drupal-off-canvas .layout-selection li a {
   display: block;
-  padding-top: .55em;
+  padding: 10px;
+  font-size: 17px;
+  text-decoration: none;
 }
 
-#drupal-off-canvas .inline-block-create-button {
+#drupal-off-canvas .layout-selection li a:hover {
+  background-color: #333;
+}
+
+#drupal-off-canvas .layout-selection li a .layout-icon {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#drupal-off-canvas .inline-block-list {
+  display: block;
+}
+
+#drupal-off-canvas a.inline-block-create-button {
   display: block;
   padding: 24px;
   padding-left: 44px;
-  color: #eee;
   border-bottom: 1px solid #333;
   background: url('/core/misc/icons/bebebe/plus.svg') transparent 16px no-repeat;
   font-size: 16px;
+  text-decoration: none !important;
 }
 
 #drupal-off-canvas .inline-block-create-button,
 #drupal-off-canvas .inline-block-list__item {
-  margin: 0 -20px;
   background-color: #444;
 }
 
@@ -305,3 +319,39 @@
 .layout-builder-components-table .tabledrag-changed-warning {
   display: none !important;
 }
+
+// Layout Builder adjustments for card decks and cards.
+
+// Cards can be dragged and dropped into card deck regions.  Multiple cards in the same
+// region must stack on top of each other.
+.layout-builder__region {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+// This class is added to all blocks in layout builder.
+.layout-builder-block {
+  width: 100%;
+  height: 100%;
+}
+
+.layout-builder-block:not(.card--contact) {
+  padding: 0;
+}
+
+// Prevent adding multiple cards (blocks) into a card-deck section (region) in layout builder
+section .layout-builder-block + .layout-builder__add-block {
+  display: none;
+}
+
+// Layout builder blocks that are empty.
+.layout-builder-block:has(.contextual:last-child) {
+  padding: 1em;
+  outline: 3px dashed #ddd;
+  outline-offset: 2px;
+  margin: 1em 0 1.5em;
+  content: "EMPTY";
+  background: #ddd;
+}
+
+

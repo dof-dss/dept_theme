@@ -59,4 +59,9 @@
   a.more {
     font-weight: bold;
   }
+
+  #block-related-departmental-details-access-info p {
+    @include responsive-typo-map($smallish-text);
+    margin: var(--base-rhythm) 0 var(--base-font-size);
+  }
 }
