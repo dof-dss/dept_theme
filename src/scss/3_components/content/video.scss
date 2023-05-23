@@ -50,14 +50,6 @@
   width: 100%;
   position: relative;
 
-  &__heading {
-    padding-left: .8rem;
-
-    @include breakpoint($tab, $no-query: true) {
-      padding-left: 1.5rem;
-    }
-  }
-
   &__content {
 
     // By default, video and caption are stacked in single column.
@@ -107,8 +99,7 @@
         justify-content: space-between;
 
         > * {
-          flex: 48.9% 0 0;
-          max-width: 460px;
+          flex: calc(50% - 1em) 0 0;
           margin: 0;
         }
       }
