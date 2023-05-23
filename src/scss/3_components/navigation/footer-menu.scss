@@ -17,20 +17,20 @@
   &-related {
     @include responsive-typo-map($normal-text-no-margins);
     font-weight: bold;
-    padding-top: 3.6rem;
+    padding-top: 2em;
 
     .nav-item {
       font-size: inherit;
       line-height: inherit;
-      padding-bottom: .6rem;
+      padding-bottom: .5em;
     }
   }
 
   &-main {
-    padding: 3rem 0 2rem;
+    padding: 1.5em 0 1em;
 
     @include breakpoint($tab) {
-      padding-top: 4rem;
+      padding-top: 2em;
     }
 
     .nav-menu {
@@ -42,20 +42,14 @@
       padding: 0;
 
       li {
-        @include breakpoint($tab) {
-          font-size: 1.6rem;
-        }
-        @include breakpoint($desk-plus) {
-          font-size: 1.7rem;
-        }
-        font-size: 1.4rem;
-        margin: .5em .5em .5em 0;
+        @include responsive-typo-map($smallish-text);
+        margin: 0 .5em var(--rhythm-spacing-sm) 0;
         padding: 0 .5em 0 0;
-        border-right: 1px solid $link;
+        box-shadow: 5px 0 0 -4px;
         line-height: 1;
 
         &:last-child {
-          border-right: 0;
+          box-shadow: none;
         }
       }
 

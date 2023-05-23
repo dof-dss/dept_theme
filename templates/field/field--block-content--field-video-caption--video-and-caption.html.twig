@@ -39,7 +39,7 @@
 {%
   set classes = ['video-and-caption__caption']
 %}
-<div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
+<div{{ attributes.addClass(classes) }}>
 {% for item in items %}
   <p>{{ item.content }}</p>
 {% endfor %}

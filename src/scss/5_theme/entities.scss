@@ -111,7 +111,7 @@
     p {
 
       @include breakpoint($tab) {
-        margin-top: var(--base-rhythm);
+        margin-top: var(--rhythm-spacing-sm);
       }
 
       &:last-child {
@@ -129,7 +129,7 @@
     box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
 
     > *:first-child {
-      margin-top: calc(var(--base-font-size) * 2);
+      margin-top: var(--rhythm-spacing-xxl);
     }
   }
 

@@ -12,7 +12,7 @@
     @include visually-hidden();
 
     ~ .site-topics {
-      margin-top: calc(var(--base-font-size) * 2);
+      margin-top: var(--rhythm-spacing-xxl);
     }
   }
 
@@ -24,7 +24,7 @@
   .text-block,
   .layout__region > .card--contact,
   .layout__region > .subtopics {
-    margin: 0 0 calc(var(--base-font-size) * 3);
+    margin: 0 0 var(--rhythm-spacing-xxxl);
   }
 
   .card-deck:not(.card-deck--plain):not(.card-deck--topics) .card {
@@ -45,7 +45,7 @@
   }
 
   .card-deck + .card-deck:not(.card-deck--plain, .card-deck--topics) {
-    margin-top: calc(var(--base-rhythm) * -2);
+    margin-top: calc(var(--rhythm-spacing) * -1);
   }
 
   .card-deck--plain {
@@ -53,8 +53,10 @@
     .card {
       height: auto;
       align-self: start;
-      padding: var(--base-rhythm-frag) calc(var(--base-rhythm-frag) + 1em);
-      border-left: var(--base-rhythm-frag) solid var(--brand-primary-color-lite);
+      // sass-lint:disable shorthand-values
+      padding: var(--rhythm-spacing-xs) var(--rhythm-spacing-lg);
+      // sass-lint:enable shorthand-values
+      border-left: 5px solid var(--brand-primary-color-lite);
       box-shadow: none;
 
       &__title {

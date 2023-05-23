@@ -62,6 +62,6 @@
 
   #block-related-departmental-details-access-info p {
     @include responsive-typo-map($smallish-text);
-    margin: var(--base-rhythm) 0 var(--base-font-size);
+    margin: var(--rhythm-spacing-sm) 0 var(--rhythm-spacing);
   }
 }

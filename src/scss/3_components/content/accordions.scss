@@ -28,7 +28,7 @@
   .accordion-section-title {
     @include responsive-typo-map($large-text);
     position: relative;
-    padding: calc(var(--base-rhythm) + var(--base-rhythm-frag));
+    padding: var(--rhythm-spacing-md);
     margin: 0;
 
     .js & {
@@ -49,7 +49,7 @@
       text-align: left;
 
       .js & {
-        padding: var(--base-font-size) 6rem var(--base-font-size) 0;
+        padding: var(--rhythm-spacing) 6rem var(--rhythm-spacing) 0;
       }
 
       &::after {
