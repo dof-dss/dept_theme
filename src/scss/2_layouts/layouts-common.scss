@@ -50,24 +50,15 @@
   max-width: 600px;
   clear: both;
   margin: 0 auto;
-  padding: 0 16px;
-
-  @include breakpoint($phone) {
-    padding: 0 64px;
-  }
+  padding: 0 var(--rhythm-spacing);
 
   @include breakpoint($tab) {
     max-width: 980px;
-    padding: 0 24px;
-  }
-
-  @include breakpoint($lap) {
-    padding: 0 27px;
+    padding: 0 var(--rhythm-spacing-xl);
   }
 
   @include breakpoint($desk) {
     max-width: 1140px;
-    padding: 0 30px;
   }
 
   &--no-padding {

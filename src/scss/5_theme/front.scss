@@ -40,16 +40,8 @@
   .meta {
     @include responsive-typo-map($small-text);
     display: block;
-    margin-top: 4px;
+    margin-top: var(--rhythm-spacing-xs);
     color: $ash-grey;
-
-    @include breakpoint($tab) {
-      margin-top: 3px;
-    }
-
-    @include breakpoint($desk-plus) {
-      margin-top: 5px;
-    }
 
     > * {
       display: inline-block;
@@ -222,7 +214,7 @@
 
     article {
       box-shadow: 0 1px 0 0 $grey-medium;
-      padding-bottom: 1.8rem;
+      padding-bottom: var(--rhythm-spacing);
 
       .card {
         display: flex;
@@ -231,35 +223,35 @@
 
       .card__image {
         flex: 0 0 13rem;
-        padding-right: 1rem;
+        margin-bottom: var(--rhythm-spacing-sm);
+        padding-right: var(--rhythm-spacing);
         max-width: 50%;
 
         @include breakpoint($phab) {
           flex-basis: 16.5rem;
-          padding-right: 1.5rem;
         }
       }
 
       .card__body {
-        padding: 0 0 0 .5rem;
+        padding: 0;
 
         .card__title {
           @include responsive-typo-map($featured-news-h3-small);
-          margin: 0 0 .3em;
+          margin: 0 0 var(--rhythm-spacing-sm);
         }
 
         p {
-          margin: .3em 0 0;
+          margin: var(--rhythm-spacing-xs) 0 0;
         }
 
         .card__meta {
-          margin: .4em 0;
+          margin: var(--rhythm-spacing-xs) 0;
 
           > * {
-            margin: 0 1.5em .15em 0;
+            margin: 0 var(--rhythm-spacing) var(--rhythm-spacing-xs) 0;
 
             &:last-child {
-              margin: .15em 0 0;
+              margin: var(--rhythm-spacing-xs) 0 0;
             }
           }
         }
@@ -288,22 +280,17 @@
           }
         }
 
-        h3 {
-          @include responsive-typo-map($h3-text);
-          margin: .5em 0;
-
-          @include breakpoint($phab) {
-            margin: 0 0 .3em;
-          }
-
-        }
-
         .card__body {
           align-self: auto;
           padding-left: 0;
 
           @include breakpoint($phab) {
-            padding-left: 1.8rem;
+            padding-left: var(--rhythm-spacing-lg);
+          }
+
+          .card__title {
+            @include responsive-typo-map($h3-text-no-margin);
+            margin: 0 0 var(--rhythm-spacing-sm);
           }
         }
       }
