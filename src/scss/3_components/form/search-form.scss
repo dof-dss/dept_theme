@@ -37,7 +37,7 @@
 
   label {
     @include responsive-typo-map($smallish-text);
-    margin: 0 0 .5em;
+    margin: 0 0 var(--rhythm-spacing-sm);
   }
 
   input {
