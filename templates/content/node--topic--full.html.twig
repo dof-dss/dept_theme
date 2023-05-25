@@ -85,7 +85,7 @@
 
   {{- content | without('field_topic_content') -}}
 
-  {% if content.field_topic_content is not empty %}
+  {% if content.field_topic_content.0 is not empty %}
     <div class="subtopics">
       <h2 class="subtopics__title visually-hidden">{{ label }} contents</h2>
       <div class="card-deck card-deck--x2 card-deck--topics">
