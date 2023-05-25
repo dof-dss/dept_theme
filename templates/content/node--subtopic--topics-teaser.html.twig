@@ -78,6 +78,23 @@
     {% if content.field_summary %}
       <p class="page-summary">{{ content.field_summary | render | striptags }}</p>
     {% endif %}
-    {{ content.field_topic_content }}
+
+    {% if content.field_topic_content.0 %}
+      {% set links = [content.field_topic_content.0] %}
+    {% endif %}
+    {% if content.field_topic_content.1 %}
+      {% set links = links|merge([content.field_topic_content.1]) %}
+    {% endif %}
+    {% if content.field_topic_content.2 %}
+      {% set links = links|merge([content.field_topic_content.2]) %}
+    {% endif %}
+
+    {% if links is not empty %}
+      <ul class="list--hyphen-bullet">
+        {% for link in links|slice(0, 3) %}
+          <li>{{ link }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   </div>
 </article>
