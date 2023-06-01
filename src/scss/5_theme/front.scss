@@ -131,15 +131,15 @@
       color: #4d4d4d;
     }
 
-    ul,
-    li {
+    .social-links,
+    li.list-item {
       display: flex;
       flex-flow: row wrap;
       margin: 0;
       padding: 0;
     }
 
-    li {
+    li.list-item {
       margin: .25em;
 
       &:first-child {
