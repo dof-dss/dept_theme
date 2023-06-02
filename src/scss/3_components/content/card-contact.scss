@@ -21,6 +21,12 @@
     min-height: fit-content;
   }
 
+  .card-deck &  {
+    @include breakpoint($tab) {
+      flex-flow: column nowrap;
+    }
+  }
+
   &-black {
     background-color: $charcoal;
   }
@@ -50,13 +56,24 @@
       .card-deck & {
         flex: 8rem 0 0;
       }
+
+      .card-deck & {
+        flex: 100% 1 1;
+        min-height: 80px;
+        max-height: 140px;
+        margin: 0 0 1em;
+      }
+
+      .card-deck--list-to-x3 & {
+        max-height: 150px;
+      }
     }
 
     @include breakpoint($desk) {
       flex: 12rem 0 0;
 
-      .card-deck & {
-        flex: 9rem 0 0;
+      .card-deck--list-to-x3 & {
+        flex: 100% 0 0;
       }
     }
   }
@@ -88,6 +105,14 @@
     .tel {
       display: flex;
       flex-flow: column;
+
+      @include breakpoint($tab) {
+        .card-deck & {
+          > * {
+            text-align: center;
+          }
+        }
+      }
 
       .title {
         @include responsive-typo-map($large-text);
