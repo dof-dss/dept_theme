@@ -42,7 +42,7 @@
   }
 }
 
-.layout-builder__link--add {
+.layout-builder__link--add:link {
   display: inline-block;
   font-size: 16px;
   text-decoration: none;
@@ -54,14 +54,15 @@
   background: url('/core/misc/icons/bebebe/plus.svg') #787878 .5em center / 1em no-repeat; /* LTR */
 }
 
-[dir='rtl'] .layout-builder__link--add {
+[dir='rtl'] .layout-builder__link--add:link {
   padding: .5em 1.8em .5em .5em;
   background-position-x: .5em;
 }
 
+.layout-builder__link--add:visited,
+.layout-builder__link--add:focus,
 .layout-builder__link--add:hover,
-.layout-builder__link--add:active,
-.layout-builder__link--add:focus {
+.layout-builder__link--add:active {
   color: #fff;
   background-color: #333;
   border-bottom-style: none;
