@@ -139,69 +139,71 @@
       padding: 0;
     }
 
-    li.list-item {
-      margin: .25em;
+    .social-links {
+      li.list-item {
+        margin: .25em;
 
-      &:first-child {
-        margin-left: 0;
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        @include breakpoint($tab $desk-plus) {
+          margin: .1667em;
+        }
       }
 
-      &:last-child {
-        margin-right: 0;
-      }
+      a {
+        display: inline-block;
+        width: 2.5em;
+        height: 2.5em;
+        min-width: 44px;
+        min-height: 44px;
+        margin: 0;
+        background: #4d4d4d center center / 1.75em auto no-repeat;
+        transition: background-color .2s ease-in-out, transform .2s ease-in-out;
 
-      @include breakpoint($tab $desk-plus) {
-        margin: .1667em;
-      }
-    }
+        &:focus,
+        &:hover {
+          background-color: var(--brand-primary-color-high-contrast-white);
+        }
 
-    a {
-      display: inline-block;
-      width: 2.5em;
-      height: 2.5em;
-      min-width: 44px;
-      min-height: 44px;
-      margin: 0;
-      background: #4d4d4d center center / 1.75em auto no-repeat;
-      transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+        &:focus {
+          @include high-vis-focus(white);
+          transform: scale(1.1);
+        }
 
-      &:focus,
-      &:hover {
-        background-color: var(--brand-primary-color-high-contrast-white);
-      }
+        &[href*='twitter.com/'] {
+          background-image: url('/themes/custom/nicsdru_dept_theme/images/twitter.svg');
+          background-size: 1.5em auto;
+        }
 
-      &:focus {
-        @include high-vis-focus(white);
-        transform: scale(1.1);
-      }
+        &[href*='facebook.com/'] {
+          background-image: url('/themes/custom/nicsdru_dept_theme/images/facebook.svg');
+          background-size: 1.6667em auto;
+        }
 
-      &[href*='twitter.com/'] {
-        background-image: url('/themes/custom/nicsdru_dept_theme/images/twitter.svg');
-        background-size: 1.5em auto;
-      }
+        &[href*='flickr.com/'] {
+          background-image: url('/themes/custom/nicsdru_dept_theme/images/flickr.svg');
+          background-size: 2em auto;
+        }
 
-      &[href*='facebook.com/'] {
-        background-image: url('/themes/custom/nicsdru_dept_theme/images/facebook.svg');
-        background-size: 1.6667em auto;
-      }
+        &[href*='youtube.com/'] {
+          background-image: url('/themes/custom/nicsdru_dept_theme/images/youtube.svg');
+          background-size: 2em auto;
+        }
 
-      &[href*='flickr.com/'] {
-        background-image: url('/themes/custom/nicsdru_dept_theme/images/flickr.svg');
-        background-size: 2em auto;
-      }
+        &[href*='instagram.com/'] {
+          background-image: url('/themes/custom/nicsdru_dept_theme/images/instagram.svg');
+          background-size: 1.3em auto;
+        }
 
-      &[href*='youtube.com/'] {
-        background-image: url('/themes/custom/nicsdru_dept_theme/images/youtube.svg');
-        background-size: 2em auto;
-      }
-
-      &[href*='instagram.com/'] {
-        background-image: url('/themes/custom/nicsdru_dept_theme/images/instagram.svg');
-        background-size: 1.3em auto;
-      }
-
-      &[href*='linkedin.com/'] {
-        background-image: url('/themes/custom/nicsdru_dept_theme/images/linkedin.svg');
+        &[href*='linkedin.com/'] {
+          background-image: url('/themes/custom/nicsdru_dept_theme/images/linkedin.svg');
+        }
       }
     }
   }
