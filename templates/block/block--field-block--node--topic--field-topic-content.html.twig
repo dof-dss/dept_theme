@@ -25,22 +25,13 @@
  * @see template_preprocess_block()
  */
 #}
-{% set card_display = content.field_card_style.0['#markup'] %}
-{% set classes = [
-  'card--contact',
-  'card--contact-' ~ card_display
-]
-%}
-<div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
+<div{{ attributes.addClass('subtopics') }}>
   {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes.addClass('card__heading') }}>{{ label }}</h2>
-  {% endif %}
+  <h2 class="subtopics__title visually-hidden">{{ label }} contents</h2>
   {{ title_suffix }}
-  <div class="card__content">
+  <div class="card-deck card-deck--x2 card-deck--topics">
     {% block content %}
-      {{ content.body }}
-      {{ content.field_telephone }}
+      {{ content }}
     {% endblock %}
   </div>
 </div>

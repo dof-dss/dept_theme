@@ -78,7 +78,9 @@
     {{ drupal_block('page_title_block', wrapper=false) }}
   {% endif %}
   {% if show_topics and topics_subtopics_list is not empty %}
-    {{ topics_subtopics_list }}
+    <div class="site-topics">
+      {{ topics_subtopics_list }}
+    </div>
   {% endif %}
   {% if content_attributes is not empty %}
   <div{{ content_attributes }}>
