@@ -6,12 +6,12 @@
  */
 
 use Drupal\block\Entity\Block;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityBase;
-use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
-use Drupal\Component\Utility\Html;
 use Drupal\dept_core\Department;
 use Drupal\media\MediaInterface;
 use Drupal\nicsdru_dept_theme\Helpers;
@@ -64,6 +64,7 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
         case "consultation":
         case "landing_page":
         case "publication":
+        case "subtopic":
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN);
           break;
 
@@ -314,21 +315,6 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
       break;
   }
 
-  // Gather a list of topics for the node, if needed, which can be
-  // used in the node template to give a controllable list of topics
-  // and optional subtopics ordered by title.
-  if ($variables['show_topics'] && $variables['node'] instanceof NodeInterface) {
-    $topics = \Drupal::service('dept_topics.topics')->getTopics($variables['node']);
-
-    if (!empty($topics)) {
-      $variables['topics_subtopics_list'] = [
-        '#theme' => 'topics_subtopics_list',
-        '#title' => t('Topics'),
-        '#items' => $topics,
-        '#links' => TRUE,
-      ];
-    }
-  }
   // Only use this code for consultations content type.
   if ($variables['node']->getType() === 'consultation') {
 
@@ -379,6 +365,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_dept_theme_preprocess_block(array &$variables) {
+
   // Set department logo for system branding block.
   if ($variables['plugin_id'] === 'system_branding_block') {
     $dept = \Drupal::service('department.manager')->getCurrentDepartment();
@@ -392,6 +379,15 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
     else {
       $variables["department_logo"] = 'logo-admin.svg';
       $variables['site_name'] = t('DEPT ADMIN');
+    }
+  }
+
+  // Get banner link for banner image block.
+  if ($variables['plugin_id'] === 'field_block:node:subtopic:field_banner_image' && !empty($variables['content']['#object'])) {
+    $node = $variables['content']['#object'];
+
+    if ($node instanceof NodeInterface) {
+      $variables['banner_link'] = $node->get('field_banner_link');
     }
   }
 

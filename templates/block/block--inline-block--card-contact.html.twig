@@ -25,7 +25,7 @@
  * @see template_preprocess_block()
  */
 #}
-{% set card_display = content.field_card_style.0['#plain_text']|lower %}
+{% set card_display = content.field_card_style.0['#markup'] %}
 {% set classes = [
   'card--contact',
   'card--contact-' ~ card_display

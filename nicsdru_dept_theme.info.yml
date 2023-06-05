@@ -18,6 +18,10 @@ ckeditor_stylesheets:
   - css/3_components/content/video.css
 
 libraries-override:
+  layout_builder/drupal.layout_builder:
+    css:
+      theme:
+        /core/themes/stable/css/layout_builder/layout-builder.css: false
   nicsdru_origins_theme/global-styling:
     css:
       theme:

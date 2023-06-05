@@ -14,56 +14,6 @@
 }
 
 /*
- * GP Practice content type
- * - the wrapper around the application link field 'button' needs to have the spacing around the element tweaked to keep
- * the pages vertical rhythm.
- * - adjust the some attrs on the list of practice members
- */
-.page-node-type-gp-practice {
-  .launch-service {
-    display: inline-block;
-    margin: 2.7rem 1.2rem 0 0;
-  }
-
-  .call-to-action {
-    @include adjust-font-size-to(18px);
-  }
-}
-
-.list--gp-practice-members {
-  .list-item {
-    color: #666;
-    margin: 0;
-
-    &::after {
-      content: ',';
-    }
-
-    &:last-child::after {
-      content: '';
-    }
-  }
-}
-
-/*
- * Health condition content type
- * - adjust the text for the last / next review information
- */
-.review-info {
-  @include adjust-font-size-to(16px, 4);
-  margin: 0;
-}
-
-.page-node-type-health-condition {
-  p.meta {
-    @include adjust-font-size-to(15px, 4);
-    letter-spacing: -.25px;
-    margin: 0;
-    padding-bottom: .9rem;
-  }
-}
-
-/*
  * Publication content type
  */
 
@@ -126,80 +76,67 @@
 
 .page-node-type-topic {
 
-  .topic-header {
-    box-shadow: 0 1.5px 0 0 var(--brand-primary-color);
-    padding-bottom: 2em;
+  .field-photo .media-image {
 
-    &:last-child {
-      box-shadow: none;
-      padding-bottom: 1em;
+    margin: 0 0 1.5em;
+
+    @include breakpoint($tab) {
+      width: 40%;
+      max-width: 350px;
+      float: right;
+      margin: 0 0 0 10vw;
     }
 
-    &:has(.field-photo) {
-      padding-bottom: 1em;
+    img {
+      max-height: 200px;
+      object-fit: cover;
+      margin: 0;
+    }
 
-      // Larger screens: photo to right of large text summary.
-      @include breakpoint($tab) {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-column-gap: 1.5rem;
-
-        .page-summary {
-          grid-column: 1 / span 6;
-        }
-
-        .field-photo {
-          grid-column: 8 / span 5;
-        }
-      }
-
-      @include breakpoint($desk) {
-
-        .page-summary {
-          grid-column: 1 / span 7;
-        }
-
-        .field-photo {
-          grid-column: 9 / span 4;
-        }
-      }
-
-      .page-summary {
-        p {
-          @include responsive-typo-map($xl-text);
-
-          @include breakpoint($tab) {
-            margin-top: .5em;
-          }
-        }
-      }
-
-      .media-image {
-        margin: 0;
-
-        img {
-          max-height: 200px;
-          object-fit: cover;
-          margin: 0;
-        }
-      }
+    figcaption {
+      display: none;
     }
   }
 
-  .page-summary:only-child,
-  .page-summary p:last-child {
-    margin-bottom: 0;
-  }
+  .page-summary {
 
-  .article-content {
-    margin-top: 2.5em;
-
-    // clearfix.
+    // Clear floats.
     &::after {
       content: '';
       display: block;
       width: 100%;
       clear: both;
+    }
+
+    p {
+
+      @include breakpoint($tab) {
+        margin-top: var(--rhythm-spacing-sm);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .field-photo ~ .page-summary p {
+    @include responsive-typo-map($xl-text);
+  }
+
+  .page-summary ~ .article-content {
+    padding-top: .5em;
+    box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
+
+    > *:first-child {
+      margin-top: var(--rhythm-spacing-xxl);
+    }
+  }
+
+  .article-content {
+
+    * {
+      max-width: $max-content-width;
     }
 
     .field-photo .media-image {
@@ -210,12 +147,21 @@
         margin: 0 0 1.5em 1.5em;
       }
     }
+
+    // Clear floats.
+    &::after {
+      display: table-cell;
+      width: 100%;
+      clear: both;
+      height: 1em;
+      content: '';
+    }
   }
 
   .subtopics {
-    width: 100%;
-    clear: both;
-    margin-top: .5em;
+    box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
+    margin-top: 2em;
+    padding-top: 2em;
 
     .card__title a {
       color: $brand-secondary;
@@ -227,24 +173,8 @@
   }
 
   .article-content + .subtopics {
-    box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
-    margin-top: 2.5em;
-    padding-top: .5em;
-  }
-
-  .topic-header:has(.page-summary:only-child) {
-    + .subtopics,
-    + .section-related {
-      margin-top: 1.5em;
-
-      .subtopics__title {
-        @include visually-hidden();
-      }
-    }
-  }
-
-  .card-deck--topics {
-    padding-top: .5em;
+    margin-top: .5em;
+    padding-top: 2em;
   }
 }
 

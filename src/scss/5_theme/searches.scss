@@ -22,45 +22,36 @@
 .search-results {
 
   header {
-    margin: 0 0 1em;
+    margin: 0 0 .5em;
 
     .view--rss-link {
-      margin: 1em 0 2em;
+      margin: 1em 0 1.5em;
 
       @include breakpoint($tab) {
         margin-top: 0;
       }
     }
+
+    > h2.view--count {
+      margin: 0;
+    }
   }
 
   h2:first-of-type,
   .view--count {
-    margin: 0 0 1.2rem;
+    margin: 0 0 var(--rhythm-spacing-sm);
 
     .subtitle,
     + .subtitle {
       @include responsive-typo-map($small-text);
       color: $ash-grey;
       display: block;
+      margin: var(--rhythm-spacing-xs) 0 0;
 
       > * {
         font-size: inherit;
         line-height: inherit;
       }
-    }
-
-    // When subtitle follows view count.
-    + .subtitle {
-      margin: -.6rem 0 1.2rem;
-    }
-
-    // When subtitle is child of view count.
-    > .subtitle {
-      margin: .6rem 0 0;
-    }
-
-    + .view-sort-options {
-      margin: -.5em 0 0;
     }
   }
 
@@ -94,20 +85,19 @@
 
   h3 {
     @include responsive-typo-map($large-text);
-    margin: 0 0 .6rem;
+    margin: 0 0 var(--rhythm-spacing-xs);
   }
 
   .meta {
-    margin: .9rem 0;
+    margin: var(--rhythm-spacing-sm) 0;
+
+    &:empty {
+      margin: 0;
+    }
 
     .meta-list-item {
-      margin-left: 1rem;
+      margin-left: var(--rhythm-spacing-sm);
     }
-  }
-
-  .extract {
-    @include adjust-font-size-to(16px, 3.5);
-    margin: 1.5rem 0 1.2rem;
   }
 }
 

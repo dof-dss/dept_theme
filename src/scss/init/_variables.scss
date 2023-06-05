@@ -228,8 +228,8 @@ $link-footer: (
     focus: $link-footer,
   ),
   text-decoration: (
-    default: underline,
-    hover: underline 3px,
+    default: underline 1px,
+    hover: underline 2px,
   ),
   text-underline-offset: 3px,
   outline: (
