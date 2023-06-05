@@ -290,6 +290,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     case "article":
     case "application":
     case "contact":
+    case "global_page":
     case "news":
     case "publication":
     case "subtopic":
