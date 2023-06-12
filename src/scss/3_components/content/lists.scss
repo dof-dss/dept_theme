@@ -32,6 +32,26 @@
     white-space: nowrap;
   }
 
+  &--csv {
+    display: inline;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline;
+
+      &::after {
+        display: inline-block;
+        content: ',';
+        margin-right: var(--rhythm-spacing-sm);
+      }
+
+      &:last-child::after {
+        content: '';
+      }
+    }
+  }
+
   &--checklist {
     li {
       color: $grey-dark;
