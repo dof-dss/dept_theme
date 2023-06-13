@@ -74,11 +74,11 @@
   {{ banner_image }}
 {% endif %}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
-  {% if show_topics and topics_subtopics_list is not empty %}
-    {{ topics_subtopics_list }}
-  {% endif %}
   {% if show_title %}
     {{ drupal_block('page_title_block', wrapper=false) }}
+  {% endif %}
+  {% if show_topics and topics_subtopics_list is not empty %}
+    {{ topics_subtopics_list }}
   {% endif %}
   <div class="layout--main-n-side">
     <div class="ga-main">
