@@ -13,8 +13,8 @@
  * @see dept_topics_preprocess_node()
  */
 #}
-<div class="site-topics">
-{% if items or empty %}
+{% if items %}
+  <div class="site-topics">
   {%- if title is not empty -%}
     <span>{{ title }}:</span>
   {%- endif -%}
@@ -28,5 +28,6 @@
   {%- else -%}
     {{- empty -}}
   {%- endif -%}
+  </div>
 {%- endif %}
-</div>
+
