@@ -382,15 +382,6 @@ function nicsdru_dept_theme_preprocess_block(array &$variables) {
     }
   }
 
-  // Get banner link for banner image block.
-  if ($variables['plugin_id'] === 'field_block:node:subtopic:field_banner_image' && !empty($variables['content']['#object'])) {
-    $node = $variables['content']['#object'];
-
-    if ($node instanceof NodeInterface) {
-      $variables['banner_link'] = $node->get('field_banner_link');
-    }
-  }
-
   // Add nav-menu class Related Content and Conditions blocks.
   if ($variables['plugin_id'] === 'dept_related_content_block') {
     $variables['content']['related_content']['#attributes']['class'] = ['nav-menu'];
@@ -617,23 +608,6 @@ function nicsdru_dept_theme_preprocess_views_view_rss(&$variables) {
  * Implements hook_preprocess_region().
  */
 function nicsdru_dept_theme_preprocess_region(&$variables) {
-  // Make the banner image and banner link fields in subtopic available in the top_banner region.
-  if ($variables['region'] == 'top_banner') {
-    if ($node = \Drupal::routeMatch()->getParameter('node')) {
-      if ($node->getType() == 'subtopic') {
-        $variables['is_subtopic'] = TRUE;
-
-        if ($node->hasField('field_banner_image') && !$node->get('field_banner_image')->isEmpty()) {
-          $variables['field_banner_image'] = $node->get('field_banner_image')->view('default');
-        }
-
-        if ($node->hasField('field_banner_link') && !$node->get('field_banner_link')->isEmpty()) {
-          $variables['field_banner_link'] = $node->get('field_banner_link')->view('default');
-        }
-      }
-    }
-  }
-
   // Make the title field text available in the related region.
   if ($variables['region'] == 'related') {
     if ($node = \Drupal::routeMatch()->getParameter('node')) {
