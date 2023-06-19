@@ -48,6 +48,7 @@
 
   {% if header %}
     <header>
+      {{ feed_icons }}
       {{ header }}
       {{ drupal_block('facets_summary_block:publications_summary') }}
     </header>
@@ -72,6 +73,5 @@
     </footer>
   {% endif %}
 
-  {{ feed_icons }}
 </section>
 
