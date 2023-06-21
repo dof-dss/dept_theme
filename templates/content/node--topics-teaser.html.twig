@@ -75,10 +75,7 @@
     <a href="{{ url }}">{{ label }}</a>
   </h2>
   <div class="card__content">
-    {% if content.field_summary %}
-      <p class="page-summary">{{ content.field_summary | render | striptags }}</p>
-    {% endif %}
-
+    {{- content|without('field_topic_content') -}}
     {% if content.field_topic_content.0 %}
       {% set links = [content.field_topic_content.0] %}
     {% endif %}
