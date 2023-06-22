@@ -50,6 +50,10 @@
     padding: 0;
     margin: 1em 0;
 
+    &.form-type-textarea:has(+ .filter-wrapper) {
+      margin-bottom: 0;
+    }
+
     &.form-item-settings-admin-label {
 
       // Displays the name of the block being edited - make it big like a title.
