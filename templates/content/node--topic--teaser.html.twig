@@ -70,12 +70,10 @@
  *   in different view modes.
  */
 #}
-<a{{ attributes.addClass("card") }} href="{{ url }}">
-  {% if not page %}
-    <h2{{ title_attributes.addClass("card__title") }}>
-      {{ label }}
-    </h2>
-  {% endif %}
+<a class="card" href="{{ url }}">
+  <h2 class="card__title">
+    {{ label }}
+  </h2>
   <div class="card__content">
     {{ content.field_summary }}
   </div>
