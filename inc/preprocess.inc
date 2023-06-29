@@ -488,6 +488,13 @@ function nicsdru_dept_theme_preprocess_field(&$variables) {
   if ($field_name === 'body' && $element_bundle === 'webform') {
     $variables['body_summary'] = $variables['element']['#object']->body->summary;
   }
+
+  if ($field_name === 'field_dept_footer_links') {
+    foreach ($variables['items'] as $item) {
+      $item['content']['#url']->setOption('attributes', ['class' => 'nav-link']);
+    }
+  }
+
 }
 
 /**
