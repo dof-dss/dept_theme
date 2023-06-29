@@ -19,13 +19,13 @@
  */
 #}
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xml:base="{{ feed_url }}"{{ namespaces }}>
+<rss version="2.0" xml:base="{{ link }}"{{ namespaces }}>
   <channel>
     <title>{{ title }}</title>
-    <link>{{ feed_url }}</link>
+    <link>{{ link }}</link>
     <description>{{ description }}</description>
     <language>{{ langcode }}</language>
-    <atom:link href="{{ feed_url }}" rel="self" type="application/rss+xml" />
+    <atom:link href="{{ link }}" rel="self" type="application/rss+xml" />
     {{ channel_elements }}
     {{ items }}
   </channel>
