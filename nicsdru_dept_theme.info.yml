@@ -30,6 +30,10 @@ libraries-override:
     css:
       state:
         css/eu_cookie_compliance.bare.css: css/4_state/block/eu-cookie-compliance.css
+  webform/webform.element.counter:
+    css:
+      component:
+        css/webform.element.counter.css: false
 
 regions:
   header: 'Header'
