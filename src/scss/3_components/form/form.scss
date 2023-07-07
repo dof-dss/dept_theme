@@ -39,7 +39,7 @@ main form {
     margin: 0;
   }
 
-  &--error-message {
+  &--error-message .error {
     @extend %error-bubble;
 
     @at-root .container-inline & {
