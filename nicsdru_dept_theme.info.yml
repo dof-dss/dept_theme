@@ -13,7 +13,7 @@ libraries:
 ckeditor_stylesheets:
   - css/1_base/tables.css
   - css/3_components/ckeditor.css
-  - css/3_components/contents/lists.css
+  - css/3_components/content/lists.css
   - css/3_components/content/responsive-images-ckeditor.css
   - css/3_components/content/video.css
 
