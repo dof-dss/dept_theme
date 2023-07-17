@@ -13,7 +13,7 @@ libraries:
 ckeditor_stylesheets:
   - css/1_base/tables.css
   - css/3_components/ckeditor.css
-  - css/3_components/contents/lists.css
+  - css/3_components/content/lists.css
   - css/3_components/content/responsive-images-ckeditor.css
   - css/3_components/content/video.css
 
@@ -30,6 +30,10 @@ libraries-override:
     css:
       state:
         css/eu_cookie_compliance.bare.css: css/4_state/block/eu-cookie-compliance.css
+  webform/webform.element.counter:
+    css:
+      component:
+        css/webform.element.counter.css: false
 
 regions:
   header: 'Header'
