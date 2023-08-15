@@ -78,7 +78,11 @@
 
   {% if show_title -%}
     <h1{{ title_attributes.addClass('page-title') }}>
+<<<<<<< HEAD
       {% if consultation_in_progress or consultation_pending %}
+=======
+      {% if consultation_in_progress == 1 %}
+>>>>>>> 13feb34 (Styling changes for consultations)
         <span class="page-title__prefix">Open consultation</span>
       {% else %}
         <span class="page-title__prefix">Closed consultation</span>
@@ -90,8 +94,11 @@
     </h1>
   {% endif %}
 
+<<<<<<< HEAD
   {{ content.field_published_date }}
 
+=======
+>>>>>>> 13feb34 (Styling changes for consultations)
   {% if show_topics and topics_subtopics_list is not empty -%}
     {{ topics_subtopics_list }}
   {% endif %}
@@ -101,18 +108,29 @@
       {% if consultation_in_progress %}
         <p>
           <strong class="label">{{ 'Consultation closes'|t }}</strong>
+<<<<<<< HEAD
           {{ consultation_end_date | date("j F Y \\a\\t g.i a") }}
         </p>
       {% elseif consultation_pending %}
         <p>
           <strong class="label">{{ 'Consultation opens'|t }}</strong>
           {{ consultation_start_date | date("j F Y \\a\\t g.i a") }}
+=======
+          <time datetime="{{ content.field_consultation_dates[0].end_date['#attributes']['datetime'] }}">{{ content.field_consultation_dates[0].end_date }}{{ ' at '|t }}{{ consultation_end_time }}</time>
+>>>>>>> 13feb34 (Styling changes for consultations)
         </p>
       {% else %}
         <p>
           <strong class="label">{{ 'Consultation closed'|t }}</strong>
+<<<<<<< HEAD
           {{ 'Consultation opened'|t }} {{ consultation_start_date | date("j F Y") }}
           {{ 'and closed'|t }} {{ consultation_end_state | date("j F Y \\a\\t g.i a") }}
+        </p>
+      {% endif %}
+    </div>
+=======
+          {{ 'Consultation opened'|t }} {{ content.field_consultation_dates[0].start_date}}
+          {{ 'and closed'|t }} {{ content.field_consultation_dates[0].end_date }} {{ 'at'|t }} {{ consultation_end_time }}
         </p>
       {% endif %}
     </div>
@@ -124,14 +142,26 @@
 
     <h2>{{ 'Consultation description'|t }}</h2>
     {{ content.body }}
+>>>>>>> 13feb34 (Styling changes for consultations)
+
+    <h2>{{ content.field_summary['#title'] }}</h2>
+    {{ content.field_summary }}
+
+    {{ content.field_attachment }}
+
+    <h2>{{ 'Consultation description'|t }}</h2>
+    {{ content.body }}
 
     {% if consultation_in_progress %}
       {{ content.group_ways_to_respond }}
+<<<<<<< HEAD
     {% elseif consultation_pending %}
       <h2>Ways to respond</h2>
       <p class="info-notice">
         {{ 'Consultation pending — details on ways to respond will be provided when the consultation has opened.'|t }}
       </p>
+=======
+>>>>>>> 13feb34 (Styling changes for consultations)
     {% else %}
       <h2>Ways to respond</h2>
       <p class="info-notice">
