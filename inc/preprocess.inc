@@ -61,7 +61,6 @@ function nicsdru_dept_theme_preprocess_page(array &$variables) {
           break;
 
         // Specific node types have a main only.
-        case "consultation":
         case "landing_page":
         case "publication":
         case "subtopic":

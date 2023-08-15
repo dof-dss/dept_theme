@@ -30,15 +30,22 @@
 }
 
 h1,
-%h1 {
+%h1,
+.page-title {
   @include responsive-typo-map($h1-text);
   color: color(headings);
 
-  //@include breakpoint($tab, $no-query: true) {
-  //  font-weight: 700;
-  //}
+  &__prefix {
+    @include responsive-typo-map($small-text);
+    display: block;
+    margin-bottom: var(--rhythm-spacing-xs);
+    color: $grey-dark;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+  }
 
-  .subtitle {
+  .subtitle,
+  &__suffix {
     @include responsive-typo-map($xl-text);
     display: inline-block;
     font-weight: normal;
