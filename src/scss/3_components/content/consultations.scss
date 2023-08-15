@@ -5,64 +5,50 @@
 @import '../../init';
 
 .page-node-type-consultation {
-  .content {
-    .summary {
-      background: #f3f3f3;
-      margin: 1.5em 0 2em;
-      padding-left: 1em;
 
-      .consultation-dates {
-        padding: 1em 1em 1em 0;
-        font-size: inherit;
+  .consultation-dates {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.5em;
+    width: 100%;
+    clear: both;
+    margin: 1em 0 1.5em;
+    padding: 1em;
+    font-size: inherit;
+    background-color: var(--brand-primary-color-high-contrast-white);
+    color: #fff;
 
-        p {
-          margin: 0 0 1.5em;
+    p {
+      flex: auto 1 1;
+      margin: 0;
+      color: inherit;
+      @include responsive-typo-map($smallish-text);
 
-          &:last-child {
-            margin: 0;
-          }
-        }
-
-        span.label {
-          font-weight: bold;
-        }
-      }
-
-      .field-summary {
-        padding: 1em 1em 1.5em 0;
-
-        h2 {
-          margin: 0;
-        }
-
-        .page-summary {
-          margin: .5em 1em 0 0;
-        }
-
-        .page-summary,
-        .page-summary > p {
-          font-size: inherit;
-          line-height: inherit;
-        }
-      }
-    }
-
-    .respond {
-      .content-field__value {
-        > div {
-          padding-bottom: 2.7rem;
-        }
-
-        address {
-          margin: .5rem 0 0;
-        }
+      .label {
+        display: block;
+        color: inherit;
+        font-weight: bold;
+        @include responsive-typo-map($medium-text);
+        margin-bottom: var(--rhythm-spacing-xs);
       }
     }
   }
 
-  .content-field--label-inline{
-    .content-field__label {
-      flex: 30% 1 0;
+  .consultation-respond {
+
+    .field {
+      display: flex;
+      align-items: baseline;
+      gap: 1em;
+      margin: 1em 0;
+
+      &__label {
+        flex: 6.5em 0 1;
+      }
+
+      address {
+        margin: 0;
+      }
     }
   }
 }

@@ -16,16 +16,14 @@
  */
 #}
 
-<{{ wrapper_element }} {{ attributes.addClass('respond content-field--label-inline') }}>
+<{{ wrapper_element }} {{ attributes.addClass('consultation-respond') }}>
   {% if title %}
-  <{{ title_element }}{{ title_attributes.addClass('content-field__label') }}>{{ title }}</{{ title_element }}>
+  <{{ title_element }}{{ title_attributes }}>{{ title }}</{{ title_element }}>
   {% endif %}
   {% if collapsible %}
   <div class="field-group-wrapper">
   {% endif %}
-    <div class="content-field__value">
-      {{ children }}
-    </div>
+    {{ children }}
   {% if collapsible %}
   </div>
   {% endif %}
