@@ -70,43 +70,61 @@
  *   in different view modes.
  */
 #}
-<article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
+<article{{ attributes.addClass('ga-main').setAttribute('id', 'main-article').removeAttribute('role') }}>
+
   {% if banner_image %}
     {{ banner_image }}
   {% endif %}
-  <div class="narrow-title">
-  {% if show_title %}
-  {{ drupal_block('page_title_block', wrapper=false) }}
+
+  {% if show_title -%}
+    <h1{{ title_attributes.addClass('page-title') }}>
+      {% if consultation_in_progress == 1 %}
+        <span class="page-title__prefix">Open consultation</span>
+      {% else %}
+        <span class="page-title__prefix">Closed consultation</span>
+      {% endif %}
+      {{ label }}
+      {%- if title_subtitle %}
+        <span class="page-title__suffix subtitle">{{ title_subtitle }}</span>
+      {%- endif -%}
+    </h1>
   {% endif %}
-  {% if show_topics and topics_subtopics_list is not empty %}
+
+  {% if show_topics and topics_subtopics_list is not empty -%}
     {{ topics_subtopics_list }}
   {% endif %}
-  </div>
+
   <div{{ content_attributes.addClass('content') }}>
-    <div class="summary content-field--label-inline">
-      <div class="consultation-dates content-field__label">
+    <div class="consultation-dates">
+      {% if consultation_in_progress %}
         <p>
-          <span class="label">{{ 'Consultation opened on'|t }}</span>
-          <time datetime="{{ content.field_consultation_dates[0].start_date['#attributes']['datetime'] }}">{{ content.field_consultation_dates[0].start_date}}</time>
-        </p>
-        <p>
-          <span class="label">{{ 'Closing date'|t }}</span>
+          <strong class="label">{{ 'Consultation closes'|t }}</strong>
           <time datetime="{{ content.field_consultation_dates[0].end_date['#attributes']['datetime'] }}">{{ content.field_consultation_dates[0].end_date }}{{ ' at '|t }}{{ consultation_end_time }}</time>
         </p>
-      </div>
-      <div class="field-summary content-field__value">
-        <h2>{{ content.field_summary['#title'] }}</h2>
-        {{ content.field_summary }}
-      </div>
+      {% else %}
+        <p>
+          <strong class="label">{{ 'Consultation closed'|t }}</strong>
+          {{ 'Consultation opened'|t }} {{ content.field_consultation_dates[0].start_date}}
+          {{ 'and closed'|t }} {{ content.field_consultation_dates[0].end_date }} {{ 'at'|t }} {{ consultation_end_time }}
+        </p>
+      {% endif %}
     </div>
+
+    <h2>{{ content.field_summary['#title'] }}</h2>
+    {{ content.field_summary }}
+
     {{ content.field_attachment }}
-    <div class="description content-field--label-inline">
-      <h2 class="content-field__label">{{ 'Consultation description'|t }}</h2>
-      <div class="content-field__value">{{ content.body }}</div>
-    </div>
+
+    <h2>{{ 'Consultation description'|t }}</h2>
+    {{ content.body }}
 
     {% if consultation_in_progress == 1 %}
       {{ content.group_ways_to_respond }}
+    {% else %}
+      <h2>Ways to respond</h2>
+      <p class="info-notice">
+        {{ 'Consultation closed — responses are no longer being accepted.'|t }}
+      </p>
     {% endif %}
   </div>
   {% if display_social_links %}
