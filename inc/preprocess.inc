@@ -336,7 +336,7 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     if ($current_time > $consultation_start_date->getTimestamp() && $current_time <= $consultation_end_date->getTimestamp()) {
       $variables['consultation_in_progress'] = TRUE;
     }
-    elseif ($current_time < $consultation_start_date->getTimestamp() ) {
+    elseif ($current_time < $consultation_start_date->getTimestamp()) {
       $variables['consultation_pending'] = TRUE;
     }
   }
