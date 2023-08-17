@@ -321,29 +321,23 @@ function nicsdru_dept_theme_preprocess_node(array &$variables) {
     $current_time = \Drupal::time()->getCurrentTime();
 
     // Convert consultation start date to a timestamp.
-    $consultation_start_date = $variables['node']->get('field_consultation_dates')->value;
-    $consultation_start_date_date_time = new DrupalDateTime($consultation_start_date, 'UTC');
-    $consultation_start_date_timestamp = $consultation_start_date_date_time->getTimestamp();
+    $consultation_start_date = new DrupalDateTime($variables['node']->get('field_consultation_dates')->value);
+    $variables['consultation_start_date'] = $consultation_start_date;
 
     // Convert consultation end date to a timestamp.
-    $consultation_end_date = $variables['node']->get('field_consultation_dates')->end_value;
-    $consultation_end_date_date_time = new DrupalDateTime($consultation_end_date, 'UTC');
-    $consultation_end_date_timestamp = $consultation_end_date_date_time->getTimestamp();
-
-    // Set a variable to be used in the twig template for the consultation end date time.
-    $variables['consultation_end_time'] = date('H:i', $consultation_end_date_timestamp);
+    $consultation_end_date = new DrupalDateTime($variables['node']->get('field_consultation_dates')->end_value);
+    $variables['consultation_end_date'] = $consultation_end_date;
 
     // Set a variable to be used in the twig template for the ways to respond fieldgroup, initially set to 0.
     $variables['consultation_in_progress'] = FALSE;
+    $variables['consultation_pending'] = FALSE;
 
     // If the consultation started before and is ending after today's date then show the contact information.
-    if ($current_time > $consultation_start_date_timestamp && $current_time <= $consultation_end_date_timestamp) {
+    if ($current_time > $consultation_start_date->getTimestamp() && $current_time <= $consultation_end_date->getTimestamp()) {
       $variables['consultation_in_progress'] = TRUE;
-      // Text to display if the consultation is open or closed. Used in the search result view mode only.
-      $output = t('Open');
     }
-    else {
-      $output = t('Closed');
+    elseif ($current_time < $consultation_start_date->getTimestamp()) {
+      $variables['consultation_pending'] = TRUE;
     }
   }
 
