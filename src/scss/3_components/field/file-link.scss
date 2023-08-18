@@ -16,10 +16,12 @@
 .file {
   &-link {
 
+    @include responsive-typo-map($medium-text);
+
     &.file--ico {
       display: block;
       min-height: 5rem;
-      padding-left: 6.5rem;
+      padding-left: 5rem;
       position: relative;
 
       &:focus {
