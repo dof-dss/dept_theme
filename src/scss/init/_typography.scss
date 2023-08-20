@@ -118,7 +118,12 @@ $smallish-text: (
   xxxl: (1.8rem, 3rem),
 );
 
-$medium-text: $normal-text-no-margins;
+$medium-text: (
+  null: (18px, 2.8rem),
+  xl: (19px, 3rem),
+  xxl: (20px, 3.3rem),
+  xxxl: (21px, 3.5rem)
+);
 
 $large-text: (
   null: (20px, 2.8rem),
