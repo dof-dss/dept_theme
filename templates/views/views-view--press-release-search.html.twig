@@ -48,12 +48,13 @@
 
   {% if header %}
     <header>
+      {{ header.result }}
+      {{ header | without('result') }}
+      {{ drupal_block('facets_summary_block:press_releases_summary') }}
       <div class="view--rss-link">
         {% include active_theme_path() ~ '/images/rss.svg' %}
-        <a href="/press-releases/rss.xml">Subscribe to RSS feed</a>
+        <a href="/press-releases/rss.xml">Subscribe to feed</a>
       </div>
-      {{ header }}
-      {{ drupal_block('facets_summary_block:press_releases_summary') }}
     </header>
   {% endif %}
 
