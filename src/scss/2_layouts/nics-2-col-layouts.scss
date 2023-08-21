@@ -132,8 +132,8 @@
     }
 
     @include breakpoint($tab) {
-      grid-template-columns: 310fr 590fr;
-      grid-gap: 3.2rem;
+      grid-template-columns: 298fr 590fr;
+      grid-gap: 4.4rem;
       grid-template-rows: auto;
       grid-template-areas: 'side main';
 
@@ -149,20 +149,20 @@
     }
 
     @include breakpoint($lap) {
-      grid-template-columns: 300fr 590fr;
-      grid-gap: 3.6rem;
+      grid-template-columns: 290fr 590fr;
+      grid-gap: 5.4rem;
       grid-template-rows: auto;
     }
 
     @include breakpoint($desk) {
-      grid-template-columns: 300fr 680fr;
-      grid-gap: 4rem;
+      grid-template-columns: 290fr 670fr;
+      grid-gap: 6rem;
       padding-right: 90px;
     }
 
     @include breakpoint($desk-plus) {
-      grid-template-columns: 300fr 740fr;
-      grid-gap: 4rem;
+      grid-template-columns: 290fr 730fr;
+      grid-gap: 6rem;
       padding-right: 30px;
     }
   }
