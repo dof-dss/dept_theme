@@ -43,12 +43,16 @@
       margin: 1em 0;
 
       &__label {
-        flex: 6.5em 0 1;
+        flex: auto 0 1;
       }
 
       address {
         margin: 0;
       }
+    }
+
+    &:has(.field--name-field-postal) .field__label {
+      flex: 6.5em 0 1;
     }
   }
 }
