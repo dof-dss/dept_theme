@@ -13,19 +13,19 @@
  * - channel_elements: The formatted channel elements.
  * - items: The feed items themselves.
  *
- * @see nicsdru_nidirect_preprocess_views_view_rss()
+ * @see nicsdru_dept_preprocess_views_view_rss()
  *
  * @ingroup themeable
  */
 #}
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xml:base="{{ link }}"{{ namespaces }}>
+<rss version="2.0" xml:base="{{ feed_url }}"{{ namespaces }}>
   <channel>
-    <title>{{ title }}</title>
-    <link>{{ link }}</link>
+    <title>{{ title | title }} {{ 'from the' }} {{ site_name }}</title>
+    <link>{{ feed_url }}</link>
     <description>{{ description }}</description>
     <language>{{ langcode }}</language>
-    <atom:link href="{{ link }}" rel="self" type="application/rss+xml" />
+    <atom:link href="{{ feed_url }}" rel="self" type="application/rss+xml" />
     {{ channel_elements }}
     {{ items }}
   </channel>

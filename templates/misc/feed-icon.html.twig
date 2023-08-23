@@ -12,8 +12,8 @@
  */
 #}
 <div class="view--rss-link">
-  {% include active_theme_path() ~ '/images/rss.svg' %}
   <a href="{{ url }}"{{ attributes.addClass('feed-icon') }}>
-    {{ '@title'|t({'@title': title}) }}
+    {% include active_theme_path() ~ '/images/rss.svg' %}
+    {{ 'Subscribe to feed'|t }}
   </a>
 </div>
