@@ -575,24 +575,29 @@ function nicsdru_dept_theme_preprocess_container(&$variables) {
  */
 function nicsdru_dept_theme_preprocess_views_view_rss(&$variables) {
   // Based on https://jungleran.com/node/44 for preprocess
-  // code to refine the output of the news RSS feed.
+  // code to refine the output of RSS feeds.
   $view = $variables['view'];
 
-  if (in_array($view->id(), ['news', 'press_releases'])
-    && in_array($view->current_display, ['news_feed', 'press_releases_feed'])) {
-    // The 'link' in the preprocess variables doesn't give us the full path so
-    // we can create a new one here to give us what we need.
-    $display = $view->getDisplay();
-    $variables['feed_url'] = $display->getUrl()->setAbsolute()->toString();
-    // Alter namespaces to include the atom namespace as recommended
-    // by the W3C validator service.
-    $style = $view->getStyle();
-    $style->namespaces = array_filter($style->namespaces, function ($key) {
-      return $key === 'xmlns:dc';
-    }, ARRAY_FILTER_USE_KEY);
+  // The 'link' in the preprocess variables doesn't give us the full path so
+  // we can create a new one here to give us what we need.
+  $display = $view->getDisplay();
+  $variables['feed_url'] = $display->getUrl()->setAbsolute()->toString();
 
-    $style->namespaces['xmlns:atom'] = 'http://www.w3.org/2005/Atom';
-    $variables['namespaces'] = new Attribute($style->namespaces);
+  // Alter namespaces to include the atom namespace as recommended
+  // by the W3C validator service.
+  $style = $view->getStyle();
+  $style->namespaces = array_filter($style->namespaces, function ($key) {
+    return $key === 'xmlns:dc';
+  }, ARRAY_FILTER_USE_KEY);
+
+  $style->namespaces['xmlns:atom'] = 'http://www.w3.org/2005/Atom';
+  $variables['namespaces'] = new Attribute($style->namespaces);
+
+  // Make dept name available for feed title and description.
+  $dept = \Drupal::service('department.manager')->getCurrentDepartment();
+  $variables['site_name'] = t("Northern Ireland Executive");
+  if (method_exists($dept, 'name')) {
+    $variables['site_name'] = $dept->name();
   }
 }
 
