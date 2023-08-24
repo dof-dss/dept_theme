@@ -488,7 +488,7 @@ a.card {
         margin: 0;
 
         a {
-          @include link-state-style($link-body-no-visited);
+          @include link-state-style($link-heading-no-visited);
         }
       }
 
