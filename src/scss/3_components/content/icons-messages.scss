@@ -77,6 +77,17 @@
   &-arrow-down {
     transform: rotate(90deg);
   }
+
+  // RSS feed icon.
+  // The inline code to add this icon to HTML is:
+  // '<svg class="ico ico-rss"><use xlink:href="#rss"></use></svg>'
+
+  &-rss {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: .3em;
+    fill: black;
+  }
 }
 
 %notice-builder {
