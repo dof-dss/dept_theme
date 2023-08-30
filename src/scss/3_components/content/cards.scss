@@ -370,15 +370,15 @@ a.card {
 
   // Card deck modifier for search results.
   &--search-results {
-    grid-row-gap: .5em;
+    grid-row-gap: 1em;
 
     .card {
-      padding: .5em 0 1em;
+      padding: .5em 0 1.5em;
       box-shadow: 0 1px 0 0 $grey-medium;
       border: 0;
 
       &__title {
-        @include responsive-typo-map($large-text);
+        @include responsive-typo-map($medium-text);
         margin: 0;
         padding: 0;
       }
@@ -386,10 +386,27 @@ a.card {
       &__summary,
       &__content {
         @include responsive-typo-map($smallish-text);
-        margin: var(--rhythm-spacing-sm) 0 0;
+        margin: var(--rhythm-spacing-xs) 0 0;
+
+        * {
+          font-size: inherit;
+          line-height: inherit;
+        }
+
+        p,
+        div {
+          &:first-child {
+            margin-top: 0;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
       }
 
       &__meta {
+        @include responsive-typo-map($small-text);
         margin: var(--rhythm-spacing-sm) 0 0;
         padding: 0;
 
@@ -471,7 +488,7 @@ a.card {
         margin: 0;
 
         a {
-          @include link-state-style($link-body-no-visited);
+          @include link-state-style($link-heading-no-visited);
         }
       }
 

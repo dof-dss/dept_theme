@@ -48,9 +48,10 @@
 
   {% if header %}
     <header>
-      {{ feed_icons }}
-      {{ header }}
+      <h2 class="view--count">{{ header.result }}</h2>
+      {{ header | without('result') }}
       {{ drupal_block('facets_summary_block:publications_summary') }}
+      {{ feed_icons }}
     </header>
   {% endif %}
 

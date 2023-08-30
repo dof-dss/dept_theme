@@ -162,14 +162,6 @@
     box-shadow: 0 -1.5px 0 0 var(--brand-primary-color);
     margin-top: 2em;
     padding-top: 2em;
-
-    .card__title a {
-      color: $brand-secondary;
-
-      &:focus {
-        color: #fff;
-      }
-    }
   }
 
   .article-content + .subtopics {

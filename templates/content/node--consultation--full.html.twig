@@ -78,7 +78,7 @@
 
   {% if show_title -%}
     <h1{{ title_attributes.addClass('page-title') }}>
-      {% if consultation_in_progress == 1 %}
+      {% if consultation_in_progress or consultation_pending %}
         <span class="page-title__prefix">Open consultation</span>
       {% else %}
         <span class="page-title__prefix">Closed consultation</span>
@@ -90,6 +90,8 @@
     </h1>
   {% endif %}
 
+  {{ content.field_published_date }}
+
   {% if show_topics and topics_subtopics_list is not empty -%}
     {{ topics_subtopics_list }}
   {% endif %}
@@ -99,13 +101,18 @@
       {% if consultation_in_progress %}
         <p>
           <strong class="label">{{ 'Consultation closes'|t }}</strong>
-          <time datetime="{{ content.field_consultation_dates[0].end_date['#attributes']['datetime'] }}">{{ content.field_consultation_dates[0].end_date }}{{ ' at '|t }}{{ consultation_end_time }}</time>
+          {{ consultation_end_date | date("j F Y \\a\\t g.i a") }}
+        </p>
+      {% elseif consultation_pending %}
+        <p>
+          <strong class="label">{{ 'Consultation opens'|t }}</strong>
+          {{ consultation_start_date | date("j F Y \\a\\t g.i a") }}
         </p>
       {% else %}
         <p>
           <strong class="label">{{ 'Consultation closed'|t }}</strong>
-          {{ 'Consultation opened'|t }} {{ content.field_consultation_dates[0].start_date}}
-          {{ 'and closed'|t }} {{ content.field_consultation_dates[0].end_date }} {{ 'at'|t }} {{ consultation_end_time }}
+          {{ 'Consultation opened'|t }} {{ consultation_start_date | date("j F Y") }}
+          {{ 'and closed'|t }} {{ consultation_end_state | date("j F Y \\a\\t g.i a") }}
         </p>
       {% endif %}
     </div>
@@ -118,8 +125,13 @@
     <h2>{{ 'Consultation description'|t }}</h2>
     {{ content.body }}
 
-    {% if consultation_in_progress == 1 %}
+    {% if consultation_in_progress %}
       {{ content.group_ways_to_respond }}
+    {% elseif consultation_pending %}
+      <h2>Ways to respond</h2>
+      <p class="info-notice">
+        {{ 'Consultation pending — details on ways to respond will be provided when the consultation has opened.'|t }}
+      </p>
     {% else %}
       <h2>Ways to respond</h2>
       <p class="info-notice">

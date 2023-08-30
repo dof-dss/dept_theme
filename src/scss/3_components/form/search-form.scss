@@ -244,3 +244,14 @@ header .search-api-form {
     width: calc(100% - 16px) !important;
   }
 }
+
+// Search forms and facets in aside
+.ga-aside .search-form,
+.ga-aside .block-facet--links {
+  min-width: 260px;
+  max-width: calc(100% - 3em);
+
+  @include breakpoint($phone) {
+    max-width: 400px;
+  }
+}
