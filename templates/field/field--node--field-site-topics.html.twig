@@ -33,35 +33,50 @@
  * - field_type: The type of the field.
  * - label_display: The display settings for the label.
  *
+ *
  * @see template_preprocess_field()
  */
 #}
 {%
-  set title_classes = [
-    label_display == 'visually_hidden' ? 'visually-hidden',
-  ]
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    'site-topics',
+]
 %}
+{%
+  set title_classes = [
+    'site-topics--label',
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
+
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes }}>
+    <div{{ attributes.addClass(classes, 'site-topics--list') }}>
       {% for item in items %}
-        {{ item.content }}
+        <div{{ item.attributes.addClass('site-topics--item') }}>{{ item.content }}</div>
       {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
-      {{ item.content }}
+      <div{{ attributes.addClass(classes, 'site-topics--item') }}>{{ item.content }}</div>
     {% endfor %}
   {% endif %}
 {% else %}
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}: </div>
     {% if multiple %}
-      <div>
+    <div class="site-topics--list">
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes.addClass('site-topics--item') }}>{{ item.content }}{% if not loop.last %}{{ ',&ensp;' }}{% endif %}</div>
+      {% endfor %}
+      {% if multiple %}
+    </div>
     {% endif %}
-    {% for item in items %}
-      {{ item.content }}
-    {% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
+  </div>
 {% endif %}
